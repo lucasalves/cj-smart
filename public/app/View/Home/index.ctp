@@ -1,6 +1,6 @@
 <div class="center home home-index">
 	<div class="row">
-		<h1>CJ - Smart</h1>
+		<h1>Você está logado no CJ-SMART</h1>
 	</div>
 
 </div>
