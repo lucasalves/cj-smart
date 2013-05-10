@@ -33,19 +33,22 @@ App::uses('AppModel', 'Model');
  */
 class Curso extends AppModel {
     public $useTable = 'curso';
-//    public $validate = array(
-//                'nome' => array(
-//                       'required' => true,
-//                       'message'  => 'Nome do Curso é Obrigatório',
-//                ),
-//                'descricao' => array(
-//                    'required' => true,
-//                    'message'  => 'Descrição do Curso é Obrigatório',
-//                ),
-//                'duracao' => array(
-//                    'required' => true,
-//                    'message'  => 'Duracão do Curso é Obrigatório',
-//                )                
-//    );
+    public $validate = array(
+                'nome' => array(
+                       'rule'     => array('minLength', 1),
+                       'required' => true,
+                       'message'  => 'Nome do Curso é Obrigatório',
+                ),
+                'descricao' => array(
+                    'rule'    => array('minLength', 1),
+                    'required' => true,
+                    'message'  => 'Descrição do Curso é Obrigatório',
+                ),
+                'duracao' => array(
+                    'rule'    => 'numeric',
+                    'required' => true,
+                    'message'  => 'Duracão do Curso é Obrigatório',
+                )                
+    );
 
 }

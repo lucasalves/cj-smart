@@ -53,13 +53,15 @@ class CursoController extends AppController {
         
         public function create(){
             $this->Curso->create();
+//            print_r($this->request->data);
+//            die();
             $this->Curso->set($this->request->data);
             
             if($this->Curso->validates()){
                 $this->Curso->save();
             }else{
-                print_r($this->validationErrors);
-                die();
+                $this->Session->setFlash($this->Curso->validationErrors);
+                
             }
             
         }
