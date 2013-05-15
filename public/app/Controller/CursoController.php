@@ -41,28 +41,12 @@ class CursoController extends AppController {
 
 	public $uses = array();
 
+    public $scaffold;
 /**
  * Displays a view
  *
  * @param mixed What page to display
  * @return void
  */
-	public function index() {
-            
-	}
-        
-        public function create(){
-            $this->Curso->create();
-//            print_r($this->request->data);
-//            die();
-            $this->Curso->set($this->request->data);
-            
-            if($this->Curso->validates()){
-                $this->Curso->save();
-            }else{
-                $this->Session->setFlash($this->Curso->validationErrors);
-                
-            }
-            
-        }
+
 }

@@ -33,6 +33,15 @@ App::uses('AppModel', 'Model');
  */
 class Curso extends AppModel {
     public $useTable = 'curso';
+
+    public $hasAndBelongsToMany = array(
+                                    "Materia" => array(
+                                        "className"  => "Materia",
+                                        "joinTable"  => "curso_materia",
+                                        "foreignKey" => "materia_id",
+                                        "associationForeignKey" => "curso_id"
+                                    )
+                                );
     public $validate = array(
                 'nome' => array(
                        'rule'     => array('minLength', 1),
