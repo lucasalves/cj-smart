@@ -29,17 +29,15 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class MateriaController extends AppController {
+class AlunoController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-	public $name = 'Materia';
-
-
-	public $uses = array();
+    public $name = 'Aluno';
+    public $uses = array();
 
     public $scaffold;
 }
