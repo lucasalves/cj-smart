@@ -90,10 +90,10 @@
                     <div class="sidebar-nav well">
                         <ul class='nav nav-list' >
                             <li class='nav-header'>Menu</li>
-                            <li><a href="#">Cursos</a></li>
-                            <li><a href="#">Alunos</a></li>
-                            <li><a href="#">Matrícula</a></li>
-                            <li><a href="#">Advertências</a></li>
+                            <li><a href="../public/curso">Cursos</a></li>
+                            <li><a href="../public/aluno">Alunos</a></li>
+                            <li><a href="../public/matricula">Matrícula</a></li>
+                            <li><a href="../public/materia">Matérias</a></li>
 
                         </ul>
                     </div><!--/.well -->
