@@ -64,7 +64,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand" href="#"> <img src="img/cj-smart-logo.png"/></a>
+                    <a class="brand" href="<?php echo $this->Html->url("/"); ?>"><img src="<?php echo $this->Html->url("/img/cj-smart-logo.png"); ?>"/></a>
                     <div class="nav-collapse collapse">
                         <p class="navbar-text pull-right">
                             Seja Bem-Vinda,Coordenadora <b>Magali F.</b>
@@ -94,7 +94,6 @@
                             <li><a href="<?php echo Router::url("/aluno"); ?>">Alunos</a></li>
                             <li><a href="<?php echo Router::url("/matricula"); ?>">Matrícula</a></li>
                             <li><a href="<?php echo Router::url("/materia"); ?>">Matérias</a></li>
-
                         </ul>
                     </div><!--/.well -->
                 </div><!--/span-->
