@@ -50,7 +50,7 @@
                 </ul>
             </div>
 
-            <input type = "button" class="btn btn-inverse" value = "Novo" id = "Novo"  />
+            <?php  echo $this->Html->link(__d('cake', 'Novo %s', $singularHumanName), array('action' => 'add'),array('class'=>'btn btn-inverse')); ?>
 
         </div>
 
