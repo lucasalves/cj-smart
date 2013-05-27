@@ -18,8 +18,6 @@
  */
 ?>
 
-
-
 <div>
     <h3>
         <?= $pluralHumanName; ?>
@@ -37,10 +35,10 @@
                 <option>1000</option>
             </select>
             <div class="btn-group">
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <!---a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     + Opções
                     <span class="caret"></span>
-                </a>
+                </a-->
                 <ul class="dropdown-menu">
                     <!-- dropdown menu links -->
                     <li><a href="#" id="excel"><img src="template/img/excel.png" /> Gerar Excel</a></li>
@@ -50,7 +48,7 @@
                 </ul>
             </div>
 
-            <?php  echo $this->Html->link(__d('cake', 'Novo %s', $singularHumanName), array('action' => 'add'),array('class'=>'btn btn-inverse')); ?>
+            <?php  echo $this->Html->link(__d('cake', 'Novo %s', $singularHumanName), array('action' => 'add'),array('class'=>'btn btn-success')); ?>
 
         </div>
 
@@ -63,23 +61,25 @@
     <p class='totalLinhas'>
         <?php
         echo $this->Paginator->counter(array(
-            'format' => __d('cake', 'Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+            'format' => __d('cake', 'Página {:page} de {:pages}, exibindo {:current} registros do total {:count}, a partir do registro {:start}, até o {:end}')
         ));
         ?></p>
         <div id="mainRelatorio">
             <table cellpadding="0" cellspacing="0" class='table table-striped' id='relatorio'>
                 <tr>
-                    <th></th>
+                    <th style="width:10px"></th>
                     <?php foreach ($scaffoldFields as $_field): ?>
                         <th><?php echo $this->Paginator->sort($_field); ?></th>
                     <?php endforeach; ?>
-                    <th><?php echo __d('cake', 'Actions'); ?></th>
+                    <th><?php // echo __d('cake', 'Actions'); ?></th>
                 </tr>
                 <?php
                 foreach (${$pluralVar} as ${$singularVar}):
+                    
                     echo '<tr>';
                     echo '<td>';
-                    echo $this->Html->link(__d('cake', 'View'), array('action' => 'view', ${$singularVar}[$modelClass][$primaryKey]));
+                    
+                    echo $this->Html->link( '' , array('action' => 'view', ${$singularVar}[$modelClass][$primaryKey]), array('class'=>'link link-visualizar', 'title' => 'Visualizar Registro'));
                     echo '</td>';
                     foreach ($scaffoldFields as $_field) {
                         $isKey = false;
@@ -98,10 +98,9 @@
                     }
 
                     echo '<td class="actions">';
-                    echo ' ' . $this->Html->link(__d('cake', 'Edit'), array('action' => 'edit', ${$singularVar}[$modelClass][$primaryKey]));
-                    echo ' ' . $this->Form->postLink(
-                            __d('cake', 'Delete'), array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), null, __d('cake', 'Are you sure you want to delete') . ' #' . ${$singularVar}[$modelClass][$primaryKey]
-                    );
+                    echo ' ' . $this->Form->postLink('', array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), array('class'=>'link link-deletar', 'title' => 'Excluir Registro') , __d('cake', 'Are you sure you want to delete') . ' #' . ${$singularVar}[$modelClass][$primaryKey]);
+                    echo ' ' . $this->Html->link('', array('action' => 'edit', ${$singularVar}[$modelClass][$primaryKey]), array('class'=>'link link-editar', 'title' => 'Editar Registro'));
+                    
                     echo '</td>';
                     echo '</tr>';
 
@@ -113,9 +112,9 @@
 
     <div class="paging">
         <?php
-        echo $this->Paginator->prev('< ' . __d('cake', 'previous'), array(), null, array('class' => 'prev disabled'));
+        echo $this->Paginator->prev('< ' . __d('cake', 'próxima'), array(), null, array('class' => 'prev disabled'));
         echo $this->Paginator->numbers(array('separator' => ''));
-        echo $this->Paginator->next(__d('cake', 'next') . ' >', array(), null, array('class' => 'next disabled'));
+        echo $this->Paginator->next(__d('cake', 'anterior') . ' >', array(), null, array('class' => 'next disabled'));
         ?>
     </div>
 

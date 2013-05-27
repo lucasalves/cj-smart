@@ -6349,3 +6349,19 @@ body {
     }
 }
 
+.link{
+    width: 25px;
+    height: 15px;
+    display: block;
+    float:right;
+    background-repeat: no-repeat;
+    background-image: url("../img/icones-cj.png");
+    background-position-y:-19px;
+    margin-right: 5px;
+}
+
+.link:hover{background-position-y:0px;}
+
+.link-editar{background-position-x: -25px;}
+.link-deletar{background-position-x: -125px;}
+.link-visualizar{background-position-x: 0px;}

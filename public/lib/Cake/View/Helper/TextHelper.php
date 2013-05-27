@@ -89,7 +89,7 @@ class TextHelper extends AppHelper {
 	}
 
 /**
- * Adds links (<a href=....) to a given text, by finding text that begins with
+ * Adds ts (<a href=....) to a given text, by finding text that begins with
  * strings like http:// and ftp://.
  *
  * ### Options
