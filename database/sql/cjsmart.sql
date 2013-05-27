@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `curso_materia` (
   `curso_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+)ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -85,3 +85,60 @@ CREATE TABLE `alunos` (
 	`responsavel` VARCHAR(100) NULL DEFAULT NULL,
 	PRIMARY KEY (`id`)
 )ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+
+-- --------------------------------------------------------
+-- Host:                         localhost
+-- Server version:               5.5.28 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL version:             7.0.0.4234
+-- Date/time:                    2013-05-20 22:44:17
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Dumping structure for table cjsmart.educador
+CREATE TABLE IF NOT EXISTS `educador` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `curriculo` text NOT NULL,
+  `endereco_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table cjsmart.endereco
+CREATE TABLE IF NOT EXISTS `endereco` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `logradouro` varchar(200) NOT NULL,
+  `complemento` varchar(200) NOT NULL,
+  `bairro` varchar(100) NOT NULL,
+  `cidade` varchar(100) NOT NULL,
+  `estado` varchar(2) NOT NULL,
+  `cep` varchar(9) NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table cjsmart.responsavel
+CREATE TABLE IF NOT EXISTS `responsavel` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefone` varchar(100) NOT NULL,
+  `endereco_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+-- Data exporting was unselected.
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
