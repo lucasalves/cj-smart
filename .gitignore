@@ -2,4 +2,5 @@
 #################################################
 
 public/tmp/*
+public/app/Config/database.php
 nbproject/*
