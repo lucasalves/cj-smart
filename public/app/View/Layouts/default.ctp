@@ -33,7 +33,7 @@
 
         echo $this->Html->script(
                 array(
-                    //  'jquery/jquery-1.9.1.min.js',
+                    'jquery/jquery-2.0.2.js',
                     'bootstrap-transition',
                     'bootstrap-alert',
                     'bootstrap-modal',
