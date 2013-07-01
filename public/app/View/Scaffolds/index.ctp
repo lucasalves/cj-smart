@@ -1,6 +1,6 @@
 <div>
     <h3>
-        <?= $pluralHumanName; ?>
+        <?= $pluralHumanName ."s"; ?>
     </h3>
     <div class="row-fluid">
         <div  class="navbar-form pull-left main_pesquisa">
@@ -79,7 +79,7 @@
                     }
 
                     echo '<td class="actions">';
-                    echo ' ' . $this->Form->postLink('', array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), array('class' => 'link link-deletar', 'title' => 'Excluir Registro'), __d('cake', 'Are you sure you want to delete') . ' #' . ${$singularVar}[$modelClass][$primaryKey]);
+                    echo ' ' . $this->Form->postLink('', array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), array('class' => 'link link-deletar', 'title' => 'Excluir Registro'), __d('cake', "Deseja realmente excluir {$pluralHumanName}? "));
                     echo ' ' . $this->Html->link('', array('action' => 'edit', ${$singularVar}[$modelClass][$primaryKey]), array('class' => 'link link-editar', 'title' => 'Editar Registro'));
 
                     echo '</td>';
