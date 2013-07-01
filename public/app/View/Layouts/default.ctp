@@ -92,7 +92,7 @@
                             <li class='nav-header'>Menu</li>
                             <li><a href="<?php echo Router::url("/curso"); ?>">Cursos</a></li>
                             <li><a href="<?php echo Router::url("/aluno"); ?>">Alunos</a></li>
-                            <li><a href="<?php echo Router::url("/matricula"); ?>">Matrícula</a></li>
+                            <li><a href="<?php echo Router::url("/matricula"); ?>">Matrículas</a></li>
                             <li><a href="<?php echo Router::url("/materia"); ?>">Matérias</a></li>
                         </ul>
                     </div><!--/.well -->
