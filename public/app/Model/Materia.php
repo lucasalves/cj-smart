@@ -34,6 +34,8 @@ App::uses('AppModel', 'Model');
 class Materia extends AppModel {
     public $useTable = 'materia';
 
+    public $displayField = 'nome';
+
     public $hasAndBelongsToMany = array(
                                     "Curso" => array( 
                                         "className"  => "Curso"
