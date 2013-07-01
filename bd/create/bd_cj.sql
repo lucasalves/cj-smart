@@ -12,7 +12,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table cjsmart.aluno
-CREATE TABLE IF NOT EXISTS `aluno` (
+DROP TABLE IF EXISTS aluno;
+CREATE TABLE `aluno` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) DEFAULT NULL,
   `rg` varchar(20) DEFAULT NULL,
@@ -27,20 +28,22 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 
 
 -- Dumping structure for table cjsmart.curso
-CREATE TABLE IF NOT EXISTS `curso` (
+DROP TABLE IF EXISTS `curso`;
+CREATE TABLE `curso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   `descricao` text,
   `duracao` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 
 
 -- Dumping structure for table cjsmart.curso_materia
-CREATE TABLE IF NOT EXISTS `curso_materia` (
+DROP TABLE IF EXISTS `curso_materia`;
+CREATE TABLE `curso_materia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `materia_id` int(11) NOT NULL,
   `curso_id` int(11) NOT NULL,
@@ -52,7 +55,8 @@ CREATE TABLE IF NOT EXISTS `curso_materia` (
 
 
 -- Dumping structure for table cjsmart.educador
-CREATE TABLE IF NOT EXISTS `educador` (
+DROP TABLE  IF EXISTS `educador`;
+CREATE TABLE `educador` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -66,7 +70,8 @@ CREATE TABLE IF NOT EXISTS `educador` (
 
 
 -- Dumping structure for table cjsmart.educador_materia
-CREATE TABLE IF NOT EXISTS `educador_materia` (
+DROP TABLE IF EXISTS `educador_materia`;
+CREATE TABLE `educador_materia` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `educador_id` int(10) NOT NULL,
   `materia_id` int(10) NOT NULL,
@@ -77,7 +82,8 @@ CREATE TABLE IF NOT EXISTS `educador_materia` (
 
 
 -- Dumping structure for table cjsmart.endereco
-CREATE TABLE IF NOT EXISTS `endereco` (
+DROP TABLE IF EXISTS `endereco`;
+CREATE TABLE `endereco` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `logradouro` varchar(200) NOT NULL,
   `complemento` varchar(200) NOT NULL,
@@ -92,19 +98,21 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 
 
 -- Dumping structure for table cjsmart.materia
-CREATE TABLE IF NOT EXISTS `materia` (
+DROP TABLE IF EXISTS `materia`;
+CREATE TABLE `materia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   `codigo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 
 
 -- Dumping structure for table cjsmart.responsavel
-CREATE TABLE IF NOT EXISTS `responsavel` (
+DROP TABLE IF EXISTS `responsavel`;
+CREATE TABLE `responsavel` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
