@@ -90,7 +90,9 @@
                     <div class="sidebar-nav well">
                         <ul class='nav nav-list' >
                             <li class='nav-header'>Menu</li>
+                            <li><a href="<?php echo Router::url("/educador"); ?>">Educadores</a></li>
                             <li><a href="<?php echo Router::url("/curso"); ?>">Cursos</a></li>
+                            <li><a href="<?php echo Router::url("/turma"); ?>">Turmas</a></li>
                             <li><a href="<?php echo Router::url("/aluno"); ?>">Alunos</a></li>
                             <li><a href="<?php echo Router::url("/matricula"); ?>">Matrículas</a></li>
                             <li><a href="<?php echo Router::url("/materia"); ?>">Matérias</a></li>
