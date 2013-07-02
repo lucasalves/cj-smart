@@ -31,11 +31,6 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Responsavel extends AppModel {
-   public $useTable = 'responsavel';
-   public $belongsTo = array(
-        'Endereco' => array(
-            'className'  => 'Endereco',            
-        )
-    );
+class Aluno extends AppModel {
+    public $useTable = 'aluno';
 }

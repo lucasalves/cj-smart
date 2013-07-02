@@ -31,11 +31,12 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Responsavel extends AppModel {
-   public $useTable = 'responsavel';
-   public $belongsTo = array(
-        'Endereco' => array(
-            'className'  => 'Endereco',            
-        )
+    class Turma extends AppModel {
+    public $useTable = 'turma';
+    public $belongsTo = array(
+        'Curso' => array(
+            'className'  => 'Curso',
+            'foreignKey' => 'curso_id'
+        )        
     );
 }

@@ -1,9 +1,8 @@
 <?php
 /**
- * Application model for Cake.
+ * Static content controller.
  *
- * This file is application-wide model file. You can put all
- * application-wide model-related methods here.
+ * This file will render views from views/pages/
  *
  * PHP 5
  *
@@ -16,26 +15,29 @@
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Model
+ * @package       app.Controller
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
-App::uses('AppModel', 'Model');
+App::uses('AppController', 'Controller');
 
 /**
- * Application model for Cake.
+ * Static content controller
  *
- * Add your application-wide methods in the class below, your models
- * will inherit them.
+ * Override this controller by placing a copy in controllers directory of an application
  *
- * @package       app.Model
+ * @package       app.Controller
+ * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class Responsavel extends AppModel {
-   public $useTable = 'responsavel';
-   public $belongsTo = array(
-        'Endereco' => array(
-            'className'  => 'Endereco',            
-        )
-    );
+class TurmaController extends AppController {
+
+/**
+ * Controller name
+ *
+ * @var string
+ */
+    public $name = 'Turma';
+    public $uses = array();
+
+    public $scaffold;
 }

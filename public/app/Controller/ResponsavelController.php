@@ -40,4 +40,7 @@ class ResponsavelController extends AppController {
     public $uses = array();
 
     public $scaffold;
+    
+    
+    
 }
