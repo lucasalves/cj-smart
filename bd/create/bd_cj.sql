@@ -3,7 +3,7 @@
 -- Server version:               5.5.28 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4234
--- Date/time:                    2013-07-01 20:20:01
+-- Date/time:                    2013-07-01 21:09:28
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -11,9 +11,15 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for table cjsmart.aluno
-DROP TABLE IF EXISTS aluno;
-CREATE TABLE `aluno` (
+-- Dumping database structure for bd_cjsmart
+DROP DATABASE IF EXISTS `bd_cjsmart`;
+CREATE DATABASE IF NOT EXISTS `bd_cjsmart` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `bd_cjsmart`;
+
+
+-- Dumping structure for table bd_cjsmart.aluno
+DROP TABLE IF EXISTS `aluno`;
+CREATE TABLE IF NOT EXISTS `aluno` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) DEFAULT NULL,
   `rg` varchar(20) DEFAULT NULL,
@@ -27,9 +33,9 @@ CREATE TABLE `aluno` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table cjsmart.curso
+-- Dumping structure for table bd_cjsmart.curso
 DROP TABLE IF EXISTS `curso`;
-CREATE TABLE `curso` (
+CREATE TABLE IF NOT EXISTS `curso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   `descricao` text,
@@ -41,9 +47,9 @@ CREATE TABLE `curso` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table cjsmart.curso_materia
+-- Dumping structure for table bd_cjsmart.curso_materia
 DROP TABLE IF EXISTS `curso_materia`;
-CREATE TABLE `curso_materia` (
+CREATE TABLE IF NOT EXISTS `curso_materia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `materia_id` int(11) NOT NULL,
   `curso_id` int(11) NOT NULL,
@@ -54,9 +60,9 @@ CREATE TABLE `curso_materia` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table cjsmart.educador
-DROP TABLE  IF EXISTS `educador`;
-CREATE TABLE `educador` (
+-- Dumping structure for table bd_cjsmart.educador
+DROP TABLE IF EXISTS `educador`;
+CREATE TABLE IF NOT EXISTS `educador` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -69,9 +75,9 @@ CREATE TABLE `educador` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table cjsmart.educador_materia
+-- Dumping structure for table bd_cjsmart.educador_materia
 DROP TABLE IF EXISTS `educador_materia`;
-CREATE TABLE `educador_materia` (
+CREATE TABLE IF NOT EXISTS `educador_materia` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `educador_id` int(10) NOT NULL,
   `materia_id` int(10) NOT NULL,
@@ -81,9 +87,9 @@ CREATE TABLE `educador_materia` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table cjsmart.endereco
+-- Dumping structure for table bd_cjsmart.endereco
 DROP TABLE IF EXISTS `endereco`;
-CREATE TABLE `endereco` (
+CREATE TABLE IF NOT EXISTS `endereco` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `logradouro` varchar(200) NOT NULL,
   `complemento` varchar(200) NOT NULL,
@@ -97,9 +103,9 @@ CREATE TABLE `endereco` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table cjsmart.materia
+-- Dumping structure for table bd_cjsmart.materia
 DROP TABLE IF EXISTS `materia`;
-CREATE TABLE `materia` (
+CREATE TABLE IF NOT EXISTS `materia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
   `codigo` varchar(45) DEFAULT NULL,
@@ -110,14 +116,27 @@ CREATE TABLE `materia` (
 -- Data exporting was unselected.
 
 
--- Dumping structure for table cjsmart.responsavel
+-- Dumping structure for table bd_cjsmart.responsavel
 DROP TABLE IF EXISTS `responsavel`;
-CREATE TABLE `responsavel` (
+CREATE TABLE IF NOT EXISTS `responsavel` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telefone` varchar(100) NOT NULL,
   `endereco_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table bd_cjsmart.turma
+DROP TABLE IF EXISTS `turma`;
+CREATE TABLE IF NOT EXISTS `turma` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(200) DEFAULT NULL,
+  `periodo` enum('Manhã','Tarde','Noite') DEFAULT NULL,
+  `data_criacao` date DEFAULT NULL,
+  `curso_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
