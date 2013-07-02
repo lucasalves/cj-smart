@@ -1,12 +1,15 @@
-<div class="<?= $pluralVar; ?> form">
+<?
+print_r($scaffoldFields);
 
+?>
+<div class="<?= $pluralVar;?>form">
     <div class='row-fluid'>
         <div class='span2'>
             <?= $this->Form->create(); ?>
         </div>
         <div class='btn-group btn-navba' style='float:right'>
             <?= $this->Html->link(__d('cake', 'Voltar '), array('action' => 'index'), array('class' => 'btn')); ?>
-            <input type = 'submit' value = 'Salvar' id = 'Inserir' class='btn' />         
+            <input type = 'submit' value = 'Salvar Edição' id = 'Inserir' class='btn' />         
             <?//= $this->Form->postLink(__d('cake', 'Excluir'), array('action' => 'delete', $this->Form->value($modelClass . '.' . $primaryKey)), array('class' => 'btn btn-danger'), __d('cake', 'Deseja realmente excluir o registro # %s?', $this->Form->value($modelClass . '.' . $primaryKey))); ?>
         </div>
     </div>
