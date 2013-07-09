@@ -1,11 +1,7 @@
-<?
-print_r($scaffoldFields);
-
-?>
 <div class="<?= $pluralVar;?>form">
     <div class='row-fluid'>
         <div class='span2'>
-            <?= $this->Form->create(); ?>
+            <?php echo $this->Form->create(); ?>
         </div>
         <div class='btn-group btn-navba' style='float:right'>
             <?= $this->Html->link(__d('cake', 'Voltar '), array('action' => 'index'), array('class' => 'btn')); ?>
@@ -15,7 +11,7 @@ print_r($scaffoldFields);
     </div>
 
     <div class="well">
-        <?
+        <?php
         echo $this->Form->create();
         echo $this->Form->inputs($scaffoldFields, array('created', 'modified', 'updated'));
         //echo $this->Form->end( __d('cake', 'Salvar') );
