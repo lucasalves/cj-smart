@@ -27,7 +27,9 @@
 
         echo $this->Html->css(
                 array(
-                    'bootstrap.css')
+                    'bootstrap.css',
+                    'search.css'
+                )
         );
 
 
