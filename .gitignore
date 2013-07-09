@@ -4,3 +4,11 @@
 public/app/tmp/*
 public/app/Config/database.php
 nbproject/*
+
+public/app/Config/database.php
+
+public/app/tmp/logs/error.log
+
+public/app/tmp/cache/persistent/*
+
+public/app/tmp/cache/models/*
