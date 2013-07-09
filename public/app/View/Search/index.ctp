@@ -1,4 +1,19 @@
 <div class="row-fluid">
+    <div  class="navbar-form pull-left main_pesquisa">
+        <form action="<?php echo Router::url("/" . $this->request->params['controller'] . '/search'); ?>" method="GET">
+            <input type="text" id="valorPesquisa" class="valorPesquisa" name="per" value="<?php echo $this->params->query['per'] ?>"/>
+            <input type="hidden" name="in" value="<?php echo $this->request->params['controller']; ?>"/>
+            <button class="btn" id="search">Pesquisar <?php echo Inflector::humanize($this->request->params['controller']); ?></button>
+        </form>   
+        <div class="btn-group">
+            <ul class="dropdown-menu">
+                <li><a href="#colunasExibir" role="button" data-toggle="modal">Exibir </a></li>
+                <li><a href="#colunasAgrupar" role="button" data-toggle="modal">Agrupar</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
         <p class='totalLinhas'>
             <?php
             echo $this->Paginator->counter(array(

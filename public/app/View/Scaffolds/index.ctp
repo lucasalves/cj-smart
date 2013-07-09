@@ -7,7 +7,7 @@
             <form action="<?php echo Router::url("/" . $this->request->params['controller'] . '/search'); ?>" method="GET">
                 <input type="text" id="valorPesquisa" class="valorPesquisa" name="per"/>
                 <input type="hidden" name="in" value="<?php echo $this->request->params['controller']; ?>"/>
-                <button class="btn" id="search">Pesquisar</button>
+                <button class="btn" id="search">Pesquisar <?php echo Inflector::humanize($this->request->params['controller']); ?></button>
             </form>
                 <select id="qtdLinhas" class="control-group">
                     <option>20</option>
