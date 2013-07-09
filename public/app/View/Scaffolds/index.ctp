@@ -4,16 +4,19 @@
     </h3>
     <div class="row-fluid">
         <div  class="navbar-form pull-left main_pesquisa">
-            <input type="text" id="valorPesquisa" class="valorPesquisa"  />
-            <input type="button" value="Pesquisar" class="btn" id="html"/>
-            <select id="qtdLinhas" class="control-group">
-                <option>20</option>
-                <option>50</option>
-                <option>100</option>
-                <option>200</option>
-                <option>500</option>
-                <option>1000</option>
-            </select>
+            <form action="<?php echo Router::url("/" . $this->request->params['controller'] . '/search'); ?>" method="GET">
+                <input type="text" id="valorPesquisa" class="valorPesquisa" name="per"/>
+                <input type="hidden" name="in" value="<?php echo $this->request->params['controller']; ?>"/>
+                <button class="btn" id="search">Pesquisar</button>
+            </form>
+                <select id="qtdLinhas" class="control-group">
+                    <option>20</option>
+                    <option>50</option>
+                    <option>100</option>
+                    <option>200</option>
+                    <option>500</option>
+                    <option>1000</option>
+                </select>            
             <div class="btn-group">
                 <!---a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     + Opções

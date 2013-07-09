@@ -32,4 +32,23 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	public function search(){
+    	$this->loadModel('Search');
+		$this->Search->setModel($this->request->query['in']);
+
+    	$options = array(
+            'conditions' => $this->Search->conditions($this->request->query['per']),
+            'limit' => 10
+        );
+
+        $this->paginate = $options;
+        print_r($options);
+        $this->set('data', array(
+        				'rows'   => $this->paginate($this->Search->model_name),
+        				'fields' => $this->Search->getFields()
+        			)
+        		);
+    	$this->render('/Search/index');
+	}
 }
