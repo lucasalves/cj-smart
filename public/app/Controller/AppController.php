@@ -43,7 +43,8 @@ class AppController extends Controller {
         );
 
         $this->paginate = $options;
-        print_r($options);
+
+        $this->loadModel($this->Search->model_name);
         $this->set('data', array(
         				'rows'   => $this->paginate($this->Search->model_name),
         				'fields' => $this->Search->getFields()
