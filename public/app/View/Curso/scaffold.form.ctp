@@ -7,7 +7,7 @@
         
         echo $this->Form->input('Curso.nome');
         echo $this->Form->input('Curso.descricao', array('label' => 'Descrição'));
-        echo $this->Form->input('Curso.duracao', array('label' => 'Duração', 'after' => ' meses'));
+        echo $this->Form->input('Curso.duracao', array('label' => 'Duração', 'after' => ' meses', 'style' => 'width:40px'));
 
         echo $this->Form->input('Materia.Materia', array(
             'label' => 'Matérias',
@@ -19,4 +19,5 @@
     </div>
 </div>
         <?= $this->Form->end(); ?>
+
 
