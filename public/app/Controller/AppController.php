@@ -33,6 +33,20 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+    /**
+     *  Define os componentes utilizados por toda aplicação
+     *  
+     * @var array
+     */
+    public $components = array('Session', 'Cookie');
+
+    public function beforeFilter(){
+        $this->auth();
+    }
+
+    /**
+     * Search for all controllers
+     */
 	public function search(){
     	$this->loadModel('Search');
 		$this->Search->setModel($this->request->query['in']);
@@ -52,4 +66,35 @@ class AppController extends Controller {
         		);
     	$this->render('/Search/index');
 	}
+
+
+    /*
+     * controle de autenticação de usuário
+     */
+
+    private function auth(){
+        $this->loadModel('Usuario');
+
+        if($this->Usuario->loggedIn() AND (
+            $this->request->params['controller'] == 'usuarios' AND
+            $this->request->params['action'] == 'login')
+        ){
+            $this->redirect(
+                        array(
+                            'controller' => 'home',
+                            'action'     => 'index'
+                        ) 
+                    );
+        }
+
+        if(
+            !$this->Usuario->loggedIn() AND (
+            $this->request->params['controller'] != 'usuarios' AND
+            $this->request->params['action'] != 'login')
+        ){
+            $this->Session->setFlash('Você precisa fazer login para acessar esta página');
+            $this->redirect('/usuarios/login/');
+        }
+    }
+  
 }
