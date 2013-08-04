@@ -48,7 +48,5 @@ class HomeController extends AppController {
  * @return void
  */
 	public function index() {
-		//Test Bruno commit
-		//Test Fernando
 	}
 }
