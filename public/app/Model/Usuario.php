@@ -125,9 +125,9 @@ class Usuario extends AppModel{
 			return false;
 		}
 
-		$user = $user[0]['Usuario'];
+		$user = $user[0];
 
-		if($user['ativo'] == false){
+		if($user['Usuario']['ativo'] == false){
 			$this->loginError = 'Este usuário esta desativado.';
 			return false;
 		}
@@ -146,7 +146,7 @@ class Usuario extends AppModel{
 	 */
 
 	private function setCredentials($user){
-		unset($user['senha']);
+		unset($user['Usuario']['senha']);
 		SessionComponent::write('Usuario.credenciais', $user);
 	}
 
@@ -160,7 +160,7 @@ class Usuario extends AppModel{
 
 	public function loggedIn(){
 		$user = SessionComponent::read('Usuario.credenciais');
-		return count($user) >= 7;
+		return count($user['Usuario']) >= 7;
 	}
 
 	
@@ -172,6 +172,6 @@ class Usuario extends AppModel{
 	 */
 
 	public function logout(){
-		$this->Session->delete('Usuario.credenciais');
+		SessionComponent::delete('Usuario.credenciais');
 	}
 }
