@@ -28,7 +28,10 @@
         echo $this->Html->css(
                 array(
                     'bootstrap.css',
-                    'search.css'
+                    'search.css',
+                    'fullcalendar.print.css',
+                    'fullcalendar.css',
+                    'calendario.aula.css'
                 )
         );
 
@@ -41,13 +44,16 @@
                     'bootstrap-modal',
                     'bootstrap-dropdown',
                     'bootstrap-scrollspy',
-                    'bootstrap-tab',
+                    'bootstrap-tab', 
                     'bootstrap-tooltip',
                     'bootstrap-popover',
                     'bootstrap-button',
                     'bootstrap-collapse',
                     'bootstrap-carousel',
-                    'bootstrap-typeahead'
+                    'bootstrap-typeahead',
+                    'jquery-ui-1.10.2.custom.min.js',
+                    'fullcalendar.min.js',
+                    'aula/calendario'
                 )
         );
 

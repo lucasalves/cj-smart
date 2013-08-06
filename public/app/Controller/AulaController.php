@@ -40,4 +40,34 @@ class AulaController extends AppController {
     public $uses = array();
 
     public $scaffold;
+
+    public function get(){
+    	$this->autoRender = false;
+    	echo json_encode(
+    					$this->Aula->toEvents(
+    							$this->Aula->find('all', array(
+															'conditions' => array('UNIX_TIMESTAMP(data) >= ' => $this->request->query['start'], 'UNIX_TIMESTAMP(data) <= ' => $this->request->query['end'])
+														)
+    							)
+						)
+    		);
+    }
+
+    public function update_date(){
+    	$this->autoRender = false;
+    	extract($this->request->data);
+    	$aula = $this->Aula->find('all', array(
+											'conditions' => array('id' => $id)
+										)
+    								);
+    	$this->Aula->id   = $id;
+		$this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
+    }
+
+  //   public function create(){
+  //   	$this->autoRender = false;
+  //   	$this->set('date', $this->request->query['date']));
+
+		// $this->render()
+  //   }
 }

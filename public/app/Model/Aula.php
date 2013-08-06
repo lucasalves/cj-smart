@@ -33,4 +33,19 @@ App::uses('AppModel', 'Model');
  */
 class Aula extends AppModel {
     public $useTable = 'aula';
+
+    public function toEvents($data){   
+    	$events = array();
+
+
+    	foreach ($data as $event) {
+    		$events[] = array(
+    						'id'  	=> $event['Aula']['id'],
+    						'title' => $event['Aula']['data'],
+    						'start' => $event['Aula']['data']
+    					);
+    	}
+
+    	return $events;
+    }
 }
