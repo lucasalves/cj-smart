@@ -31,7 +31,7 @@
                     'search.css',
                     'fullcalendar.print.css',
                     'fullcalendar.css',
-                    'calendario.aula.css'
+                    'aula/calendario.css'
                 )
         );
 
