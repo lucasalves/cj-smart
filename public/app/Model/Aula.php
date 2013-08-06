@@ -31,6 +31,6 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Aluno extends AppModel {
-    public $useTable = 'aluno';
+class Aula extends AppModel {
+    public $useTable = 'aula';
 }
