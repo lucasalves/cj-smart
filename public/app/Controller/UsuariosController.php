@@ -18,6 +18,9 @@ class UsuariosController extends AppController {
     }
 
     public function login(){
+        
+        $this->layout = 'login';
+        
     	if ($this->request->is('post')) {
 	        if($this->Usuario->login($this->request['data'])) {
 	           return $this->redirect(
@@ -30,6 +33,8 @@ class UsuariosController extends AppController {
 	            $this->Session->setFlash($this->Usuario->loginError);
 	        }
     	}
+        
+        
     }
 
     public function perfil(){

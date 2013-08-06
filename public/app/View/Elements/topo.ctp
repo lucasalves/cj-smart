@@ -13,7 +13,7 @@ $tipo = $usuario['GrupoUsuario']['nome'];
         <a class="brand" href="<?php echo $this->Html->url("/"); ?>"><img src="<?php echo $this->Html->url("/img/cj-smart-logo.png"); ?>"/></a>
         <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-                Seja Bem-Vindo <?=$tipo?>, <b><?=$nome?></b>
+                Seja Bem-Vindo <?=$tipo?>, <b><?=$nome?></b> | <a href="<?php echo Router::url("/Usuarios/logout"); ?>">Sair</a>
                 
                
                 <!--a href="deslogar.php" class="navbar-link">Trocar Senha</a>
