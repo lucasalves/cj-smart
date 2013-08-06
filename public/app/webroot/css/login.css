@@ -1,0 +1,22 @@
+/* 
+    Document   : login
+    Created on : 05/08/2013, 23:02:09
+    Author     : Bruno
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    background: url("../img/bg-login.jpg");
+}
+
+#UsuarioLoginForm{
+    background: url("../img/logo-login.png") no-repeat top center;
+    text-align: center;
+    padding-top: 200px;
+    height: 400px;  
+}
