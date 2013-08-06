@@ -1,6 +1,21 @@
+<?
+    $descricoes = array("Educador" => "Educadores",
+        "Curso"=>"Cursos",
+        "Turma" => "Turmas",
+        "Materia" => "Matérias",
+        "Aluno" => "Alunos",
+        "Matricula" => "Matrículas",
+        "Aula" => "Aulas"
+        );
+?>
 <div>
     <h3>
-        <?= $pluralHumanName ."s"; ?>
+        <?
+        if(array_key_exists($pluralHumanName, $descricoes)){
+            echo $descricoes[$pluralHumanName];
+        }else{
+            echo $pluralHumanName;
+        }?>
     </h3>
     <div class="row-fluid">
         <div  class="navbar-form pull-left main_pesquisa">
