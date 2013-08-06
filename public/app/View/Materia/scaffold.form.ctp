@@ -4,10 +4,8 @@
     <div class="well">
         <legend>Matéria</legend>
         <?
-        
         echo $this->Form->input('Materia.nome');
         echo $this->Form->input('Materia.codigo', array('label' => 'Código'));
-        
         ?>
     </div>
 </div>

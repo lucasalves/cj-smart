@@ -27,7 +27,7 @@
                         echo $this->Html->link(
                                 ${$singularVar}[$_alias][$_details['displayField']], array('plugin' => $_details['plugin'], 'controller' => $_details['controller'], 'action' => 'view', ${$singularVar}[$_alias][$_details['primaryKey']])
                         );
-                        echo "\n\t\t&nbsp;</dd>\n";
+                        echo "\n\t\t&nbsp;</dd>\n\n";
                         break;
                     }
                 }
