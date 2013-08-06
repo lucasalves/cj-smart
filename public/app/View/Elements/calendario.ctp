@@ -1,7 +1,25 @@
-<link href='../fullcalendar/fullcalendar.css' rel='stylesheet' />
-<link href='../fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='../jquery/jquery-1.9.1.min.js'></script>
-<script src='../jquery/jquery-ui-1.10.2.custom.min.js'></script>
+<!--<link href='../fullcalendar/fullcalendar.css' rel='stylesheet' />-->
+<!--<link href='../fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />-->
+
+<?
+
+        echo $this->Html->script(
+                array(
+                    'jquery-ui-1.10.2.custom.min.js',
+                    'fullcalendar.min.js'
+                )
+        );
+        
+
+        echo $this->Html->css(
+                array(
+                    'fullcalendar.css',
+                    'fullcalendar.print.css'
+                )
+        );
+?>
+<!--<script src='../jquery/jquery-1.9.1.min.js'></script>-->
+<!--<script src='../jquery/jquery-ui-1.10.2.custom.min.js'></script>-->
 <script src='../fullcalendar/fullcalendar.min.js'></script>
 <script>
 
