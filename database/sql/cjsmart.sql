@@ -242,3 +242,17 @@ CREATE TABLE IF NOT EXISTS `usuario_grupo` (
 
 INSERT INTO `usuario_grupo` (`id`, `nome`) VALUES
 (1, 'master');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `turma`
+--
+
+DROP TABLE IF EXISTS `aula`;
+CREATE TABLE IF NOT EXISTS `aula` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `local` varchar(200) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
