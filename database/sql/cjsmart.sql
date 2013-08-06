@@ -246,7 +246,7 @@ INSERT INTO `usuario_grupo` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `turma`
+-- Estrutura da tabela `aula`
 --
 
 DROP TABLE IF EXISTS `aula`;
@@ -254,5 +254,9 @@ CREATE TABLE IF NOT EXISTS `aula` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `local` varchar(200) DEFAULT NULL,
   `data` date DEFAULT NULL,
+  `turma_id` int(11) DEFAULT NULL,
+  `educador_id` int(11) DEFAULT NULL,
+  `materia_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
