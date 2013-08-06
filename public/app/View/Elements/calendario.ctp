@@ -98,7 +98,7 @@ echo $this->Html->css(
 
     #calendar {
         width: 900px;
-        margin: 0 auto;
+        margin: 10px auto;
     }
 
 </style>

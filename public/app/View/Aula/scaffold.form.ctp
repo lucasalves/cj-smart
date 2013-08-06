@@ -1,9 +1,8 @@
 <?= $this->Form->create(); ?>
 <div class="form">
-    <?= $this->element('form_bar', array('nome' => 'Aula')); ?>
-    
+
     <?= $this->element('calendario', array('nome' => 'Aula')); ?>
-    
+
     <div class="well">
         <legend>Aula</legend>
         <?
@@ -29,6 +28,6 @@
         ?>
     </div>
 </div>
-        <?= $this->Form->end(); ?>
+<?= $this->Form->end(); ?>
 
 

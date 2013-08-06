@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level View Helper
  *
@@ -31,4 +32,24 @@ App::uses('Helper', 'View');
  * @package       app.View.Helper
  */
 class AppHelper extends Helper {
+
+    public function DescreveCampo($nome) {
+        
+        $descricoes = array("Educador" => "Educadores",
+            "Curso" => "Cursos",
+            "Turma" => "Turmas",
+            "Materia" => "Matérias",
+            "Aluno" => "Alunos",
+            "Matricula" => "Matrículas",
+            "Aula" => "Aulas"
+        );
+        
+        
+        if (array_key_exists($nome, $descricoes)) {
+            echo $descricoes[$nome];
+        } else {
+            echo $nome;
+        }
+    }
+
 }

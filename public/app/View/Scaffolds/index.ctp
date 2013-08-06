@@ -1,57 +1,9 @@
-<?
-    $descricoes = array("Educador" => "Educadores",
-        "Curso"=>"Cursos",
-        "Turma" => "Turmas",
-        "Materia" => "Matérias",
-        "Aluno" => "Alunos",
-        "Matricula" => "Matrículas",
-        "Aula" => "Aulas"
-        );
-?>
 <div>
     <h3>
-        <?
-        if(array_key_exists($pluralHumanName, $descricoes)){
-            echo $descricoes[$pluralHumanName];
-        }else{
-            echo $pluralHumanName;
-        }?>
+        <?=$this->Html->DescreveCampo($pluralHumanName);?>
     </h3>
-    <div class="row-fluid">
-        <div  class="navbar-form pull-left main_pesquisa">
-            <form action="<?php echo Router::url("/" . $this->request->params['controller'] . '/search'); ?>" method="GET">
-                <input type="text" id="valorPesquisa" class="valorPesquisa" name="per"/>
-                <input type="hidden" name="in" value="<?php echo $this->request->params['controller']; ?>"/>
-                <button class="btn" id="search">Pesquisar <?php echo Inflector::humanize($this->request->params['controller']); ?></button>
-            </form>
-                <select id="qtdLinhas" class="control-group">
-                    <option>20</option>
-                    <option>50</option>
-                    <option>100</option>
-                    <option>200</option>
-                    <option>500</option>
-                    <option>1000</option>
-                </select>            
-            <div class="btn-group">
-                <!---a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                    + Opções
-                    <span class="caret"></span>
-                </a-->
-                <ul class="dropdown-menu">
-                    <!-- dropdown menu links -->
-<!--                    <li><a href="#" id="excel"><img src="template/img/excel.png" /> Gerar Excel</a></li>
-                    <li><a href="#" id="pdf"><img src="template/img/pdf.png" /> Gerar PDF</a></li>-->
-                    <li><a href="#colunasExibir" role="button" data-toggle="modal">Exibir </a></li>
-                    <li><a href="#colunasAgrupar" role="button" data-toggle="modal">Agrupar</a></li>
-                </ul>
-            </div>
-
-            <?php echo $this->Html->link(__d('cake', 'Novo %s', $singularHumanName), array('action' => 'add'), array('class' => 'btn btn-success')); ?>
-
-        </div>
-
-    </div>
-
+    
+    <?= $this->element('barra_pesquisa', array('valor' => null, 'controller' => $pluralHumanName));?>
 
     <div class="row-fluid">
 
@@ -69,8 +21,8 @@
                     <th style="width:10px"></th>
                     <?php foreach ($scaffoldFields as $_field): ?>
                         <th><?php echo $this->Paginator->sort($_field); ?></th>
-                    <?php endforeach; ?>
-                    <th><?php // echo __d('cake', 'Actions');  ?></th>
+<?php endforeach; ?>
+                    <th><?php // echo __d('cake', 'Actions');   ?></th>
                 </tr>
                 <?php
                 foreach (${$pluralVar} as ${$singularVar}):
