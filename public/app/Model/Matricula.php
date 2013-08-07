@@ -31,6 +31,15 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Aluno extends AppModel {
-    public $useTable = 'aluno';
+class Matricula extends AppModel {
+    public $useTable = 'matricula';
+    
+    public $hasAndBelongsToMany = array(
+                                    "Turma" => array(
+                                        "className"  => "Turma",
+                                        "joinTable"  => "turma_materia",
+                                        "foreignKey" => "turma_id",
+                                        "associationForeignKey" => "materia_id"
+                                    )
+                                );
 }

@@ -33,7 +33,8 @@ App::uses('AppModel', 'Model');
  */
 class Curso extends AppModel {
     public $useTable = 'curso';
-
+    public $displayField = 'nome';
+    
     public $hasAndBelongsToMany = array(
                                     "Materia" => array(
                                         "className"  => "Materia",
