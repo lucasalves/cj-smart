@@ -33,8 +33,8 @@ App::uses('Helper', 'View');
  */
 class AppHelper extends Helper {
 
-    public function DescreveCampo($nome) {
-        
+    public function CampoPlural($nome) {
+
         $descricoes = array("Educador" => "Educadores",
             "Curso" => "Cursos",
             "Turma" => "Turmas",
@@ -43,12 +43,48 @@ class AppHelper extends Helper {
             "Matricula" => "Matrículas",
             "Aula" => "Aulas"
         );
-        
-        
+
+
         if (array_key_exists($nome, $descricoes)) {
             echo $descricoes[$nome];
         } else {
             echo $nome;
+        }
+    }
+
+    function artigoMasFem($palavra_singular) {
+
+        $palavra_singular = str_replace("r", "", $palavra_singular);
+        $palavra_singular = str_replace("s", "", $palavra_singular);
+
+        $tamanho = strlen($palavra_singular) - 1;
+        return substr($palavra_singular, $tamanho, 1);
+    }
+
+    public function DescricaoCampo($nome) {
+
+        $descricoes = array("nome" => "Nome",
+            "periodo" => "Período",
+            "data_criacao" => "Data Criação",
+            "curso_id" => "Curso",
+            "email" => "E-mail",
+            "curriculo" => "Currículo",
+            "rg" => "RG",
+            "endereco_id" => "Endereço",
+            "descricao" => "Descrição",
+            "duracao" => "Duração",
+            "codigo" => "Código",
+            "cpf" => "CPF",
+            "logradouro" => "Logradouro",
+            "cep" => "CEP",
+            "responsavel" => "Responsável"
+        );
+
+
+        if (array_key_exists($nome, $descricoes)) {
+            return $descricoes[$nome];
+        } else {
+            return $nome;
         }
     }
 

@@ -6,14 +6,14 @@
         </div>
     </div>
     <div class="well">
-        <h2>Materia</h2>
+        <h2>Matéria</h2>
 
         <dt>Código:</dt>
-        <dd><?=$this->data["Materia"]["codigo"];?></dd>
+        <dd><?=$this->data["Materium"]["codigo"];?></dd>
         <br/>
         
         <dt>Nome:</dt>
-        <dd><?=$this->data["Materia"]["nome"];?></dd>
+        <dd><?=$this->data["Materium"]["nome"];?></dd>
         <br/>
         
 

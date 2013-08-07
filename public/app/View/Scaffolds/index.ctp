@@ -1,9 +1,9 @@
 <div>
     <h3>
-        <?=$this->Html->DescreveCampo($pluralHumanName);?>
+        <?= $this->Html->CampoPlural($pluralHumanName); ?>
     </h3>
-    
-    <?= $this->element('barra_pesquisa', array('valor' => null, 'controller' => $pluralHumanName));?>
+
+    <?= $this->element('barra_pesquisa', array('valor' => null, 'controller' => $pluralHumanName)); ?>
 
     <div class="row-fluid">
 
@@ -20,9 +20,9 @@
                 <tr>
                     <th style="width:10px"></th>
                     <?php foreach ($scaffoldFields as $_field): ?>
-                        <th><?php echo $this->Paginator->sort($_field); ?></th>
-<?php endforeach; ?>
-                    <th><?php // echo __d('cake', 'Actions');   ?></th>
+                        <th><?php echo $this->Paginator->sort($_field,$this->Html->DescricaoCampo($_field)); ?></th>
+                    <?php endforeach; ?>
+                    <th><?php // echo __d('cake', 'Actions');    ?></th>
                 </tr>
                 <?php
                 foreach (${$pluralVar} as ${$singularVar}):

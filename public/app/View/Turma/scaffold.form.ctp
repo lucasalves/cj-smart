@@ -4,19 +4,19 @@
     <div class="well">
         <legend>Turma</legend>
         <?
-        
         echo $this->Form->input('Turma.nome');
-        echo $this->Form->input('Turma.periodo', array('label' => 'Período'));
-        echo $this->Form->input('Turma.data_criacao');
 
-        echo $this->Form->input('Curso.Curso', array(
+        echo $this->Form->input('Turma.periodo', array(
+            'label' => 'Período', 
+            'options' => array(1 => 'Manhã', 2 => 'Tarde', 3 => 'Noite')));
+
+        echo $this->Form->input('Turma.curso_id', array(
             'label' => 'Curso',
             'options' => $this->viewVars['cursos'],
         ));
-        
         ?>
     </div>
 </div>
-        <?= $this->Form->end(); ?>
+<?= $this->Form->end(); ?>
 
 
