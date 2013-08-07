@@ -29,15 +29,19 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class AlunoController extends AppController {
+class MatriculaController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-    public $name = 'Aluno';
+    public $name = 'Matricula';
     public $uses = array();
 
     public $scaffold;
+    
+    public function verificar(){
+        
+    }
 }
