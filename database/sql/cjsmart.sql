@@ -153,8 +153,8 @@ INSERT INTO `grupo_permissoes` (`id`, `pagina`, `visualizar`, `editar`, `apagar`
 DROP TABLE IF EXISTS `materia`;
 CREATE TABLE IF NOT EXISTS `materia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) DEFAULT NULL,
-  `codigo` varchar(45) DEFAULT NULL,
+  `nome` varchar(45)  NOT NULL,
+  `codigo` varchar(45)  NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 );
@@ -191,10 +191,10 @@ CREATE TABLE IF NOT EXISTS `responsavel` (
 DROP TABLE IF EXISTS `turma`;
 CREATE TABLE IF NOT EXISTS `turma` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(200) DEFAULT NULL,
-  `periodo` enum('Manhã','Tarde','Noite') DEFAULT NULL,
+  `nome` varchar(200) NOT NULL,
+  `periodo` enum('Manhã','Tarde','Noite') NOT NULL,
   `data_criacao` date DEFAULT NULL,
-  `curso_id` int(11) DEFAULT NULL,
+  `curso_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -260,3 +260,33 @@ CREATE TABLE IF NOT EXISTS `aula` (
   PRIMARY KEY (`id`)
 );
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `matricula`
+--
+
+DROP TABLE IF EXISTS `matricula`;
+CREATE TABLE IF NOT EXISTS `matricula` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(200) NOT NULL,
+  `data` date DEFAULT NULL,
+  `aluno_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `turma_matricula`
+--
+
+DROP TABLE IF EXISTS `turma_matricula`;
+CREATE TABLE IF NOT EXISTS `turma_matricula` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `turma_id` int(11) NOT NULL,
+  `matricula_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+);
