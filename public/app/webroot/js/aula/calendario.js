@@ -1,14 +1,14 @@
 (function(){
 	var Aula = function(){
 		
-		this.events = "aula/get/";
+		this.events = ajaxurl + "aula/get/";
 
 		this.updateDate = function(event, delta) {
-			$.post('aula/update_date', {id: event.id, delta: delta});
+			$.post(ajaxurl + 'aula/update_date', {id: event.id, delta: delta});
 		};
 
 		this.form = function(date){
-			$.get('aula/add', {date: date}, function(response){
+			$.get(ajaxurl + 'aula/add', {date: date}, function(response){
 				var html = $(response).find(".aula-form");
 				App.Modal.add(html, true);
 			});			

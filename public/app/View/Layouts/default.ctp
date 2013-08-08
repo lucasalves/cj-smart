@@ -20,6 +20,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript">
+            var ajaxurl = "<?php echo Router::url('/'); ?>";
+        </script>
         <?php echo $this->Html->charset(); ?>
         <title><?php echo $title_for_layout; ?></title>
         <?php

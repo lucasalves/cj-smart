@@ -11,7 +11,7 @@ App.Modal = {
 	request: function(callback){
 		var self = this;
 
-		var url = '/utility/modal';
+		var url = ajaxurl + 'utility/modal';
 
 		if(!self.html){
 			$.get(url, function(html){
