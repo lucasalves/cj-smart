@@ -31,6 +31,7 @@
                     'search.css',
                     'fullcalendar.print.css',
                     'fullcalendar.css',
+                    'app/modal.css',
                     'aula/calendario.css'
                 )
         );
@@ -53,6 +54,8 @@
                     'bootstrap-typeahead',
                     'jquery-ui-1.10.2.custom.min.js',
                     'fullcalendar.min.js',
+                    'app/app.js',
+                    'app/modal.js',
                     'aula/calendario'
                 )
         );

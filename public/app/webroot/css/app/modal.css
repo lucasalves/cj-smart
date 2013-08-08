@@ -1,0 +1,9 @@
+#modal-default {
+    height: auto;
+}
+#modal-default .modal-header{
+	border: 0;
+}
+#modal-default .modal-body {
+    max-height: none;
+}

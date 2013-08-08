@@ -1,17 +1,17 @@
 (function(){
 	var Aula = function(){
-		this.controller = 'aula';
-
+		
 		this.events = "aula/get/";
 
 		this.updateDate = function(event, delta) {
 			$.post('aula/update_date', {id: event.id, delta: delta});
 		};
 
-		this.create = function(date){
-			$.get('aula/create', {date: date}, function(response){
-				console.log(response);
-			});
+		this.form = function(date){
+			$.get('aula/add', {date: date}, function(response){
+				var html = $(response).find(".aula-form");
+				App.Modal.add(html, true);
+			});			
 		};
 
 		this.initialize = function(){
@@ -24,7 +24,7 @@
 
 				eventDrop: this.updateDate,
 
-				dayClick: this.create
+				dayClick: this.form
 			});
 		};
 	};

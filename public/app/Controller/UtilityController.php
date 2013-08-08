@@ -29,48 +29,20 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class AulaController extends AppController {
+class UtilityController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-    public $name = 'Aula';
+    public $name = 'Utility';
     public $uses = array();
 
-    public $scaffold;
+   public $layout = false;
+   public $autoRender = false;
 
-    public function get(){
-    	$this->autoRender = false;
-    	echo json_encode(
-    					$this->Aula->toEvents(
-    							$this->Aula->find('all', array(
-															'conditions' => array('UNIX_TIMESTAMP(data) >= ' => $this->request->query['start'], 'UNIX_TIMESTAMP(data) <= ' => $this->request->query['end'])
-														)
-    							)
-						)
-    		);
+    public function modal(){
+    	$this->render('modal/default');
     }
-
-    public function update_date(){
-    	$this->autoRender = false;
-    	extract($this->request->data);
-    	$aula = $this->Aula->find('all', array(
-											'conditions' => array('id' => $id)
-										)
-    								);
-    	$this->Aula->id   = $id;
-		$this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
-    }
-
-  //   public function create(){
-  //   	$this->autoRender = false;
-  //   	// $this->set('date', $this->request->query['date']);
-
-		// // $this->render('form');
-
-  //       print_r($this->response);
-  //       die();
-  //   }
 }
