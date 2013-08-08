@@ -26,11 +26,17 @@
 
 <script>    
     $("#rg").change(function(){
+        
+        // Instancia de Matricula
         objMatricula = new Matricula();
        
+        // Pega o Valor do Rg
         objMatricula.rg = $(this).val();
        
+        // Valida
         objMatricula.validar();
+        
+        // Atribui o Valor recebido ao campo
         $("#MatriculaAlunoId").val(objMatricula.aluno_id);
     });
 </script>

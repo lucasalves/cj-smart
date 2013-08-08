@@ -24,14 +24,22 @@ function Matricula(){
     }
     
     this.verifica = function(){
-        this.aluno_id = 1;
+        
+        //this.aluno_id = 1;
         this.nome = "Bruno";
         this.rg = "47.452.922-8";
         this.cpf = "228.034.238.39";
         this.logradouro = "Rua Paulo Orozimbo, 379";
         this.cep = "01535000";
         this.responsavel = "Maria das Merces";
-        return false;
+        
+        if(this.aluno_id){
+            return true;
+        }else{
+            return false;
+        }
+        
+        
     }
      
     this.exibeBotao = function(status){
