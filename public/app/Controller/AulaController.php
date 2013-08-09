@@ -57,7 +57,7 @@ class AulaController extends AppController {
     	$this->autoRender = false;
     	extract($this->request->data);
     	$aula = $this->Aula->find('all', array(
-											'conditions' => array('id' => $id)
+											'conditions' => array('Aula.id' => $id)
 										)
     								);
     	$this->Aula->id   = $id;
