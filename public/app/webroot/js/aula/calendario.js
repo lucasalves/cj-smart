@@ -14,6 +14,13 @@
 			});			
 		};
 
+		this.update = function(event){
+			$.get(ajaxurl + 'aula/edit/' + event.id, function(response){
+				var html = $(response).find(".aula-form");
+				App.Modal.add(html, true);
+			});	
+		};
+
 		this.initialize = function(){
 			var self = this;
 			$('#calendar').fullCalendar({
@@ -24,7 +31,9 @@
 
 				eventDrop: this.updateDate,
 
-				dayClick: this.form
+				dayClick: this.form,
+
+				eventClick: this.update
 			});
 		};
 	};
