@@ -61,16 +61,6 @@ class AulaController extends AppController {
 										)
     								);
     	$this->Aula->id   = $id;
-		$this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
+  		$this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
     }
-
-  //   public function create(){
-  //   	$this->autoRender = false;
-  //   	// $this->set('date', $this->request->query['date']);
-
-		// // $this->render('form');
-
-  //       print_r($this->response);
-  //       die();
-  //   }
 }

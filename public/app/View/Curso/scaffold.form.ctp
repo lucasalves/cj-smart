@@ -1,4 +1,4 @@
-<?= $this->Form->create(); ?>
+<?= $this->Form->create(); ?>   
 <div class="form">
     <?= $this->element('form_bar', array('nome' => 'Curso')); ?>
     <div class="well">

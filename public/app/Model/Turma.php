@@ -32,15 +32,21 @@ App::uses('AppModel', 'Model');
  * @package       app.Model
  */
     class Turma extends AppModel {
-    public $useTable = 'turma';
-    
-    public $displayField = 'nome';
-    public $belongsTo = array(
-        'Curso' => array(
-            'className'  => 'Curso',
-            'foreignKey' => 'curso_id'
-        )        
-    );
-    
-    
+        public $useTable = 'turma';
+        
+        public $displayField = 'nome';
+
+        public $hasManyx = array(
+            'Aula' => array(
+                'className'  => 'Aula',
+                'foreignKey' => 'turma_id'
+            )
+        );
+
+        public $belongsTo = array(
+            'Curso' => array(
+                'className'  => 'Curso',
+                'foreignKey' => 'curso_id',
+            )
+        );  
 }

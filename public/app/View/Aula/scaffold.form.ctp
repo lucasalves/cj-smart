@@ -1,8 +1,6 @@
 <div class="aula-form">
+    <?php echo $this->Form->create(); ?>
     <div class='row-fluid'>
-        <div class='span2'>
-            <?php echo $this->Form->create(); ?>
-        </div>
         <div class='btn-group btn-navba' style='float:right'>
             <?= $this->Html->link(__d('cake', 'Voltar '), array('action' => 'index'), array('class' => 'btn')); ?>
             <input type = 'submit' value = 'Salvar Edição' id = 'Inserir' class='btn' />         
@@ -15,22 +13,20 @@
             echo $this->Form->input('Aula.local');
             $date = (!empty($this->request->query['date']) ? $this->request->query['date'] : '');
 
-            echo $this->Form->input('Aula.data', array('selected' => date('Y-m-d', strtotime($date))));
+            echo $this->Form->input('Aula.data', array('selected' => date('Y-m-d', strtotime($date)), 'dateFormat' => 'DMY'));
 
             echo $this->Form->input('Turma.Turma', array(
-                'label' => 'Turma'
-            ));
-            
-             echo $this->Form->input('Educador.Educador', array(
-                'label' => 'Educador'
+                'label'      => 'Turma',
+                'multiple'   => false
             ));
 
             echo $this->Form->input('Materia.Materia', array(
-                'label' => 'Materia'
+                'label' => 'Materia',
+                'multiple'   => false
             ));
         ?>
     </div>
-    <?php $this->Form->end(); ?>
+    <?php echo $this->Form->end(); ?>
 </div>
 
 

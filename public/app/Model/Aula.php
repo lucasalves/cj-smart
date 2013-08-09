@@ -34,6 +34,17 @@ App::uses('AppModel', 'Model');
 class Aula extends AppModel {
     public $useTable = 'aula';
 
+    public $belongsTo = array(
+        'Turma' => array(
+            'className'  => 'Turma',
+            'foreignKey' => 'turma_id'
+        ),
+        'Materia' => array(
+            'className'  => 'Materia',
+            'foreignKey' => 'materia_id'
+        )
+    );
+
     public function toEvents($data){   
     	$events = array();
 
@@ -41,7 +52,7 @@ class Aula extends AppModel {
     	foreach ($data as $event) {
     		$events[] = array(
     						'id'  	=> $event['Aula']['id'],
-    						'title' => $event['Aula']['data'],
+    						'title' => $event['Aula']['local'],
     						'start' => $event['Aula']['data']
     					);
     	}
