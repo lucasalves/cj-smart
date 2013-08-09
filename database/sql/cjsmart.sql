@@ -75,9 +75,9 @@ CREATE TABLE IF NOT EXISTS `educador` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `endereco` varchar(500) DEFAULT NULL,
   `curriculo` text NOT NULL,
   `rg` varchar(12) NOT NULL,
-  `endereco_id` int(11) unsigned zerofill NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -192,7 +192,7 @@ DROP TABLE IF EXISTS `turma`;
 CREATE TABLE IF NOT EXISTS `turma` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
-  `periodo` enum('Manhã','Tarde','Noite') NOT NULL,
+  `periodo` enum('Manha','Tarde','Noite') NOT NULL,
   `data_criacao` date DEFAULT NULL,
   `curso_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -255,7 +255,6 @@ CREATE TABLE IF NOT EXISTS `aula` (
   `local` varchar(200) DEFAULT NULL,
   `data` date DEFAULT NULL,
   `turma_id` int(11) DEFAULT NULL,
-  `educador_id` int(11) DEFAULT NULL,
   `materia_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
