@@ -1,26 +1,23 @@
-<div class="aula-form">
+<div class="aula-form form">
     <?php echo $this->Form->create(); ?>
     <div class='row-fluid'>
         <div class='btn-group btn-navba' style='float:right'>
-            <?= $this->Html->link(__d('cake', 'Voltar '), array('action' => 'index'), array('class' => 'btn')); ?>
-            <input type = 'submit' value = 'Salvar Edição' id = 'Inserir' class='btn' />         
-            <?//= $this->Form->postLink(__d('cake', 'Excluir'), array('action' => 'delete', $this->Form->value($modelClass . '.' . $primaryKey)), array('class' => 'btn btn-danger'), __d('cake', 'Deseja realmente excluir o registro # %s?', $this->Form->value($modelClass . '.' . $primaryKey))); ?>
+            <input type = 'submit' value = 'Salvar Edição' id = 'Inserir' class='btn btn-success' />
         </div>
     </div>
     <div class="well">
         <legend>Aula</legend>
         <?php 
             echo $this->Form->input('Aula.local');
-            $date = (!empty($this->request->query['date']) ? $this->request->query['date'] : '');
 
-            echo $this->Form->input('Aula.data', array('selected' => date('Y-m-d', strtotime($date)), 'dateFormat' => 'DMY'));
+            echo $this->Form->input('Aula.data', $this->Aula->SolveDate($this->request, array('dateFormat' => 'DMY')));
 
-            echo $this->Form->input('Turma.Turma', array(
+            echo $this->Form->input('Aula.turma_id', array(
                 'label'      => 'Turma',
                 'multiple'   => false
             ));
 
-            echo $this->Form->input('Materia.Materia', array(
+            echo $this->Form->input('Aula.materia_id', array(
                 'label' => 'Materia',
                 'multiple'   => false
             ));

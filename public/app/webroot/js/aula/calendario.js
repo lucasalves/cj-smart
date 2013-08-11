@@ -14,14 +14,23 @@
 			});			
 		};
 
-		this.update = function(event){
-			$.get(ajaxurl + 'aula/edit/' + event.id, function(response){
+		this.view = function(event){
+			$.get(ajaxurl + 'aula/view/' + event.id, function(response){
+				var html = $(response).find(".aula-view");
+				App.Modal.add(html, true);
+			});	
+		};
+
+		this.edit = function(url){
+			$.get(url, function(response){
 				var html = $(response).find(".aula-form");
 				App.Modal.add(html, true);
 			});	
 		};
 
 		this.initialize = function(){
+			this.on();
+
 			var self = this;
 			$('#calendar').fullCalendar({
 
@@ -33,7 +42,16 @@
 
 				dayClick: this.form,
 
-				eventClick: this.update
+				eventClick: this.view
+			});
+		};
+
+		this.on = function(){
+			var self = this;
+
+			$('body').on('click', '.aula-view a.editar', function(e){
+				e.preventDefault();
+				self.edit($(this).attr('href'));
 			});
 		};
 	};

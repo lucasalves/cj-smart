@@ -25,10 +25,14 @@ App.Modal = {
 
 	add: function(html, open){
 		var self = this;
+		
 		this.request(function(modal){
-			$('body').append(modal);
+			if(!$('#modal-default .modal-body').length){
+				$('body').append(modal);				
+			}
+
 			$('#modal-default .modal-body').html(html);
-			
+
 			if(open){
 				self.open();
 				self.listeners();
@@ -43,5 +47,6 @@ App.Modal = {
 
 	close: function(){
 		$('#modal-default').modal('hide');
+		return this;
 	}
 };
