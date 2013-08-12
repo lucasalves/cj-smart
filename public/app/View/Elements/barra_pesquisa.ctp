@@ -25,7 +25,7 @@
                     <li><a href="#colunasAgrupar" role="button" data-toggle="modal">Agrupar</a></li>
                 </ul>
             </div>
-            <?php echo $this->Html->link(__d('cake', "Nov{$this->Html->artigoMasFem($pluralHumanName)} %s", $controller), array('action' => 'add'), array('class' => 'btn btn-success')); ?>
+            <?php echo $this->Html->link(__d('cake', "Nov{$this->Html->artigoMasFem($controller)} %s", $controller), array('action' => 'add'), array('class' => 'btn btn-success')); ?>
         </form>
     </div>
 </div>
