@@ -5,7 +5,7 @@ $valor = $this->params->query['per'];
 
 <div>
     <h3>
-        <?= $this->Html->DescreveCampo($controller); ?>
+        <?= $this->Html->CampoPlural($controller); ?>
     </h3>
 
     <?= $this->element('barra_pesquisa', array('valor' => $valor, 'controller' => $controller)); ?>
