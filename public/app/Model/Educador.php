@@ -33,9 +33,5 @@ App::uses('AppModel', 'Model');
  */
 class Educador extends AppModel {
     public $useTable = 'educador';
-    public $belongsTo = array(
-        'Endereco' => array(
-            'className'  => 'Endereco',            
-        )        
-    );
+
 }
