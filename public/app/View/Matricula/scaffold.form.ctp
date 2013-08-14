@@ -11,8 +11,8 @@
 //        ));
 
         echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg'));
-        echo $this->Form->input('Matricula.aluno_id', array('type' => 'hidden'));
-        echo $this->Form->input('Matricula.codigo', array('type' => 'hidden', 'value' => '01'));
+        echo $this->Form->input('Matricula.aluno_id', array('type' => 'text'));
+        echo $this->Form->input('Matricula.codigo', array('type' => 'text', 'value' => '01'));
         ?>
         <div id="botoes"></div>
 
