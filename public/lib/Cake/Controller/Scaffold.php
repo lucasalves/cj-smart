@@ -329,12 +329,12 @@ class Scaffold {
      * @return void
      */
     protected function _sendMessage($message) {
-        if ($this->_validSession) {
+     //   if ($this->_validSession) {
             $this->controller->Session->setFlash($message);
             $this->controller->redirect($this->redirect);
-        } else {
+      //  } else {
             $this->controller->flash($message, $this->redirect);
-        }
+       // }
     }
 
     /**
