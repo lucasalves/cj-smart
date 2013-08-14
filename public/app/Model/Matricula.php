@@ -34,14 +34,14 @@ App::uses('AppModel', 'Model');
 class Matricula extends AppModel {
     public $useTable = 'matricula';
     
-    public $hasAndBelongsToMany = array(
-                                    "Turma" => array(
-                                        "className"  => "Turma",
-                                        "joinTable"  => "turma_materia",
-                                        "foreignKey" => "turma_id",
-                                        "associationForeignKey" => "materia_id"
-                                    )
-                                );
+//    public $hasAndBelongsToMany = array(
+//                                    "Turma" => array(
+//                                        "className"  => "Turma",
+//                                        "joinTable"  => "turma_materia",
+//                                        "foreignKey" => "turma_id",
+//                                        "associationForeignKey" => "materia_id"
+//                                    )
+//                                );
     
     public  $hasOne = array(
                         'Nota' => array(
