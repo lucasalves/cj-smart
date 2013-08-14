@@ -1,5 +1,5 @@
 <?= $this->Html->script(array('matricula.js','janela.js')); ?>
-<?= $this->Form->create(); ?>
+<?= $this->Form->create(array('id' => 'matricula')); ?>
 <div class="form">
     <div class="well">
         <legend>Matricula</legend>
@@ -25,19 +25,17 @@
 <?= $this->Form->end(); ?>
 
 <script>    
-    $("#rg").change(function(){
-        
+    $("#matricula").on('change', function(e){
+        e.preventDefault();
         // Instancia de Matricula
         objMatricula = new Matricula();
-       
-        // Pega o Valor do Rg
-        objMatricula.rg = $(this).val();
-       
+        
         // Valida
-        objMatricula.validar();
+        objMatricula.verifica();
         
         // Atribui o Valor recebido ao campo
-        $("#MatriculaAlunoId").val(objMatricula.aluno_id);
+        console.log(objMatricula.aluno.id);
+        $("#MatriculaAlunoId").val(objMatricula.aluno.id);
     });
 </script>
 

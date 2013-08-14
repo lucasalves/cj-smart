@@ -4,42 +4,30 @@
  */
 
 function Matricula(){
-    
-    var aluno_id;
-    var nome;
-    var rg;
-    var cpf;
-    var logradouro;
-    var cep;
-    var responsavel;
+    this.aluno;
    
-    this.validar = function(){
-        
-        if(this.verifica()){
+    this.validar = function(result, data){        
+        if(result){
+            this.aluno = data;
             this.exibeBotao(1);
         }else{
             this.exibeBotao(2);
-        }
-        
+        }        
     }
     
     this.verifica = function(){
-        
-        //this.aluno_id = 1;
-        this.nome = "Bruno";
-        this.rg = "47.452.922-8";
-        this.cpf = "228.034.238.39";
-        this.logradouro = "Rua Paulo Orozimbo, 379";
-        this.cep = "01535000";
-        this.responsavel = "Maria das Merces";
-        
-        if(this.aluno_id){
-            return true;
-        }else{
-            return false;
-        }
-        
-        
+        var self = this;
+        $.ajax({
+            dataType: "json",
+             url: ajaxurl + "matricula/verifica",
+             data:{
+                 rg: $("#rg").val()
+             },
+             success: function(resp){
+              
+                self.validar((typeof resp.Aluno !== "undefined"), resp.Aluno);              
+             }
+        });        
     }
      
     this.exibeBotao = function(status){
@@ -47,22 +35,22 @@ function Matricula(){
             var html = 
                 
             "<dt>Nome:</dt>"+
-            "<dd>"+this.nome+"</dd>"+
+            "<dd>"+this.aluno.nome+"</dd>"+
                 
             "<dt>Rg:</dt>"+
-            "<dd>"+this.rg+"</dd>"+
+            "<dd>"+this.aluno.rg+"</dd>"+
 
             "<dt>CPF:</dt>"+
-            "<dd>"+this.cpf+"</dd>"+
+            "<dd>"+this.aluno.cpf+"</dd>"+
 
             "<dt>Logradouro:</dt>"+
-            "<dd>"+this.logradouro+"</dd>"+
+            "<dd>"+this.aluno.logradouro+"</dd>"+
         
             "<dt>CEP:</dt>"+
-            "<dd>"+this.cep+"</dd>"+
+            "<dd>"+this.aluno.cep+"</dd>"+
         
             "<dt>Responsável:</dt>"+
-            "<dd>"+this.responsavel+"</dd>"+
+            "<dd>"+this.aluno.responsavel+"</dd>"+
             "<br>"+
             
             "<input type='submit' class='btn btn-large  btn-success' value='Matricular' />"
@@ -70,7 +58,7 @@ function Matricula(){
             
         }else if(status == 2){
             objJanela = new Janela();
-            html = objJanela.botaoJanela("/cj-smart/public/aluno/add/"+this.rg);
+            html = objJanela.botaoJanela("/cj-smart/public/aluno/add/"+this.aluno.rg);
         }
         
         $("#botoes").html(html);

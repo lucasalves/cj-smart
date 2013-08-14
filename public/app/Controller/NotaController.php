@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Static content controller.
  *
@@ -30,31 +29,15 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class MatriculaController extends AppController {
+class EducadorController extends AppController {
 
-    /**
-     * Controller name
-     *
-     * @var string
-     */
-    public $name = 'Matricula';
+/**
+ * Controller name
+ *
+ * @var string
+ */
+    public $name = 'Educador';
     public $uses = array();
+
     public $scaffold;
-
-    public function verifica() {
-        $this->autoRender = false;
-        $this->loadModel('Aluno');
-        
-        $aluno = $this->Aluno->find('all', array(
-                    'conditions' => array('rg' => $this->request->query['rg'])
-                        )
-                );
-        
-        if(!empty($aluno[0])){
-            echo json_encode($aluno[0]);
-        }else{
-            echo json_encode(array());
-        }    
-    }
-
 }

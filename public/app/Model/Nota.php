@@ -31,21 +31,32 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Matricula extends AppModel {
-    public $useTable = 'matricula';
-    
-    public $hasAndBelongsToMany = array(
-                                    "Turma" => array(
-                                        "className"  => "Turma",
-                                        "joinTable"  => "turma_materia",
-                                        "foreignKey" => "turma_id",
-                                        "associationForeignKey" => "materia_id"
-                                    )
-                                );
-    
-    public  $hasOne = array(
-                        'Nota' => array(
-                            'foreignKey' => 'matricula_id'
-                        )
-                    ); 
+class Aula extends AppModel {
+    public $useTable = 'aula';
+
+    public $belongsTo = array(
+        'Turma' => array(
+            'className'  => 'Turma',
+            'foreignKey' => 'turma_id'
+        ),
+        'Materia' => array(
+            'className'  => 'Materia',
+            'foreignKey' => 'materia_id'
+        )
+    );
+
+    public function toEvents($data){   
+    	$events = array();
+
+
+    	foreach ($data as $event) {
+    		$events[] = array(
+    						'id'  	=> $event['Aula']['id'],
+    						'title' => $event['Aula']['local'],
+    						'start' => $event['Aula']['data']
+    					);
+    	}
+
+    	return $events;
+    }
 }
