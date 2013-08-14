@@ -29,15 +29,15 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class EducadorController extends AppController {
+class NotaController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-    public $name = 'Educador';
-    public $uses = array();
+    public $name = 'Nota';
+    public $uses = array('Nota');
 
     public $scaffold;
 }

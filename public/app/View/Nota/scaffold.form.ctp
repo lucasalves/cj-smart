@@ -1,19 +1,31 @@
 <?= $this->Form->create(); ?>
 <div class="form">
-    <?= $this->element('form_bar', array('nome' => 'Curso')); ?>
+    <?= $this->element('form_bar', array('nome' => 'Nota')); ?>
     <div class="well">
-        <legend>Educador</legend>
+        <legend>Nota</legend>
         <?
         
-        echo $this->Form->input('Educador.nome');
-        echo $this->Form->input('Educador.email', array('label' => 'E-mail'));
-        echo $this->Form->input('Educador.curriculo', array('label' => 'Currículo'));
-        echo $this->Form->input('Educador.rg',array('label'=>'RG'));
+        echo $this->Form->input('Nota.valor');
+        echo $this->Form->input('Nota.tipo', array('label' => 'Tipo'));
+        echo $this->Form->input('Nota.data');
+        
+        
+         echo $this->Form->input('Nota.materia_id', array(
+                'label' => 'Materia',
+                'multiple'   => false
+            ));
+                
+         echo $this->Form->input('Nota.matricula_id', array(
+                'label' => 'Matricula',
+                'multiple'   => false
+            ));
+         
+         
 
-
+        
         ?>
     </div>
 </div>
-        <?= $this->Form->end(); ?>
+<?= $this->Form->end(); ?>
 
 
