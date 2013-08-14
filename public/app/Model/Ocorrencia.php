@@ -31,7 +31,8 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Educador extends AppModel {
-    public $useTable = 'educador';
+class Ocorrencia extends AppModel {
+    public $useTable = 'ocorrencia';
+
 
 }
