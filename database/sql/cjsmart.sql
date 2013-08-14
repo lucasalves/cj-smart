@@ -78,7 +78,8 @@ CREATE TABLE IF NOT EXISTS `educador` (
   `endereco` varchar(500) DEFAULT NULL,
   `curriculo` text NOT NULL,
   `rg` varchar(12) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  unique key (`rg`)
 );
 
 -- --------------------------------------------------------
@@ -289,3 +290,36 @@ CREATE TABLE IF NOT EXISTS `turma_matricula` (
   `matricula_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `ocorrencia`
+--
+
+
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`ocorrencia` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `data` DATE NOT NULL ,
+  `descricao` TEXT NOT NULL ,
+  `aula_id` INT(10) NOT NULL ,
+  `matricula_id` INT(10) NOT NULL ,
+  PRIMARY KEY (`id`, `aula_id`, `matricula_id`) )
+ENGINE = InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `nota`
+--
+
+
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`nota` (
+  `id` INT(10) NOT NULL ,
+  `valor` DOUBLE NOT NULL ,
+  `tipo` VARCHAR(45) NULL ,
+  `data` DATE NOT NULL ,
+  `materia_id` INT(11) NOT NULL ,
+  `matricula_id` INT(10) NOT NULL ,
+  PRIMARY KEY (`id`, `data`, `materia_id`, `matricula_id`) )
+ENGINE = InnoDB;
