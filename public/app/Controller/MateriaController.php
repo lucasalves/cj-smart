@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -31,15 +32,13 @@ App::uses('AppController', 'Controller');
  */
 class MateriaController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
-	public $name = 'Materia';
-
-
-	public $uses = array();
-
+    /**
+     * Controller name
+     *
+     * @var string
+     */
+    public $name = 'Materia';
+    public $uses = array();
     public $scaffold;
+
 }

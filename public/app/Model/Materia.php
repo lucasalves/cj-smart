@@ -41,12 +41,21 @@ class Materia extends AppModel {
                                         "className"  => "Curso"
                                     )
                                 );
-    public $validate = array(
-                'nome' => array(
-                       'rule'     => array('minLength', 1),
-                       'required' => true,
-                       'message'  => 'Digite um nome valido para Materia',
-                )                           
-    );
+    
+    public  $hasOne = array(
+                        'Nota' => array(
+                            'foreignKey' => 'materia_id'
+                        )
+                    ); 
+    
+//    public $validate = array(
+//                'nome' => array(
+//                       'rule'     => array('minLength', 1),
+//                       'required' => true,
+//                       'message'  => 'Digite um nome valido para Materia',
+//                )                           
+//    );
+    
+    
 
 }
