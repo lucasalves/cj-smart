@@ -6,24 +6,14 @@
         </div>
     </div>
     <div class="well">
-        <h2>Curso</h2>
+        <h2>Ocorrência</h2>
 
-        <dt>Nome:</dt>
-        <dd><?=$this->data["Curso"]["nome"];?></dd>
+        <dt>Data:</dt>
+        <dd><?=$this->data["Ocorrencium"]["data"];?></dd>
         <br/>
         <dt>Descrição:</dt>
-        <dd><?=$this->data["Curso"]["descricao"];?></dd>
-        <br/>
-        <dt>Duração:</dt>
-        <dd><?=$this->data["Curso"]["duracao"];?> meses</dd>        
-        <br/>
-        <dt>Matérias:</dt>
-        <?
-        foreach ($this->data["Materia"] as $materia):
-            echo "<dd>{$materia["nome"]}</dd>";
-        endforeach;
-        ?>
-        
+        <dd><?=$this->data["Ocorrencium"]["descricao"];?></dd>
+        <br/>        
     </div>
 
 </div>

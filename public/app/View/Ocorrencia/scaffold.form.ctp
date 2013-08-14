@@ -1,19 +1,16 @@
 <?= $this->Form->create(); ?>
 <div class="form">
-    <?= $this->element('form_bar', array('nome' => 'Curso')); ?>
+    <?= $this->element('form_bar', array('nome' => 'Ocorrencia')); ?>
     <div class="well">
-        <legend>Educador</legend>
+        <legend>Ocorrência</legend>
         <?
-        
-        echo $this->Form->input('Educador.nome');
-        echo $this->Form->input('Educador.email', array('label' => 'E-mail'));
-        echo $this->Form->input('Educador.curriculo', array('label' => 'Currículo'));
-        echo $this->Form->input('Educador.rg',array('label'=>'RG'));
-
-
+        echo $this->Form->input('Ocorrencium.data');
+        echo $this->Form->input('Ocorrencium.descricao', array('label' => 'Descrição'));
+//        echo $this->Form->input('Aula.Aula', array('label' => 'Aula'));
+//        echo $this->Form->input('Matricula.Matricula', array('label' => 'Matrícula'));
         ?>
     </div>
 </div>
-        <?= $this->Form->end(); ?>
+<?= $this->Form->end(); ?>
 
 
