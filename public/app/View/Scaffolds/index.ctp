@@ -20,9 +20,9 @@
                 <tr>
                     <th style="width:10px"></th>
                     <?php foreach ($scaffoldFields as $_field): ?>
-                        <th><?php echo $this->Paginator->sort($_field,$this->Html->DescricaoCampo($_field)); ?></th>
+                        <th><?php echo $this->Paginator->sort($_field, $this->Html->DescricaoCampo($_field)); ?></th>
                     <?php endforeach; ?>
-                    <th><?php // echo __d('cake', 'Actions');    ?></th>
+                    <th><?php // echo __d('cake', 'Actions');     ?></th>
                 </tr>
                 <?php
                 foreach (${$pluralVar} as ${$singularVar}):
@@ -61,12 +61,17 @@
         </div>
     </div>
 
-    <div class="paging">
-        <?php
-        echo $this->Paginator->prev('< ' . __d('cake', 'próxima'), array(), null, array('class' => 'prev disabled'));
-        echo $this->Paginator->numbers(array('separator' => ''));
-        echo $this->Paginator->next(__d('cake', 'anterior') . ' >', array(), null, array('class' => 'next disabled'));
-        ?>
+
+
+    <div class="pagination">
+        <ul>
+
+            <?php
+            echo $this->Paginator->prev('< ' . __d('cake', 'anterior'), array(), null, array('class' => 'prev disabled', 'tag'=>'li'));
+            echo $this->Paginator->numbers(array('separator' => '',));
+            echo $this->Paginator->next(__d('cake', 'próxima') . ' >', array(), null, array('class' => 'next disabled', 'tag'=>'li'));
+            ?>
+        </ul>
     </div>
 
 </div>
