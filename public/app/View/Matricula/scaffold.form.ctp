@@ -3,16 +3,10 @@
 <div class="form">
     <div class="well">
         <legend>Matricula</legend>
-        <?
-//        echo $this->Form->input('Turma.Turma', array(
-//            'label' => 'Turma',
-//            'options' => $this->viewVars['turmas'],
-//            'multiple' => false,
-//        ));
-
-        echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg'));
-        echo $this->Form->input('Matricula.aluno_id', array('type' => 'text'));
-        echo $this->Form->input('Matricula.codigo', array('type' => 'text', 'value' => '01'));
+        <?php
+            echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg'));
+            echo $this->Form->input('Matricula.aluno_id', array('type' => 'text'));
+            echo $this->Form->input('Matricula.codigo', array('type' => 'text'));
         ?>
         <div id="botoes"></div>
 
@@ -23,21 +17,3 @@
 
 
 <?= $this->Form->end(); ?>
-
-<script>    
-    $("#matricula").on('change', function(e){
-        e.preventDefault();
-        // Instancia de Matricula
-        objMatricula = new Matricula();
-        
-        // Valida
-        objMatricula.verifica();
-        
-        // Atribui o Valor recebido ao campo
-        console.log(objMatricula.aluno.id);
-        $("#MatriculaAlunoId").val(objMatricula.aluno.id);
-    });
-</script>
-
-
-

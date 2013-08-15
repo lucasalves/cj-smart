@@ -40,4 +40,24 @@ class AlunoController extends AppController {
     public $uses = array();
 
     public $scaffold;
+
+    public function add_ajax(){
+    	$this->autoRender = false;
+
+    	if($this->request->is('post')){
+    		if($resp = $this->Aluno->save($this->request->data)){
+	   				$resp = array_merge(
+    							array('status' => true),
+    							$resp   					
+    						);
+    		}else{    			
+    			$resp = array_merge(
+    							array('status' => false),
+    							$this->Aluno->validationErrors
+    						);
+    		}
+    	}
+
+    	echo json_encode($resp);
+    }
 }
