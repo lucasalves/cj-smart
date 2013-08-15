@@ -9,6 +9,11 @@
         echo $this->Form->input('Educador.email', array('label' => 'E-mail'));
         echo $this->Form->input('Educador.curriculo', array('label' => 'Currículo'));
         echo $this->Form->input('Educador.rg',array('label'=>'RG'));
+        echo $this->Form->input('Educador.cep',array('label'=>'CEP'));
+        echo $this->Form->input('Educador.endereco',array('label'=>'Endereço'));
+        echo $this->Form->input('Educador.numero',array('label'=>'Nº'));
+        echo $this->Form->input('Educador.bairro',array('label'=>'Bairro'));
+        echo $this->Form->input('Educador.cidade',array('label'=>'Cidade'));
 
 
         ?>
