@@ -11,7 +11,8 @@
                 <li><a href="<?php echo Router::url("/aluno"); ?>">Alunos</a></li>
                 <li><a href="<?php echo Router::url("/matricula"); ?>">Matrículas</a></li>
                 <li><a href="<?php echo Router::url("/aula"); ?>">Aulas</a></li>
-                <li><a href="<?php echo Router::url("/#"); ?>">Diário de Aula</a></li>
+                <li><a href="<?php echo Router::url("/nota"); ?>">Notas</a></li>
+                <li><a href="<?php echo Router::url("/presenca"); ?>">Presenca</a></li>
                 <li class='nav-header'>Acadêmico</li>
 
             </ul>
