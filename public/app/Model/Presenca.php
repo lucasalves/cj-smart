@@ -31,21 +31,19 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Matricula extends AppModel {
-    public $useTable = 'matricula';
+class Presenca extends AppModel {
+    public $useTable = 'presenca';
+
+    public $belongsTo = array(
+        'Matricula' => array(
+            'className'  => 'Matricula',
+            'foreignKey' => 'matricula_id'
+        ),
+        'Aula' => array(
+            'className'  => 'Aula',
+            'foreignKey' => 'aula_id'
+        )
+    );
     
-//    public $hasAndBelongsToMany = array(
-//                                    "Turma" => array(
-//                                        "className"  => "Turma",
-//                                        "joinTable"  => "turma_materia",
-//                                        "foreignKey" => "turma_id",
-//                                        "associationForeignKey" => "materia_id"
-//                                    )
-//                                );
     
-    public  $hasOne = array(
-                        'Nota' => array(
-                            'foreignKey' => 'matricula_id'
-                        )
-                    ); 
 }

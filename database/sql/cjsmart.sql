@@ -71,17 +71,22 @@ CREATE TABLE IF NOT EXISTS `curso_materia` (
 --
 
 DROP TABLE IF EXISTS `educador`;
-CREATE TABLE IF NOT EXISTS `educador` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `endereco` varchar(500) DEFAULT NULL,
-  `curriculo` text NOT NULL,
-  `rg` varchar(12) NOT NULL,
-  PRIMARY KEY (`id`),
-  unique key (`rg`)
-);
-
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`educador` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(100) NOT NULL ,
+  `email` VARCHAR(100) NOT NULL ,
+  `curriculo` TEXT NULL ,
+  `rg` VARCHAR(12) NOT NULL ,
+  `endereco` VARCHAR(500) NULL DEFAULT NULL ,
+  `numero` VARCHAR(10) NULL ,
+  `bairro` VARCHAR(50) NULL ,
+  `cidade` VARCHAR(50) NULL ,
+  `cep` VARCHAR(8) NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `rg` (`rg` ASC) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = latin1;
 -- --------------------------------------------------------
 
 --
@@ -322,4 +327,18 @@ CREATE  TABLE IF NOT EXISTS `cjsmart`.`nota` (
   `materia_id` INT(11) NOT NULL ,
   `matricula_id` INT(10) NOT NULL ,
   PRIMARY KEY (`id`, `data`, `materia_id`, `matricula_id`) )
+ENGINE = InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `presenca`
+--
+
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`presenca` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `status` ENUM('Presente','Ausente') NOT NULL ,
+  `aula_id` INT(10) NOT NULL ,
+  `matricula_id` INT(10) NOT NULL ,
+  PRIMARY KEY (`id`, `aula_id`) )
 ENGINE = InnoDB;
