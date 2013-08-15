@@ -19,10 +19,8 @@
                 'label' => 'Matricula',
                 'multiple'   => false
             ));
-         
-         
 
-        
+         
         ?>
     </div>
 </div>
