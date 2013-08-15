@@ -55,6 +55,7 @@
                 $.get(ajaxurl + 'aluno/add', {rg: $("#rg").val()}, function(response){
                     var html = $(response).find("#corpo").html();
                     App.Modal.add(html, true);
+                    $("#botoes").html("");
                 });
             }
             
@@ -84,9 +85,9 @@
 
             $.post(url, data, function(result){
                 if(result.status){
-                    self.aluno = result.Aluno;
-                    App.Modal.close();
-                    self.exibeBotao(1);                    
+                    self.aluno = result.Aluno;                    
+                    self.exibeBotao(1);
+                    App.Modal.close();             
                 }
             }, 'json');
         };
