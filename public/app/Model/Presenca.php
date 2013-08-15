@@ -31,17 +31,19 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class Nota extends AppModel {
-    public $useTable = 'nota';
+class Presenca extends AppModel {
+    public $useTable = 'presenca';
 
     public $belongsTo = array(
-        'Materia' => array(
-            'className'  => 'Materia',
-            'foreignKey' => 'materia_id'
-        ),
         'Matricula' => array(
             'className'  => 'Matricula',
             'foreignKey' => 'matricula_id'
+        ),
+        'Aula' => array(
+            'className'  => 'Aula',
+            'foreignKey' => 'aula_id'
         )
     );
+    
+    
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -29,15 +30,66 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class NotaController extends AppController {
+class PresencaController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
-    public $name = 'Nota';
-    public $uses = array('Nota');
-
+    /**
+     * Controller name
+     *
+     * @var string
+     */
+    public $name = 'Presenca';
+    public $uses = array('Presenca');
     public $scaffold;
+
+    public function add() {
+
+        if ($this->request->data) {
+            $this->autoRender = false;
+            
+            // Recebe o array de matriculas selecionadas
+            $matriculas = $this->request->data["Presenca"]["matricula_id"];
+            
+            // Insere as matriculas por vez, marcando a ausencia
+            foreach ($matriculas as $id_matricula):
+                $this->Presenca->create();
+                $this->Presenca->set(
+                        array(
+                            'status' => 2 // Ausente
+                            , 'aula_id' => $this->request->data["Presenca"]["aula_id"]
+                            , 'matricula_id' => $id_matricula
+                ));
+
+                $this->Presenca->save();
+            endforeach;
+            
+            // Redireciona 
+            $this->redirect("marcar");
+        }
+        
+
+    }
+    
+    public function marcar(){
+        // Carrega a Lista de Aulas
+        $aulas = $this->Presenca->Aula->find('list', array(
+            'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => 3)
+                ));
+        
+        // Carrega a Lista de Turmas
+        $this->loadModel('Turma');
+        $turmas = $this->Turma->find('list', array('fields' => array('Turma.id', 'Turma.nome')
+                ));
+
+        // Carrega a Lista de Aluno
+        $alunos = $this->Turma->find('all');
+
+
+        $this->set(array('aulas' => $aulas, 'turmas'=>$turmas, 'alunos'=>$alunos));  
+        
+        
+        
+        
+    }
+    
+
 }
