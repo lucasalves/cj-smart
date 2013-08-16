@@ -33,4 +33,10 @@ App::uses('AppModel', 'Model');
  */
 class Aluno extends AppModel {
     public $useTable = 'aluno';
+
+    public  $hasMany = array(
+                    'Matricula' => array(
+                       'foreignKey' => 'aluno_id'
+                    )
+                ); 
 }

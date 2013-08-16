@@ -46,6 +46,10 @@ class Matricula extends AppModel {
     public  $hasOne = array(
                         'Nota' => array(
                             'foreignKey' => 'matricula_id'
-                        )
+                        )                        
                     ); 
+
+    public $belongsTo = array(
+    						'Aluno'
+    					);
 }
