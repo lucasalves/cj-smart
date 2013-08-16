@@ -50,6 +50,7 @@ class Matricula extends AppModel {
                     ); 
 
     public $belongsTo = array(
-    						'Aluno'
+    						'Aluno',
+    						'Turma'
     					);
 }

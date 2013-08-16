@@ -36,9 +36,13 @@ App::uses('AppModel', 'Model');
         
         public $displayField = 'nome';
 
-        public $hasManyx = array(
+        public $hasMany = array(
             'Aula' => array(
                 'className'  => 'Aula',
+                'foreignKey' => 'turma_id'
+            ),
+            'Matricula' => array(
+                'className'  => 'Matricula',
                 'foreignKey' => 'turma_id'
             )
         );
@@ -48,5 +52,5 @@ App::uses('AppModel', 'Model');
                 'className'  => 'Curso',
                 'foreignKey' => 'curso_id',
             )
-        );  
+        ); 
 }
