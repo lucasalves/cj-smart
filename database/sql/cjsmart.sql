@@ -272,29 +272,17 @@ CREATE TABLE IF NOT EXISTS `aula` (
 --
 
 DROP TABLE IF EXISTS `matricula`;
-CREATE TABLE IF NOT EXISTS `matricula` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(200) NOT NULL,
-  `data` date DEFAULT NULL,
-  `aluno_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-);
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`matricula` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `codigo` VARCHAR(200) NOT NULL ,
+  `data` DATE NULL DEFAULT NULL ,
+  `aluno_id` INT(10) NOT NULL ,
+  `turma_id` INT(10) NOT NULL ,
+  PRIMARY KEY (`id`, `aluno_id`, `turma_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = latin1;
 
-
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `turma_matricula`
---
-
-DROP TABLE IF EXISTS `turma_matricula`;
-CREATE TABLE IF NOT EXISTS `turma_matricula` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `turma_id` int(11) NOT NULL,
-  `matricula_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-);
 
 -- --------------------------------------------------------
 
