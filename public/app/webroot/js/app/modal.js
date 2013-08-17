@@ -23,7 +23,7 @@ App.Modal = {
 		}
 	},
 
-	add: function(html, open){
+	add: function(html, open, after){
 		var self = this;
 		
 		this.request(function(modal){
@@ -32,7 +32,9 @@ App.Modal = {
 			}
 
 			$('#modal-default .modal-body').html(html);
-
+			if(after){
+				after();
+			}
 			if(open){
 				self.open();
 				self.listeners();

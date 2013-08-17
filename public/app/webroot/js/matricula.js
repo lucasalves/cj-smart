@@ -54,7 +54,9 @@
             }else if(status == 2){      
                 $.get(ajaxurl + 'aluno/add', {rg: $("#rg").val()}, function(response){
                     var html = $(response).find("#corpo").html();
-                    App.Modal.add(html, true);
+                    App.Modal.add(html, true, function(){
+                        $("#AlunoNome").focus();
+                    });                    
                     $("#botoes").html("");
                 });
             }
@@ -94,7 +96,7 @@
     };
 
     $(document) .ready(function(){
-        $("#matricula #rg").on('change', function(e){
+        $("#matricula .find-aluno").on('click', function(e){
             // Instancia de Matricula
             objMatricula = new Matricula();
             objMatricula.verifica();
