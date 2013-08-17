@@ -13,8 +13,12 @@
          	</div>
          </div>
          <?php
-            echo $this->Form->input('Matricula.aluno_id', array('type' => 'text'));
+            echo $this->Form->input('Matricula.aluno_id', array('type' => 'hidden'));            
             echo $this->Form->input('Matricula.codigo', array('type' => 'text'));
+            echo $this->Form->input('Matricula.turma_id', array(
+                'label'      => 'Turma',
+                'multiple'   => false
+            ));
         ?>
         <div id="botoes"></div>
 
