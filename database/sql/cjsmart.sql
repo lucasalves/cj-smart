@@ -82,8 +82,8 @@ CREATE  TABLE IF NOT EXISTS `cjsmart`.`educador` (
   `bairro` VARCHAR(50) NULL ,
   `cidade` VARCHAR(50) NULL ,
   `cep` VARCHAR(8) NULL ,
-  PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `rg` (`rg` ASC) )
+  `materia_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`, `materia_id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = latin1;

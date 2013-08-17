@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -20,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -32,6 +32,8 @@ App::uses('AppModel', 'Model');
  * @package       app.Model
  */
 class Educador extends AppModel {
+
     public $useTable = 'educador';
+    public $belongsTo = array('Materia');
 
 }

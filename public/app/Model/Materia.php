@@ -45,7 +45,10 @@ class Materia extends AppModel {
     public  $hasOne = array(
                         'Nota' => array(
                             'foreignKey' => 'materia_id'
-                        )
+                        ),
+                        'Educador' => array(
+                            'foreignKey' => 'materia_id'
+                        ),        
                     ); 
     
 //    public $validate = array(

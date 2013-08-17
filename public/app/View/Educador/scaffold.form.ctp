@@ -14,6 +14,7 @@
         echo $this->Form->input('Educador.numero',array('label'=>'Nº'));
         echo $this->Form->input('Educador.bairro',array('label'=>'Bairro'));
         echo $this->Form->input('Educador.cidade',array('label'=>'Cidade'));
+        echo $this->Form->input('Educador.materia_id',array('label'=>'Matéria'));
 
 
         ?>
