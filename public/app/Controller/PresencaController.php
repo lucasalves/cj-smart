@@ -43,52 +43,66 @@ class PresencaController extends AppController {
 
     public function add() {
 
+
         if ($this->request->data) {
             $this->autoRender = false;
-            
+
+            $turma_id = $this->request->data["Turma"]["id"];
+            $aula_id = $this->request->data["Presenca"]["aula_id"];
+
             // Recebe o array de matriculas selecionadas
             $matriculas = $this->request->data["Presenca"]["matricula_id"];
-            
+
             // Insere as matriculas por vez, marcando a ausencia
             foreach ($matriculas as $id_matricula):
                 $this->Presenca->create();
                 $this->Presenca->set(
                         array(
                             'status' => 2 // Ausente
-                            , 'aula_id' => $this->request->data["Presenca"]["aula_id"]
+                            , 'aula_id' => $aula_id
                             , 'matricula_id' => $id_matricula
                 ));
 
                 $this->Presenca->save();
             endforeach;
-            
-            // Redireciona 
-            $this->redirect("marcar");
-        }
-        
 
+            // Redireciona 
+            $this->redirect("marcar/{$turma_id}/{$aula_id}");
+        }
     }
-    
-    public function marcar(){
-        // Carrega a Lista de Aulas
-        $aulas = $this->Presenca->Aula->find('list', array(
-            'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => 3)
-                ));
-        
+
+    public function marcar($turma_id = null, $aula_id = null) {
+        //$this->autoRender = false;
+
         // Carrega a Lista de Turmas
         $this->loadModel('Turma');
         $turmas = $this->Turma->find('list', array('fields' => array('Turma.id', 'Turma.nome')
                 ));
 
+        // Carrega a Lista de Aulas
+        $aulas = $this->Presenca->Aula->find('list', array(
+            'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => $turma_id)
+                ));
+        $this->set(array('turmas' => $turmas, 'aulas'=>$aulas , 'aula_id' => $aula_id, 'turma_id'=>$turma_id));
+    }
+
+    public function lista() {        
         // Carrega a Lista de Aluno
-        $alunos = $this->Turma->find('all');
-
-
-        $this->set(array('aulas' => $aulas, 'turmas'=>$turmas, 'alunos'=>$alunos));  
+        $alunos = $this->Presenca->listaPresenca($this->request->query["turma_id"], $this->request->query["aula_id"]);
         
+        $this->set(array('alunos' => $alunos));
+    }
+    
+    public function carregar_aula(){
+       
+        $turma_id = $this->request->query;
         
+        // Carrega a Lista de Aulas
+        $aulas = $this->Presenca->Aula->find('list', array(
+            'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => $turma_id)
+                ));
         
-        
+        $this->set(array('aulas'=> $aulas));
     }
     
 
