@@ -88,4 +88,11 @@ class AppHelper extends Helper {
         }
     }
 
+    public function inRequest($name, $options){
+        if(!empty($this->request->query[$name])){
+            $options = array_merge(array('value' => $this->request->query[$name]), $options);
+        }
+        return $options;
+    }
+
 }

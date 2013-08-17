@@ -5,7 +5,8 @@
         <legend>Aluno</legend>
         <?
         echo $this->Form->input('Aluno.nome');
-        echo $this->Form->input('Aluno.rg', array('label' => 'RG'));
+
+        echo $this->Form->input('Aluno.rg', $this->Html->inRequest('rg', array('label' => 'RG')));
         echo $this->Form->input('Aluno.cpf', array('label' => 'CPF'));
         echo $this->Form->input('Aluno.logradouro', array('label' => 'Logradouro'));
         echo $this->Form->input('Aluno.cep', array('label' => 'CEP'));
