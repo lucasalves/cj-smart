@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -20,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -32,18 +32,45 @@ App::uses('AppModel', 'Model');
  * @package       app.Model
  */
 class Presenca extends AppModel {
-    public $useTable = 'presenca';
 
+    public $useTable = 'presenca';
     public $belongsTo = array(
         'Matricula' => array(
-            'className'  => 'Matricula',
+            'className' => 'Matricula',
             'foreignKey' => 'matricula_id'
         ),
         'Aula' => array(
-            'className'  => 'Aula',
+            'className' => 'Aula',
             'foreignKey' => 'aula_id'
         )
     );
-    
-    
+
+    public function listaPresenca($turma_id, $aula_id) {
+
+        $alunos = $this->Matricula->find('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
+
+        $ausentes = $this->find('all', array('conditions' => array('Presenca.aula_id' => $aula_id)));
+
+        $listaPresenca = array();
+        foreach ($alunos as $aluno):
+
+            $status = null;
+
+            foreach ($ausentes as $ausente):
+
+                if ($ausente["Presenca"]["matricula_id"] == $aluno["Matricula"]["id"]) {
+                    $status = $ausente["Presenca"]["status"];
+                }
+            endforeach;
+
+            $listaPresenca[] = array("codigo" => $aluno["Matricula"]["codigo"],
+                "nome" => $aluno["Aluno"]["nome"],
+                "matricula_id" => $aluno["Matricula"]["id"],
+                "status" => $status
+            );
+        endforeach;
+
+        return $listaPresenca;
+    }
+
 }
