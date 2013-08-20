@@ -37,7 +37,7 @@ class AlunoController extends AppController {
  * @var string
  */
     public $name = 'Aluno';
-    public $uses = array();
+    public $uses = array('Aluno');
 
     public $scaffold;
 

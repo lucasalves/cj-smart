@@ -33,6 +33,8 @@ App::uses('AppModel', 'Model');
  */
 class Aluno extends AppModel {
     public $useTable = 'aluno';
+    
+     public $displayField = 'nome';
 
     public  $hasMany = array(
                     'Matricula' => array(
