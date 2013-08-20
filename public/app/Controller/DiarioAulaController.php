@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -29,24 +30,41 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class CursoController extends AppController {
+class DiarioAulaController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
-	public $name = 'Curso';
+    /**
+     * Controller name
+     *
+     * @var string
+     */
+    public $name = 'DiarioAula';
+    public $uses = array();
 
+    //public $scaffold;
+    /**
+     * Displays a view
+     *
+     * @param mixed What page to display
+     * @return void
+     */
+    public function index() {
+        
+    }
 
-	public $uses = array();
+    public function registro($turma_id = null, $aula_id = null) {
+        //$this->autoRender = false;
+        // Carrega a Lista de Turmas
+        $this->loadModel('Turma');
+        $turmas = $this->Turma->find('list', array('fields' => array('Turma.id', 'Turma.nome')
+                ));
+        
+        $this->loadModel('Presenca');
+        // Carrega a Lista de Aulas
+        $aulas = $this->Presenca->Aula->find('list', array(
+            'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => $turma_id)
+                ));
 
-    public $scaffold;
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- */
+        $this->set(array('turmas' => $turmas, 'aulas' => $aulas, 'aula_id' => $aula_id, 'turma_id' => $turma_id));
+    }
 
 }

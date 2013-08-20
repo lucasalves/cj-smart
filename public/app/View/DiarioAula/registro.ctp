@@ -1,18 +1,15 @@
-
-<? // print_r($this->viewVars['alunos']);      ?>
-
-<?= $this->Html->script(array('presenca.js','janela.js')); ?>
+<?= $this->Html->script(array('presenca.js')); ?>
 
 <?php echo $this->Form->create(null, array('url' => '/presenca/add')); ?>
 
 <div>
     <h3>
-        Presença em Aula
+        Registro do Diário de Aula
     </h3>
     <div class='row-fluid'>
         <div class='btn-group btn-navba' style='float:right'>
             <?= $this->Html->link(__d('cake', 'Voltar '), array('action' => 'index'), array('class' => 'btn')); ?>
-            <input type ='submit' value = 'Salvar' id = 'Inserir' class='btn' />         
+            <input type ='submit' value = 'Salvar' id = 'Inserir' class='btn' />
         </div>
     </div>
     <div class="row-fluid">
@@ -31,22 +28,39 @@
                 </div>
                 <div class='span3'>
                     <?
-                    
-                        echo $this->Form->input('Presenca.aula_id', array(
-                            'label' => 'Aula',
-                            'options' => $this->viewVars['aulas'],
-                            'multiple' => false,
-                            'empty' => 'Selecione a Aula',
-                            'selected' => $aula_id
-                        ));
-                    
+                    echo $this->Form->input('Presenca.aula_id', array(
+                        'label' => 'Aula',
+                        'options' => $this->viewVars['aulas'],
+                        'multiple' => false,
+                        'empty' => 'Selecione a Aula',
+                        'selected' => $aula_id
+                    ));
                     ?>
                 </div>
             </div>
-            <div class="row-fluid" id="ListaAlunos"> 
-                
-            </div>
+
         </div>
+    </div>
+
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#presenca" data-toggle="tab">Faltas</a></li>
+        <li class=""><a href="#notas" data-toggle="tab">Notas</a></li>
+        <li class=""><a href="#ocorrencias" data-toggle="tab">Ocorrências</a></li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="presenca">
+            <div id="ListaPresenca"></div>
+        </div>
+        <div class="tab-pane fade" id="notas">
+            <div id="ListaNotas"></div>
+        </div>
+        <div class="tab-pane fade" id="ocorrencias">
+            <div id="ListaOcorrencias"></div>
+        </div>
+    </div>
+
+    <div class="row-fluid" id="ListaAlunos"> 
     </div>
 </div>
 

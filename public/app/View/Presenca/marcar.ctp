@@ -7,7 +7,7 @@
 
 <div>
     <h3>
-        Presença em Aula
+        Registro do Diário de Aula
     </h3>
     <div class='row-fluid'>
         <div class='btn-group btn-navba' style='float:right'>
@@ -44,7 +44,6 @@
                 </div>
             </div>
             <div class="row-fluid" id="ListaAlunos"> 
-                
             </div>
         </div>
     </div>
