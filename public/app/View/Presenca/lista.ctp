@@ -1,6 +1,8 @@
+<?php echo $this->Form->create(null, array('url' => '/presenca/add')); ?>
 <? if (count($this->viewVars['alunos']) > 0) { ?>
     <div class="row-fluid">
-        Esta Turma possui <?= count($this->viewVars['alunos']) ?> alunos
+        <span>Esta Turma possui <?= count($this->viewVars['alunos']) ?> alunos</span>
+        <input type ='submit' value = 'Salvar' id = 'Inserir' class='btn' style='float:right'/>
     </div>
     <table cellpadding="0" cellspacing="0" class='table table-striped' id='relatorio'>
         <tr>
@@ -27,3 +29,4 @@
         ?>
     <? } ?>
 </table>
+<?= $this->Form->end(); ?>

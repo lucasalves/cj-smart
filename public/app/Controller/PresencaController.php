@@ -67,7 +67,7 @@ class PresencaController extends AppController {
             endforeach;
 
             // Redireciona 
-            $this->redirect("marcar/{$turma_id}/{$aula_id}");
+            $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}");
         }
     }
 
@@ -83,6 +83,7 @@ class PresencaController extends AppController {
         $aulas = $this->Presenca->Aula->find('list', array(
             'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => $turma_id)
                 ));
+        
         $this->set(array('turmas' => $turmas, 'aulas'=>$aulas , 'aula_id' => $aula_id, 'turma_id'=>$turma_id));
     }
 
