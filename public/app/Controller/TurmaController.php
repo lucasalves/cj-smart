@@ -37,7 +37,7 @@ class TurmaController extends AppController {
  * @var string
  */
     public $name = 'Turma';
-    public $uses = array();
+    public $uses = array('Turma');
 
     public $scaffold;
 }

@@ -53,4 +53,27 @@ App::uses('AppModel', 'Model');
                 'foreignKey' => 'curso_id',
             )
         ); 
+        
+    public $validate = array(
+                'nome' => array(
+                       'rule'     => array('minLength', 1),
+                       'required' => true,
+                       'message'  => 'Nome da Turma é Obrigatória',
+                ),
+                'periodo' => array(
+                    'rule'    => array('minLength', 1),
+                    'required' => true,
+                    'message'  => 'Período é obrigatório',
+                ),
+                'curso_id' => array(
+                    'rule'    => array('minLength', 1),
+                    'required' => true,
+                    'message'  => 'Curso é obrigatório',
+                ),              
+                'data_criacao' => array(
+                    'rule'    => 'date',
+                    'required' => true,
+                    'message'  => 'Preencha com uma data válida',
+                ),
+    );
 }
