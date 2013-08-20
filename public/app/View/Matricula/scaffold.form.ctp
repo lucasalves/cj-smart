@@ -1,4 +1,4 @@
-<?= $this->Html->script(array('matricula.js', 'janela.js')); ?>
+    <?= $this->Html->script(array('matricula.js', 'janela.js')); ?>
 <?= $this->Form->create(array('id' => 'matricula')); ?>
 <div class="form">
     <div class="well">
@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<?= $this->element('modal', array('titulo' => 'Cadastrar Aluno')); ?>
+
 
 
 <?= $this->Form->end(); ?>
