@@ -70,7 +70,12 @@ class AppHelper extends Helper {
             "email" => "E-mail",
             "curriculo" => "Currículo",
             "rg" => "RG",
-            "endereco_id" => "Endereço",
+            
+            "numero" => "Número",
+            "bairro" => "Bairro",
+            "cidade" => "Cidade",
+            "materia_id" => "Matéria",
+            "status" => "Status",
             "descricao" => "Descrição",
             "duracao" => "Duração",
             "codigo" => "Código",
@@ -94,5 +99,6 @@ class AppHelper extends Helper {
         }
         return $options;
     }
+    
 
 }
