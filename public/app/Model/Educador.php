@@ -35,5 +35,43 @@ class Educador extends AppModel {
 
     public $useTable = 'educador';
     public $belongsTo = array('Materia');
+    
+    public $displayField = 'nome';
+    
+    public $validate = array(
+                'nome' => array(
+                       'rule'     => array('minLength', 1),
+                       'required' => true,
+                       'message'  => 'Nome é Obrigatório',
+                ),
+        'email' => array(
+            'email' => array(
+                'rule' => 'email',
+                'message' => 'Preencha com um e-mail válido'
+            )
+        ),
+        'telefone' => array(
+            'between' => array(
+                'rule' => array('between', 8, 9),
+                'message' => 'Telefone deve conter entre 8 e 9 caracteres'
+            )
+        ),
+        'rg' => array(
+            'rule' => array('minLength', 1),
+            'required' => true,
+            'message' => 'Rg é Obrigatório',
+        ),
+        'cep' => array(
+            'between' => array(
+                'rule' => array('between', 8, 8),
+                'message' => 'CEP Deve possuir 8 caracteres'
+            )
+        ),
+                'materia_id' => array(
+                       'rule'     => array('minLength', 1),
+                       'required' => true,
+                       'message'  => 'Matéria é Obrigatória',
+                ),
+    );
 
 }

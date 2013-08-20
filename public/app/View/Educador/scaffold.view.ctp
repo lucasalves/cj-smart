@@ -14,8 +14,8 @@
         <dt>E-mail:</dt>
         <dd><?=$this->data["Educador"]["email"];?></dd>
         <br/>
-        <dt>Currículo:</dt>
-        <dd><?=$this->data["Educador"]["curriculo"];?></dd>
+        <dt>Telefone:</dt>
+        <dd><?=$this->data["Educador"]["telefone"];?></dd>
         <br/>
         <dt>RG:</dt>
         <dd><?=$this->data["Educador"]["rg"];?></dd>
@@ -37,6 +37,9 @@
         <br/>
         <dt>Matéria:</dt>
         <dd><?=$this->data["Materia"]["nome"];?></dd>
+        <br/>
+        <dt>Status:</dt>
+        <dd><?=$this->data["Educador"]["status"];?></dd>
         <br/>
     </div>
 
