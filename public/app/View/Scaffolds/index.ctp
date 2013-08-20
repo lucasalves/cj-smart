@@ -22,7 +22,7 @@
                     <?php foreach ($scaffoldFields as $_field): ?>
                         <th><?php echo $this->Paginator->sort($_field, $this->Html->DescricaoCampo($_field)); ?></th>
                     <?php endforeach; ?>
-                    <th><?php // echo __d('cake', 'Actions');     ?></th>
+                    <th><?php // echo __d('cake', 'Actions');        ?></th>
                 </tr>
                 <?php
                 foreach (${$pluralVar} as ${$singularVar}):
@@ -48,8 +48,12 @@
                         }
                     }
 
+
                     echo '<td class="actions">';
-                    echo ' ' . $this->Form->postLink('', array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), array('class' => 'link link-deletar', 'title' => 'Excluir Registro'), __d('cake', "Deseja realmente excluir {$pluralHumanName}? "));
+
+                    if (!in_array($modelClass, array('Educador'))) {
+                        echo ' ' . $this->Form->postLink('', array('action' => 'delete', ${$singularVar}[$modelClass][$primaryKey]), array('class' => 'link link-deletar', 'title' => 'Excluir Registro'), __d('cake', "Deseja realmente excluir {$pluralHumanName}? "));
+                    }
                     echo ' ' . $this->Html->link('', array('action' => 'edit', ${$singularVar}[$modelClass][$primaryKey]), array('class' => 'link link-editar', 'title' => 'Editar Registro'));
 
                     echo '</td>';
@@ -61,18 +65,9 @@
         </div>
     </div>
 
+    <?= $this->element('paginacao'); ?>
 
 
-    <div class="pagination">
-        <ul>
-
-            <?php
-            echo $this->Paginator->prev('< ' . __d('cake', 'anterior'), array(), null, array('class' => 'prev disabled', 'tag'=>'li'));
-            echo $this->Paginator->numbers(array('separator' => '',));
-            echo $this->Paginator->next(__d('cake', 'próxima') . ' >', array(), null, array('class' => 'next disabled', 'tag'=>'li'));
-            ?>
-        </ul>
-    </div>
 
 </div>
 
