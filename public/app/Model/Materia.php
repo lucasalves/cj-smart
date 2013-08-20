@@ -50,15 +50,4 @@ class Materia extends AppModel {
                             'foreignKey' => 'materia_id'
                         ),        
                     ); 
-    
-//    public $validate = array(
-//                'nome' => array(
-//                       'rule'     => array('minLength', 1),
-//                       'required' => true,
-//                       'message'  => 'Digite um nome valido para Materia',
-//                )                           
-//    );
-    
-    
-
 }

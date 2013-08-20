@@ -38,7 +38,25 @@ class MateriaController extends AppController {
      * @var string
      */
     public $name = 'Materia';
-    public $uses = array();
+    public $uses = array('Materia');
     public $scaffold;
+
+    public function add_ajax() {
+        $this->autoRender = false;
+        
+        if ($this->request->is('post')) {
+            if ($resp = $this->Materia->save($this->request->data)) {
+                $resp = array_merge(
+                        array('status' => true), $resp
+                );
+            } else {
+                $resp = array_merge(
+                        array('status' => false), $this->Materia->validationErrors
+                );
+            }
+        }
+
+        echo json_encode($resp);
+    }
 
 }
