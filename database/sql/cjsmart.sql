@@ -23,16 +23,25 @@ USE `cjsmart`;
 --
 
 DROP TABLE IF EXISTS `aluno`;
-CREATE TABLE IF NOT EXISTS `aluno` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) DEFAULT NULL,
-  `rg` varchar(20) DEFAULT NULL,
-  `cpf` varchar(20) DEFAULT NULL,
-  `logradouro` varchar(100) DEFAULT NULL,
-  `cep` varchar(80) DEFAULT NULL,
-  `responsavel` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`aluno` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(50) NULL DEFAULT NULL ,
+  `telefone` INT(9) NULL ,
+  `data_nascimento` DATE NULL ,
+  `responsavel` VARCHAR(100) NULL DEFAULT NULL ,
+  `telefone_responsavel` INT(9) NULL ,
+  `email_responsavel` VARCHAR(45) NULL ,
+  `rg` VARCHAR(20) NULL DEFAULT NULL ,
+  `cep` VARCHAR(80) NULL DEFAULT NULL ,
+  `logradouro` VARCHAR(100) NULL DEFAULT NULL ,
+  `numero` VARCHAR(20) NULL ,
+  `bairro` VARCHAR(45) NULL ,
+  `cidade` VARCHAR(45) NULL ,
+  `email` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = latin1;
 -- --------------------------------------------------------
 
 --
@@ -75,14 +84,15 @@ CREATE  TABLE IF NOT EXISTS `cjsmart`.`educador` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(100) NOT NULL ,
   `email` VARCHAR(100) NOT NULL ,
-  `curriculo` TEXT NULL ,
   `rg` VARCHAR(12) NOT NULL ,
+  `telefone` VARCHAR(45) NULL ,
   `endereco` VARCHAR(500) NULL DEFAULT NULL ,
-  `numero` VARCHAR(10) NULL ,
-  `bairro` VARCHAR(50) NULL ,
-  `cidade` VARCHAR(50) NULL ,
+  `numero` VARCHAR(20) NULL ,
+  `bairro` VARCHAR(45) NULL ,
+  `cidade` VARCHAR(45) NULL ,
   `cep` VARCHAR(8) NULL ,
   `materia_id` INT(11) NOT NULL ,
+  `status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A:Ativado - D: Desativado\'' ,
   PRIMARY KEY (`id`, `materia_id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
@@ -195,14 +205,16 @@ CREATE TABLE IF NOT EXISTS `responsavel` (
 --
 
 DROP TABLE IF EXISTS `turma`;
-CREATE TABLE IF NOT EXISTS `turma` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(200) NOT NULL,
-  `periodo` enum('Manha','Tarde','Noite') NOT NULL,
-  `data_criacao` date DEFAULT NULL,
-  `curso_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-);
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`turma` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(200) NOT NULL ,
+  `periodo` VARCHAR(1) NOT NULL COMMENT 'M:Manhã, T:Tarde, N:Noite' ,
+  `data_criacao` DATE NULL DEFAULT NULL ,
+  `curso_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = latin1;
 
 -- --------------------------------------------------------
 
