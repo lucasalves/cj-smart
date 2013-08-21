@@ -1,7 +1,4 @@
 <?= $this->Html->script(array('presenca.js')); ?>
-
-<?php echo $this->Form->create(null, array('url' => '/presenca/add')); ?>
-
 <div>
     <h3>
         Registro do Diário de Aula
@@ -67,4 +64,3 @@
 <script>
     $(document)
 </script>
-<?= $this->Form->end(); ?>
