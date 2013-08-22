@@ -302,14 +302,14 @@ DEFAULT CHARACTER SET = latin1;
 -- Estrutura da tabela `ocorrencia`
 --
 
-
+DROP TABLE IF EXISTS `ocorrencia`;
 CREATE  TABLE IF NOT EXISTS `cjsmart`.`ocorrencia` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT ,
-  `data` DATE NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `descricao` TEXT NOT NULL ,
+  `gravidade` VARCHAR(1) NULL DEFAULT 'B' COMMENT 'A:Alta - B:Baixa' ,
   `aula_id` INT(10) NOT NULL ,
   `matricula_id` INT(10) NOT NULL ,
-  PRIMARY KEY (`id`, `aula_id`, `matricula_id`) )
+  PRIMARY KEY (`id`, `aula_id`, `matricula_id`))
 ENGINE = InnoDB;
 
 -- --------------------------------------------------------
