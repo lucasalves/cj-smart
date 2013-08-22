@@ -37,7 +37,38 @@ class OcorrenciaController extends AppController {
  * @var string
  */
     public $name = 'Ocorrencia';
-    public $uses = array();
+    public $uses = array('Ocorrencia');
 
     public $scaffold;
+    
+    
+        public function add_ajax() {
+        $this->autoRender = false;
+            
+        
+        if ($this->request->is('post')) {
+            
+           
+            if ($resp = $this->Ocorrencia->save($this->request->data)) {
+                $resp = array_merge(
+                        array('status' => true), $resp
+                );
+            } else {
+                $resp = array_merge(
+                        array('status' => false), $this->Ocorrencia->validationErrors
+                );
+            }
+        }
+
+        echo json_encode($resp);
+    }
+    
+    public function lista(){   
+        
+        
+        $aula_id =  $this->request->query["aula_id"];
+        $ocorrencias =  $this->Ocorrencia->find('all',array('conditions'=> array('Ocorrencia.aula_id' => $aula_id)));
+        $this->set('ocorrencias', $ocorrencias);
+    }
+
 }

@@ -13,7 +13,6 @@
                 <li><a href="<?php echo Router::url("/aula"); ?>">Aulas</a></li>
                 <!--<li><a href="<?php echo Router::url("/nota"); ?>">Notas</a></li>-->
                 <li><a href="<?php echo Router::url("/diarioaula/"); ?>">Diário de Aula</a></li>
-                <li><a href="<?php echo Router::url("/presenca/marcar"); ?>">Presenca</a></li>
                 <li class='nav-header'>Acadêmico</li>
 
             </ul>

@@ -77,6 +77,7 @@ class Presenca extends AppModel {
 
     function add($matriculas, $aula_id) {
         
+        $this->create();
         $this->delete($aula_id);
         
         // Insere as matriculas por vez, marcando a ausencia

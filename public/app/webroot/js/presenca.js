@@ -23,6 +23,16 @@
             
         };
         
+        this.listaOcorrencias = function(){            
+            $.get(ajaxurl + 'ocorrencia/lista', {
+                aula_id: this.aula_id
+            }, function(response){
+                var html = $(response).find("#corpo").html();
+                $("#ListaOcorrencias").html(html);
+            });
+        };    
+        
+        
         this.lista = function(){            
             $.get(ajaxurl + 'presenca/lista', {
                 turma_id: $("#TurmaId").val()
@@ -58,7 +68,8 @@
         
         $("#PresencaAulaId").on('change', function(e){
             objPresenca.setAulaId();    
-            objPresenca.lista();            
+            objPresenca.lista();  
+            objPresenca.listaOcorrencias();
         });
     });
     

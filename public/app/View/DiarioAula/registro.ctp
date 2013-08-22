@@ -1,4 +1,4 @@
-<?= $this->Html->script(array('presenca.js')); ?>
+<?= $this->Html->script(array('presenca.js','ocorrencia.js')); ?>
 <div>
     <h3>
         Registro do Diário de Aula
