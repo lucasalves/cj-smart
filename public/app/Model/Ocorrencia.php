@@ -34,5 +34,12 @@ App::uses('AppModel', 'Model');
 class Ocorrencia extends AppModel {
     public $useTable = 'ocorrencia';
 
-
+     public $belongsTo = array(
+							"Matricula" => array( 
+							    "className"  => "Matricula"
+							),
+							"Aula" => array( 
+							    "className"  => "Aula"
+							)
+                        );
 }

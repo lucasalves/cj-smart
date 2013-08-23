@@ -48,6 +48,12 @@ class Matricula extends AppModel {
             'foreignKey' => 'matricula_id'
         )
     );
+
+    public $hasMany = array(
+        'Ocorrencia' => array(
+            'foreignKey' => 'matricula_id'
+        )
+    );
     public $belongsTo = array(
         'Aluno',
         'Turma'

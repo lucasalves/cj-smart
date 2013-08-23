@@ -45,6 +45,12 @@ class Aula extends AppModel {
         )
     );
 
+    public $hasMany = array(
+        'Ocorrencia' => array(
+            'foreignKey' => 'aula_id'
+        )
+    );
+
     public function toEvents($data){   
     	$events = array();
 
