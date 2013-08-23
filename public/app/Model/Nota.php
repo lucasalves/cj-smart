@@ -44,4 +44,40 @@ class Nota extends AppModel {
             'foreignKey' => 'matricula_id'
         )
     );
+    
+    
+    public function getlistaNota($turma_id){
+        
+
+        $alunos = $this->Matricula->find('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
+        
+        
+        $this->Matricula->Turma->getMeses();
+        //$meses = $this->find('all', array('conditions' => array('Presenca.aula_id' => $aula_id)));
+
+//        $listaPresenca = array();
+//        foreach ($alunos as $aluno):
+//
+//            $status = null;
+//
+//            foreach ($ausentes as $ausente):
+//
+//                if ($ausente["Presenca"]["matricula_id"] == $aluno["Matricula"]["id"]) {
+//                    $status = $ausente["Presenca"]["status"];
+//                }
+//            endforeach;
+//
+//            $listaPresenca[] = array("codigo" => $aluno["Matricula"]["codigo"],
+//                "nome" => $aluno["Aluno"]["nome"],
+//                "matricula_id" => $aluno["Matricula"]["id"],
+//                "turma_id" => $turma_id,
+//                "aula_id" => $aula_id,
+//                "status" => $status
+//            );
+//        endforeach;
+//
+//        return $listaPresenca;
+        
+    }
+    
 }

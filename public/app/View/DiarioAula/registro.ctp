@@ -4,10 +4,10 @@
         Registro do Diário de Aula
     </h3>
     <div class='row-fluid'>
-        <div class='btn-group btn-navba' style='float:right'>
+<!--        <div class='btn-group btn-navba' style='float:right'>
             <?= $this->Html->link(__d('cake', 'Voltar '), array('action' => 'index'), array('class' => 'btn')); ?>
             <input type ='submit' value = 'Salvar' id = 'Inserir' class='btn' />
-        </div>
+        </div>-->
     </div>
     <div class="row-fluid">
         <div class="well" >

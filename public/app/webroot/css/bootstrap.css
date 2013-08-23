@@ -6381,3 +6381,13 @@ body {
 
 .divInput{float:left;}
 .error-message{color:red;font-style: italic;margin-bottom: 10px;}
+.data-nota{
+    width: 20px;
+    text-align: center;
+}
+
+.valor-nota input{
+    width: 40px;
+    background-color:#d8d8d8;
+    text-align: center;
+}
