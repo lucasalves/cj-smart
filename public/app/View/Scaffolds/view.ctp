@@ -22,7 +22,7 @@
                 foreach ($associations['belongsTo'] as $_alias => $_details) {
                     if ($_field === $_details['foreignKey']) {
                         $isKey = true;
-                        echo "\t\t<dt>" . Inflector::humanize($_alias) . "</dt>\n";
+                        echo "\t\t<dt>" . Inflector::humanize($this->Html->DescricaoCampo($_alias)) . "</dt>\n";
                         echo "\t\t<dd>\n\t\t\t";
                         echo $this->Html->link(
                                 ${$singularVar}[$_alias][$_details['displayField']], array('plugin' => $_details['plugin'], 'controller' => $_details['controller'], 'action' => 'view', ${$singularVar}[$_alias][$_details['primaryKey']])

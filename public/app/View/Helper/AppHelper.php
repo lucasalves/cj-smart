@@ -82,7 +82,11 @@ class AppHelper extends Helper {
             "cpf" => "CPF",
             "logradouro" => "Logradouro",
             "cep" => "CEP",
-            "responsavel" => "Responsável"
+            "responsavel" => "Responsável",
+            "aluno_id"  => "Aluno",
+            "turma_id"  => "Turma",
+            "data"          => "Data"
+            
         );
 
 
