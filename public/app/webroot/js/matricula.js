@@ -64,7 +64,7 @@
             $("#botoes").html(html);
         };
 
-        $('body').on('click', '#UsuarioAddForm #Inserir', function(e){
+        $('body').on('click', '#AlunoAddForm #Inserir', function(e){
             e.preventDefault();
             
             var data = {};
