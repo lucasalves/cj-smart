@@ -7,6 +7,7 @@
         <?php
         echo $this->Form->input('Matricula.aluno_id', array('type' => 'hidden'));
         echo $this->Form->input('Matricula.codigo', array('type' => 'hidden'));
+        echo $this->Form->input('Matricula.data', array('type' => 'hidden', 'value' => date("Y-m-d")));
         echo $this->Form->input('Matricula.turma_id', array(
             'label' => 'Turma',
             'multiple' => false,
