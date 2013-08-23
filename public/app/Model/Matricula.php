@@ -59,4 +59,12 @@ class Matricula extends AppModel {
         'Turma'
     );
 
+    public function afterSave($options){
+        if(empty($this->data['Matricula']['codigo'])){
+            $this->data['Matricula']['codigo'] = $this->data['Matricula']['id'];
+            $this->save($this->data);
+        }
+        return true;
+    }
+
 }
