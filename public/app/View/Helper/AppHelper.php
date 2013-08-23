@@ -85,7 +85,8 @@ class AppHelper extends Helper {
             "responsavel" => "Responsável",
             "aluno_id"  => "Aluno",
             "turma_id"  => "Turma",
-            "data"          => "Data"
+            "data"          => "Data",
+            "data_formato"  => "d/m/Y"
             
         );
 
