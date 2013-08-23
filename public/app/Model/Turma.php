@@ -76,4 +76,10 @@ App::uses('AppModel', 'Model');
                     'message'  => 'Preencha com uma data válida',
                 ),
     );
+    
+    public function getMeses(){
+        
+        echo $this->id;
+        
+    }
 }

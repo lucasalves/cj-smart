@@ -32,6 +32,15 @@
             });
         };    
         
+        this.listaNotas = function(){            
+            $.get(ajaxurl + 'nota/lista', {
+                turma_id: $("#TurmaId").val()
+            }, function(response){
+                var html = $(response).find("#corpo").html();
+                $("#ListaNotas").html(html);
+            });
+        };     
+        
         
         this.lista = function(){            
             $.get(ajaxurl + 'presenca/lista', {
@@ -61,9 +70,11 @@
         objPresenca = new Presenca();
         objPresenca.setAulaId();    
         objPresenca.lista(); 
+        objPresenca.listaNotas(); 
             
         $("#TurmaId").on('change', function(e){
             objPresenca.aulas();
+            objPresenca.listaNotas(); 
         });
         
         $("#PresencaAulaId").on('change', function(e){

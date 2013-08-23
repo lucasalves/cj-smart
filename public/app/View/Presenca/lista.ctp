@@ -29,7 +29,7 @@
                 echo "<td>{$aluno["codigo"]}</td>";
                 echo "<td>{$aluno["nome"]}</td>";
                 echo "<td> <input type ='checkbox' name='data[Presenca][matricula_id][]' value = '{$aluno["matricula_id"]}' {$checked} /></td>";
-                echo "<td><span type='button' name='1' class='btn NovaOcorrencia'>Ocorrência</span></td>";
+                echo "<td><span type='button' name='1' class='btn btn-small btn-info NovaOcorrencia'>Ocorrência</span></td>";
                 echo "</tr>";
             endforeach;
             ?>

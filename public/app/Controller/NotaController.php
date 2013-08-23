@@ -40,4 +40,15 @@ class NotaController extends AppController {
     public $uses = array('Nota');
 
     public $scaffold;
+    
+    public function lista() {
+        
+        $this->autoRender = false;
+        $turma_id = $this->request->query["turma_id"];
+
+        // Carrega a Lista Notas dos Alunos
+        $alunos = $this->Nota->getlistaNota($this->request->query["turma_id"]);
+
+        $this->set(array('alunos' => $alunos, 'turma_id' => $turma_id));
+    }
 }
