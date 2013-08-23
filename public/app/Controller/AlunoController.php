@@ -53,7 +53,9 @@ class AlunoController extends AppController {
     		}else{    			
     			$resp = array_merge(
     							array('status' => false),
-    							$this->Aluno->validationErrors
+    							array(
+                                    'errors' => $this->Aluno->validationErrors
+                                )
     						);
     		}
     	}
