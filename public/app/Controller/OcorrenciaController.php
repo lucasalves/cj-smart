@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -31,24 +32,22 @@ App::uses('AppController', 'Controller');
  */
 class OcorrenciaController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
+    /**
+     * Controller name
+     *
+     * @var string
+     */
     public $name = 'Ocorrencia';
     public $uses = array('Ocorrencia');
-
     public $scaffold;
-    
-    
-        public function add_ajax() {
+
+    public function add_ajax() {
         $this->autoRender = false;
-            
-        
+
+
         if ($this->request->is('post')) {
-            
-           
+
+
             if ($resp = $this->Ocorrencia->save($this->request->data)) {
                 $resp = array_merge(
                         array('status' => true), $resp
@@ -62,13 +61,36 @@ class OcorrenciaController extends AppController {
 
         echo json_encode($resp);
     }
-    
-    public function lista(){   
+
+    public function lista() {
+
+//        $this->autoRender = false;
+        $aula_id = $this->request->query["aula_id"];
+
+        $matriculas = $this->Ocorrencia->Matricula->find('all');
         
+        $listaOcorrencia = array();
         
-        $aula_id =  $this->request->query["aula_id"];
-        $ocorrencias =  $this->Ocorrencia->find('all',array('conditions'=> array('Ocorrencia.aula_id' => $aula_id)));
-        $this->set('ocorrencias', $ocorrencias);
+        foreach ($matriculas as $matricula):
+
+            $ocorrencias = $matricula["Ocorrencia"];
+            if (count($ocorrencias) > 0) {
+
+                foreach ($ocorrencias as $ocorrencia):
+
+                    if ($ocorrencia["aula_id"] == $aula_id) {
+                        $listaOcorrencia[] = array('nome' => $matricula["Aluno"]["nome"]
+                            , 'descricao' => $ocorrencia["descricao"]);
+                        ;
+                    }
+                endforeach;
+            }
+        endforeach;
+
+//        print_r($matriculas);
+
+
+        $this->set('ocorrencias', $listaOcorrencia);
     }
 
 }

@@ -37,8 +37,8 @@
 
                 $.post(ajaxurl + 'ocorrencia/add_ajax',data, function(response){
                     if(response.status){
-                        App.Modal.close();  
-                        self.lista();
+                        App.Modal.close(); 
+                        
                     }
                 }, 'json');                       
             });

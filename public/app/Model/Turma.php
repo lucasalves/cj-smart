@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -20,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -31,55 +31,61 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-    class Turma extends AppModel {
-        public $useTable = 'turma';
-        
-        public $displayField = 'nome';
+class Turma extends AppModel {
 
-        public $hasMany = array(
-            'Aula' => array(
-                'className'  => 'Aula',
-                'foreignKey' => 'turma_id'
-            ),
-            'Matricula' => array(
-                'className'  => 'Matricula',
-                'foreignKey' => 'turma_id'
-            )
-        );
-
-        public $belongsTo = array(
-            'Curso' => array(
-                'className'  => 'Curso',
-                'foreignKey' => 'curso_id',
-            )
-        ); 
-        
-    public $validate = array(
-                'nome' => array(
-                       'rule'     => array('minLength', 1),
-                       'required' => true,
-                       'message'  => 'Nome da Turma é Obrigatória',
-                ),
-                'periodo' => array(
-                    'rule'    => array('minLength', 1),
-                    'required' => true,
-                    'message'  => 'Período é obrigatório',
-                ),
-                'curso_id' => array(
-                    'rule'    => array('minLength', 1),
-                    'required' => true,
-                    'message'  => 'Curso é obrigatório',
-                ),              
-                'data_criacao' => array(
-                    'rule'    => 'date',
-                    'required' => true,
-                    'message'  => 'Preencha com uma data válida',
-                ),
+    public $useTable = 'turma';
+    public $displayField = 'nome';
+    public $hasMany = array(
+        'Aula' => array(
+            'className' => 'Aula',
+            'foreignKey' => 'turma_id'
+        ),
+        'Matricula' => array(
+            'className' => 'Matricula',
+            'foreignKey' => 'turma_id'
+        )
     );
-    
-    public function getMeses(){
-        
-        echo $this->id;
-        
+    public $belongsTo = array(
+        'Curso' => array(
+            'className' => 'Curso',
+            'foreignKey' => 'curso_id',
+        )
+    );
+    public $validate = array(
+        'nome' => array(
+            'rule' => array('minLength', 1),
+            'required' => true,
+            'message' => 'Nome da Turma é Obrigatória',
+        ),
+        'periodo' => array(
+            'rule' => array('minLength', 1),
+            'required' => true,
+            'message' => 'Período é obrigatório',
+        ),
+        'curso_id' => array(
+            'rule' => array('minLength', 1),
+            'required' => true,
+            'message' => 'Curso é obrigatório',
+        ),
+        'data_criacao' => array(
+            'rule' => 'date',
+            'required' => true,
+            'message' => 'Preencha com uma data válida',
+        ),
+    );
+
+    public function getMeses($turma_id) {
+
+        $turmas = $this->find('all', array('conditions' => array('Turma.id' => $turma_id)));
+
+        foreach ($turmas as $turma):
+            $data_criacao = $turma["Turma"]["data_criacao"];
+            $duracao_meses = $turma["Curso"]["duracao"];
+        endforeach;
+
+        // called as CakeTime
+        App::uses('CakeTime', 'Utility');
+ 
     }
+
 }

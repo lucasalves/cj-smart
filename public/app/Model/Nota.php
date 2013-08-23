@@ -51,8 +51,8 @@ class Nota extends AppModel {
 
         $alunos = $this->Matricula->find('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
         
-        
-        $this->Matricula->Turma->getMeses();
+//        print_r($this->Matricula->Turma);
+        $this->Matricula->Turma->getMeses($turma_id);
         //$meses = $this->find('all', array('conditions' => array('Presenca.aula_id' => $aula_id)));
 
 //        $listaPresenca = array();
