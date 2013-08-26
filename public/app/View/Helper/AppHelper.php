@@ -70,7 +70,9 @@ class AppHelper extends Helper {
             "email" => "E-mail",
             "curriculo" => "Currículo",
             "rg" => "RG",
-            
+            "data_nascimento" => "Data Nascimento",
+            "telefone_responsavel" => "Tel. Responsavel",
+            "email_responsavel"  => "Email Responsavel",
             "numero" => "Número",
             "bairro" => "Bairro",
             "cidade" => "Cidade",
