@@ -1,0 +1,16 @@
+tocTab[tocTab.length] = new Array("4.1.4.1:1", "", "Criar Curso", "EARoot/EA4/EA1/EA4/EA1/EA324.htm", "188.png", "270", "0", "", "Custom diagram0","{081BBF20-C190-4956-9CFC-A4B83E3E5AF1}");
+tocTab[tocTab.length] = new Array("4.1.4.1:2", "", "Novo Curso", "EARoot/EA4/EA1/EA4/EA1/EA326.htm", "11.png", "1648", "0", "", "Screen0","{DD278CCD-CC00-424f-B255-81AA5444222E}");
+tocTab[tocTab.length] = new Array("4.1.4.1:3", "", "Popup Confirmação", "EARoot/EA4/EA1/EA4/EA1/EA327.htm", "11.png", "1657", "0", "", "Screen0","{3DB201F6-C820-4b75-BBA3-9B260A176E5C}");
+tocTab[tocTab.length] = new Array("4.1.4.1:4", "", "Tela Inicial Perfil Coordenadora", "EARoot/EA4/EA1/EA4/EA1/EA328.htm", "11.png", "1661", "0", "", "Screen0","{24A8B33C-0E1F-4180-9E99-3FCBC690B02C}");
+tocTab[tocTab.length] = new Array("4.1.4.1:5", "", "«list» 6 meses", "EARoot/EA4/EA1/EA4/EA1/EA329.htm", "16.png", "1655", "1648", "", "GUIElement0","{7D588DA2-E1BD-4bbe-B74B-4A0EB4D0E72F}");
+tocTab[tocTab.length] = new Array("4.1.4.1:6", "", "«button» Criar", "EARoot/EA4/EA1/EA4/EA1/EA330.htm", "16.png", "1656", "1648", "", "GUIElement0","{67B9CD3D-60EB-4fc5-B46F-265C61FE99B5}");
+tocTab[tocTab.length] = new Array("4.1.4.1:7", "", "«label» Descrição", "EARoot/EA4/EA1/EA4/EA1/EA331.htm", "16.png", "1650", "1648", "", "GUIElement0","{C3618FBD-4454-4bcf-A05E-558F4AC65538}");
+tocTab[tocTab.length] = new Array("4.1.4.1:8", "", "«label» Duração:", "EARoot/EA4/EA1/EA4/EA1/EA332.htm", "16.png", "1651", "1648", "", "GUIElement0","{5F0E3F66-6204-48cf-852D-B8E30C1BBF7B}");
+tocTab[tocTab.length] = new Array("4.1.4.1:9", "", "«text» Informática", "EARoot/EA4/EA1/EA4/EA1/EA333.htm", "16.png", "1652", "1648", "", "GUIElement0","{4378FCEB-BE03-47fd-B3A5-2414A9C4E58F}");
+tocTab[tocTab.length] = new Array("4.1.4.1:10", "", "«label» Nome", "EARoot/EA4/EA1/EA4/EA1/EA334.htm", "16.png", "1649", "1648", "", "GUIElement0","{EACE1829-861B-4900-80DA-B8D63E621D54}");
+tocTab[tocTab.length] = new Array("4.1.4.1:11", "", "«text» O curso de informática visa a formação de profissionais de TI", "EARoot/EA4/EA1/EA4/EA1/EA335.htm", "16.png", "1653", "1648", "", "GUIElement0","{4A8F4E19-E225-4798-9A1F-164334E18D9A}");
+tocTab[tocTab.length] = new Array("4.1.4.1:12", "", "«label» Deseja cria o curso Informática?", "EARoot/EA4/EA1/EA4/EA1/EA336.htm", "16.png", "1658", "1657", "", "GUIElement0","{BB39F3F0-BBDE-48d5-9A70-297C313601C7}");
+tocTab[tocTab.length] = new Array("4.1.4.1:13", "", "«button» Não", "EARoot/EA4/EA1/EA4/EA1/EA337.htm", "16.png", "1660", "1657", "", "GUIElement0","{8A04EF05-B7DC-47b7-B96B-1D8E09E92FD4}");
+tocTab[tocTab.length] = new Array("4.1.4.1:14", "", "«button» Sim", "EARoot/EA4/EA1/EA4/EA1/EA338.htm", "16.png", "1659", "1657", "", "GUIElement0","{C9B84308-5BEA-4fbd-9660-921BD14AE9F9}");
+tocTab[tocTab.length] = new Array("4.1.4.1:15", "", "«button» Novo Curso", "EARoot/EA4/EA1/EA4/EA1/EA339.htm", "16.png", "1663", "1661", "", "GUIElement0","{878693B6-2973-4b90-AB92-4B898AA249D1}");
+tocTab[tocTab.length] = new Array("4.1.4.1:16", "", "«label» Usuário logado: Magali", "EARoot/EA4/EA1/EA4/EA1/EA340.htm", "16.png", "1662", "1661", "", "GUIElement0","{3BC0C6A8-8291-4b86-8D78-E07F7C8F81A7}");

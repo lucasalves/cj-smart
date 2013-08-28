@@ -1,0 +1,4 @@
+tocTab[tocTab.length] = new Array("1", "1", "Projeto do Sistema de Gestão das Solicitações de Afastamento", "EARoot/EA1.htm", "31.png", "", "", "{6BB1EF80-555D-474c-A2CC-5BE03026514B}", "Package");
+tocTab[tocTab.length] = new Array("2", "1", "Análise do Sistema", "EARoot/EA2.htm", "34.png", "", "", "{C59580FB-491C-4099-A422-028130F4CFC1}", "Package");
+tocTab[tocTab.length] = new Array("3", "1", "Projeto do Sistema", "EARoot/EA3.htm", "34.png", "", "", "{682D2B9C-44BA-4715-ABC5-773EEF43443E}", "Package");
+tocTab[tocTab.length] = new Array("4", "1", "Análise de Software", "EARoot/EA4.htm", "29.png", "", "", "{D0892CE1-A4C9-4c6c-BEAF-4BB454ED069D}", "Package");

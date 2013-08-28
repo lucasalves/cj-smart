@@ -1,0 +1,3 @@
+tocTab[tocTab.length] = new Array("4:1", "", "Análise de Software", "EARoot/EA4/EA247.htm", "175.png", "146", "0", "", "Logical diagram0","{2B7BF8CA-4A94-4c3b-BFBF-16253663D646}");
+tocTab[tocTab.length] = new Array("4.1", "1", "Subsistema de Coordenadoria de Ensino", "EARoot/EA4/EA255.htm", "4.png", "", "", "{8809F5BC-9EAA-422d-A3F7-BEDA0BCBD21E}", "Package");
+tocTab[tocTab.length] = new Array("4.2", "1", "Subsistema de Secretaria", "EARoot/EA4/EA256.htm", "4.png", "", "", "{596B65FB-B960-4458-A774-51A8B8FB0F3B}", "Package");

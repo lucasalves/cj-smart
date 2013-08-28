@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("4.2.2.2:1", "", "Realização dos Casos de Uso", "EARoot/EA4/EA2/EA2/EA2/EA587.htm", "180.png", "176", "0", "", "Use Case diagram0","{8584C908-A235-454a-9302-BA92C7B22F90}");
+tocTab[tocTab.length] = new Array("4.2.2.2.1", "1", "Registrar Diário de Aula", "EARoot/EA4/EA2/EA2/EA2/EA589.htm", "4.png", "", "", "{D80AA654-50C9-4a66-A786-74D3320F65E0}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.2.2", "1", "Matricular Aluno", "EARoot/EA4/EA2/EA2/EA2/EA590.htm", "4.png", "", "", "{2EBDDCFB-1831-4c36-961E-2215C82F0A8F}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.2.3", "1", "Gerar Aviso de Faltas", "EARoot/EA4/EA2/EA2/EA2/EA591.htm", "4.png", "", "", "{BC38335D-9249-4166-ABBF-0737E467CCCF}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.2.4", "1", "Emitir Boletins", "EARoot/EA4/EA2/EA2/EA2/EA592.htm", "4.png", "", "", "{F038E623-9A9E-41ac-A92A-A9B297A4C8D6}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.2.5", "1", "Abonar Falta", "EARoot/EA4/EA2/EA2/EA2/EA593.htm", "4.png", "", "", "{A9597F13-6A47-42dd-B8CA-827E9EC94719}", "Package");

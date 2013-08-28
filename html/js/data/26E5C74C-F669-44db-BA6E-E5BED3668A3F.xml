@@ -1,0 +1,5 @@
+tocTab[tocTab.length] = new Array("4.2.1.4:1", "", "Storyboard", "EARoot/EA4/EA2/EA1/EA4/EA419.htm", "188.png", "232", "0", "", "Custom diagram0","{36F7C554-8DDA-4faa-9D42-EE0AE1A83B90}");
+tocTab[tocTab.length] = new Array("4.2.1.4.1", "1", "Notificar Responsável", "EARoot/EA4/EA2/EA1/EA4/EA421.htm", "4.png", "", "", "{3A6CFF03-E264-4954-9F5B-3804014101AF}", "Package");
+tocTab[tocTab.length] = new Array("4.2.1.4.2", "1", "Atribuir Data para Atividade", "EARoot/EA4/EA2/EA1/EA4/EA422.htm", "4.png", "", "", "{85F7F1B2-F46A-4542-8684-0E0F990AD440}", "Package");
+tocTab[tocTab.length] = new Array("4.2.1.4.3", "1", "Advertir Aluno devido a 3 ocorrências", "EARoot/EA4/EA2/EA1/EA4/EA423.htm", "4.png", "", "", "{5D62008A-238F-4055-8400-FCAB2E4F2A9F}", "Package");
+tocTab[tocTab.length] = new Array("4.2.1.4.4", "1", "Advertir Aluno por Ocorrência Grave", "EARoot/EA4/EA2/EA1/EA4/EA424.htm", "4.png", "", "", "{02370250-7554-4b73-9896-DCF14760039B}", "Package");

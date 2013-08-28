@@ -1,0 +1,10 @@
+tocTab[tocTab.length] = new Array("4.2.2.5:1", "", "Dicionário de Dados", "EARoot/EA4/EA2/EA2/EA5/EA831.htm", "188.png", "235", "0", "", "Custom diagram0","{612FE041-FDDE-4a20-8E40-1E4AA25A8935}");
+tocTab[tocTab.length] = new Array("4.2.2.5:2", "", "«document» DD011 - Registro Diário de Classe", "EARoot/EA4/EA2/EA2/EA5/EA833.htm", "82.png", "1337", "0", "", "Artifact0","{4692EBB4-A74C-4822-958E-5662B35321AE}");
+tocTab[tocTab.length] = new Array("4.2.2.5:3", "", "«document» DD012 - Aula", "EARoot/EA4/EA2/EA2/EA5/EA834.htm", "82.png", "1340", "0", "", "Artifact0","{C0821BEF-6867-4daf-A21E-CEC70F54A09E}");
+tocTab[tocTab.length] = new Array("4.2.2.5:4", "", "«document» DD013 - Popup Confirmação", "EARoot/EA4/EA2/EA2/EA5/EA835.htm", "82.png", "1336", "0", "", "Artifact0","{76061972-3835-4956-AD9E-5E99BBB83EFF}");
+tocTab[tocTab.length] = new Array("4.2.2.5:5", "", "«document» DD014 - Registrar Ocorrências", "EARoot/EA4/EA2/EA2/EA5/EA836.htm", "82.png", "1338", "0", "", "Artifact0","{387A0BC0-6D7F-4ad8-ABF5-420144F6AC4F}");
+tocTab[tocTab.length] = new Array("4.2.2.5:6", "", "«document» DD015 - Popup Confirmação Ocorrência", "EARoot/EA4/EA2/EA2/EA5/EA837.htm", "82.png", "1342", "0", "", "Artifact0","{35944310-0F2C-484a-86DC-94C156DF907D}");
+tocTab[tocTab.length] = new Array("4.2.2.5:7", "", "«document» DD016 - Atividades Desenvolvidas", "EARoot/EA4/EA2/EA2/EA5/EA838.htm", "82.png", "1341", "0", "", "Artifact0","{458AFCD5-9D92-4f07-AB5F-D603FCF927CE}");
+tocTab[tocTab.length] = new Array("4.2.2.5:8", "", "«document» DD017 - Ocorrências do Aluno", "EARoot/EA4/EA2/EA2/EA5/EA839.htm", "82.png", "1339", "0", "", "Artifact0","{CA3E1C37-7A0F-493f-8D3F-688E85B5E5E9}");
+tocTab[tocTab.length] = new Array("4.2.2.5:9", "", "«document» DD018 - Popup Aviso Cancelamento", "EARoot/EA4/EA2/EA2/EA5/EA840.htm", "82.png", "1335", "0", "", "Artifact0","{37F536C5-2C2F-447e-A2F7-9282CF6F130C}");
+tocTab[tocTab.length] = new Array("4.2.2.5:10", "", "«document» DD019 - Popup Confirmação Outra Ocorrência", "EARoot/EA4/EA2/EA2/EA5/EA841.htm", "82.png", "1416", "0", "", "Artifact0","{200BF72D-0116-48e8-AD9F-E4A291EE75B7}");

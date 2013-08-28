@@ -1,0 +1,12 @@
+tocTab[tocTab.length] = new Array("4.2.2.4.4:1", "", "Gerar Calendário do Semestre", "EARoot/EA4/EA2/EA2/EA4/EA4/EA759.htm", "188.png", "275", "0", "", "Custom diagram0","{5BA67C94-DFD6-4d32-B43E-C4487EDFA5A0}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:2", "", "Calendário do Semestre", "EARoot/EA4/EA2/EA2/EA4/EA4/EA761.htm", "11.png", "1749", "0", "", "Screen0","{98A2C6C3-160E-4b87-9602-8D8830DD78BD}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:3", "", "Popup Aviso", "EARoot/EA4/EA2/EA2/EA4/EA4/EA762.htm", "11.png", "1755", "0", "", "Screen0","{4EE66B97-8749-4683-A29B-034F4465A1BC}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:4", "", "Tela Inicial Perfil Secretaria", "EARoot/EA4/EA2/EA2/EA4/EA4/EA763.htm", "11.png", "1734", "0", "", "Screen0","{04C22B7C-4966-4ec1-8E9B-7E728B01AA54}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:5", "", "«button» Gerar Calendário do Semestre", "EARoot/EA4/EA2/EA2/EA4/EA4/EA764.htm", "16.png", "1748", "1734", "", "GUIElement0","{57E9575A-9A3E-47ef-A142-43BB50DFD602}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:6", "", "«label» Usuário Logado: Terezinha", "EARoot/EA4/EA2/EA2/EA4/EA4/EA765.htm", "16.png", "1739", "1734", "", "GUIElement0","{8369B2F2-AA56-4259-91C6-C87A1376A4BE}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:7", "", "«list» 1ª - Mercadologia", "EARoot/EA4/EA2/EA2/EA4/EA4/EA766.htm", "16.png", "1752", "1749", "", "GUIElement0","{3833A098-E761-4a2d-8BB5-5BBAEA2E8108}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:8", "", "«button» Gerar", "EARoot/EA4/EA2/EA2/EA4/EA4/EA767.htm", "16.png", "1754", "1749", "", "GUIElement0","{C4B0A642-3E1C-44ae-B7C3-FCA580293C05}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:9", "", "«label» Matrícula", "EARoot/EA4/EA2/EA2/EA4/EA4/EA768.htm", "16.png", "1751", "1749", "", "GUIElement0","{E694AF23-6172-44bc-907F-F6137BBD8BCA}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:10", "", "«list» Selecione ", "EARoot/EA4/EA2/EA2/EA4/EA4/EA769.htm", "16.png", "1753", "1749", "", "GUIElement0","{3372F03C-579A-4b73-AE08-0C857E84C65C}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:11", "", "«label» Turma", "EARoot/EA4/EA2/EA2/EA4/EA4/EA770.htm", "16.png", "1750", "1749", "", "GUIElement0","{B6E97D0D-FBF6-430d-B80D-0AC52F06F78E}");
+tocTab[tocTab.length] = new Array("4.2.2.4.4:12", "", "«label» Não foi encontrado calendário para o semestre corrente para esta turma", "EARoot/EA4/EA2/EA2/EA4/EA4/EA771.htm", "16.png", "1756", "1755", "", "GUIElement0","{D6E3D564-CE1E-4b1e-9B03-D385A44755EC}");

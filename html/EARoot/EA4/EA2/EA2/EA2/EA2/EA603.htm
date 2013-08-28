@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Matricular Aluno</title>
+<link href="../../../../../../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<span class="ObjectTitle">Matricular Aluno  : public   collaboration</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">04/03/2013 22:10:20</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">25/08/2013 10:08:03</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../../../../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">1200008</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../../../../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{128BD69C-B0A2-4561-92AC-BCC8627726BC}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"><a href="EA600.htm">Matricular Aluno</a></td>
+		</tr>
+	</table>
+	
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('Scenario');" id="ScenarioTitle">Scenarios</li>
+			<li onClick="parent.toggleItem('Links');" id="LinksTitle">Other Links</li>
+		</ul>
+		<div class="ItemBody" id="ScenarioTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="90%" class="TableHeading">Scenario</td>
+					<td width="10%" class="TableHeading">Type</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Basic Path</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario503" onclick="parent.toggleDiv('detailsDIVScenario503','DetailsImageScenario503')" />Details:
+							<div id="detailsDIVScenario503" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../../../../images/minus03.gif" align="absmiddle" id="StepImageScenario503" onclick="parent.toggleDiv('stepDIVScenario503','StepImageScenario503')" />Steps:
+							<div id="stepDIVScenario503" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. A Secretária escolhe acessar seu perfil. <br />2. O Sistema apresenta a tela de perfil de Secretária. <br />3. A Secretária escolhe o ambiente de gerenciamento de matrícula <br />4. O Sistema apresenta o ambiente de gerenciamento de matrícula. <br />5. A Secretária escolhe matricular um aluno. <br />6. O Sistema apresenta as turmas existentes. <br />7. A Secretária escolhe uma turma. <br />8. O Sistema apresenta as informações necessárias à matrícula. <br />9. A Secretária responde as informações e escolhe criar a matrícula. <br />10. O Sistema confirma a matrícula e apresenta o ambiente de gerenciamento de matrícula. <br /></div>
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario504" onclick="parent.toggleDiv('detailsDIVScenario504','DetailsImageScenario504')" />Exceptions:				<div id="detailsDIVScenario504" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">5a. A Secretária escolhe editar uma matrícula. <br />5b. A Secretária escolhe visualizar as matrículas. <br /></div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">A Secretária escolhe editar uma matrícula.</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario506" onclick="parent.toggleDiv('detailsDIVScenario506','DetailsImageScenario506')" />Details:
+							<div id="detailsDIVScenario506" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../../../../images/minus03.gif" align="absmiddle" id="StepImageScenario506" onclick="parent.toggleDiv('stepDIVScenario506','StepImageScenario506')" />Steps:
+							<div id="stepDIVScenario506" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. O Sistema apresenta o ambiente de edição de matrícula. <br />2. A Secretária escolhe uma matrícula, responde as informações necessárias e escolhe editar a matrícula. <br />3. O Sistema confirma a edição e apresenta o ambiente de gerenciamento de matrícula. <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">A Secretária escolhe visualizar as matrículas.</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario508" onclick="parent.toggleDiv('detailsDIVScenario508','DetailsImageScenario508')" />Details:
+							<div id="detailsDIVScenario508" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../../../../images/minus03.gif" align="absmiddle" id="StepImageScenario508" onclick="parent.toggleDiv('stepDIVScenario508','StepImageScenario508')" />Steps:
+							<div id="stepDIVScenario508" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. O Sistema apresenta as matrículas. <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="LinksTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="30%" class="TableHeading">Object</td>
+					<td width="15%" class="TableHeading">Type</td>
+					<td width="15%" class="TableHeading">Connection</td>
+					<td width="40%" class="TableHeading">Notes</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA1/EA1/EA582.htm">Matricular Aluno</a></td>
+					<td width="15%" class="TableRow" valign="top">UseCase</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA3/EA638.htm">«Functional» SRS0030 - O Sistema DEVE garantir que a turma só possa ser alterada se o curso não tenha sido finalizado(Finalizar Semestre). Caso ao contrário, o sistema só DEVE permitir adicionar um nova turma.</a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../../../EA1/EA3/EA314.htm">«Functional» SRS0001 - O Sistema DEVE garantir que apenas usuários autorizados acessem as funcionalidades do sistema definidas para o seu perfil.</a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../../../../EA2/EA4/EA201.htm">«Functional» R002 - O sistema DEVE atribuir um número univoco de três digitos de identificação sempre que um curso for cadastrado conforme RN005.</a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../../../../EA2/EA4/EA209.htm">«Functional» R010 - O sistema DEVE receber as faltas e ocorrências diariamente, conforme a regra  RN016 e deverá avisar caso isto não ocorra para uma turma.
+</a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA3/EA631.htm">«Functional» SRS0023 - Na matrícula do Aluno, o Sistema DEVE exigir... </a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA7/EA860.htm">«label» MSG0030 - Matrícula criada com sucesso.</a></td>
+					<td width="15%" class="TableRow" valign="top">GUIElement</td>
+					<td width="15%" class="TableRow" valign="top">Realization</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../../EA1/EA3/EA409.htm">«Functional» SRS0008 - O Sistema DEVE exibir o ambiente de gerenciamento de notificação de reponsável no perfil da coordenadora SOMENTE se houver pendências.</a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../../../EA1/EA3/EA318.htm">«Functional» SRS0005 - O Sistema DEVE exibir em seus ambientes de gerenciamento uma lista dos itens tratados naquele contexto.</a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA3/EA630.htm">«Functional» SRS0022 - O Sistema DEVE garantir que somente uma turma seja selecionada.</a></td>
+					<td width="15%" class="TableRow" valign="top">Requirement</td>
+					<td width="15%" class="TableRow" valign="top">Dependency</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA7/EA861.htm">«label» MSG0031 - Matrícula editada com sucesso.</a></td>
+					<td width="15%" class="TableRow" valign="top">GUIElement</td>
+					<td width="15%" class="TableRow" valign="top">Realization</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>

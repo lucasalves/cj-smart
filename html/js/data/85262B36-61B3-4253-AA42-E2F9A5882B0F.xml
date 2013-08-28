@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("4.1.2:1", "", "Realização dos Casos de Uso", "EARoot/EA4/EA1/EA2/EA275.htm", "180.png", "223", "0", "", "Use Case diagram0","{972E37BD-B2BE-4e78-8DD9-DA1D604F405E}");
+tocTab[tocTab.length] = new Array("4.1.2.1", "1", "Criar Curso", "EARoot/EA4/EA1/EA2/EA277.htm", "4.png", "", "", "{E2FDF039-0A1F-40ac-B4AA-2158A9A50B9A}", "Package");
+tocTab[tocTab.length] = new Array("4.1.2.2", "1", "Definir Aula", "EARoot/EA4/EA1/EA2/EA278.htm", "4.png", "", "", "{59E26FE4-51B1-4086-BA7A-209529A7061B}", "Package");
+tocTab[tocTab.length] = new Array("4.1.2.3", "1", "Definir Atividade", "EARoot/EA4/EA1/EA2/EA279.htm", "4.png", "", "", "{9FF0E731-40A6-418f-9220-EE4379CCEEFD}", "Package");
+tocTab[tocTab.length] = new Array("4.1.2.4", "1", "Cadastrar Educador", "EARoot/EA4/EA1/EA2/EA280.htm", "4.png", "", "", "{CB69E48A-1032-4748-835A-AB215239C7F1}", "Package");
+tocTab[tocTab.length] = new Array("4.1.2.5", "1", "Criar Turma", "EARoot/EA4/EA1/EA2/EA281.htm", "4.png", "", "", "{0755858E-099F-401b-8EB2-AD5210A13C02}", "Package");

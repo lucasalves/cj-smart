@@ -1,0 +1,2 @@
+tocTab[tocTab.length] = new Array("2.3:1", "", "Modelos de Negócio", "EARoot/EA2/EA3/EA32.htm", "175.png", "52", "0", "", "Logical diagram0","{59FC428E-F68B-4633-A6C3-CBD1A9099506}");
+tocTab[tocTab.length] = new Array("2.3.1", "1", "Cenários Operacionais", "EARoot/EA2/EA3/EA34.htm", "4.png", "", "", "{449BC6C8-3281-4522-BF5F-8CDAA8FE50A6}", "Package");

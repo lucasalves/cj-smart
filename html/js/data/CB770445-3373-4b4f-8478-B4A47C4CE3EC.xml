@@ -1,0 +1,2 @@
+tocTab[tocTab.length] = new Array("4.2.1.1:1", "", "Casos de Uso", "EARoot/EA4/EA2/EA1/EA1/EA376.htm", "180.png", "214", "0", "", "Use Case diagram0","{C5BFEA3A-F7A0-4b8c-93FB-D71CA0AD06FF}");
+tocTab[tocTab.length] = new Array("4.2.1.1.1", "1", "Coordenadora", "EARoot/EA4/EA2/EA1/EA1/EA378.htm", "4.png", "", "", "{A921CBEA-3906-4b73-823F-97011676C445}", "Package");

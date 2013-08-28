@@ -1,0 +1,13 @@
+tocTab[tocTab.length] = new Array("3.2:1", "", "Arquitetura do Sistema", "EARoot/EA3/EA2/EA233.htm", "178.png", "145", "0", "", "Component diagram0","{B13C3A85-04C1-466c-A0DE-4173A499E0F1}");
+tocTab[tocTab.length] = new Array("3.2:2", "", "Sistema de Coordenadoria Operacional de Ensino (SICOOE)", "EARoot/EA3/EA2/EA235.htm", "10.png", "829", "0", "", "Component0","{295A5C90-6AE4-4753-B260-7826CF8AC295}");
+tocTab[tocTab.length] = new Array("3.2:6", "", "Subsistema Controle de Acesso", "EARoot/EA3/EA2/EA239.htm", "10.png", "830", "829", "", "Component0","{25D707C8-4D70-414b-AFA9-83AC0EE543F4}");
+tocTab[tocTab.length] = new Array("3.2:7", "", "Subsistema Coordenadoria de Ensino", "EARoot/EA3/EA2/EA240.htm", "10.png", "831", "829", "", "Component0","{029197AA-656D-4682-AD0A-FA714528AAA4}");
+tocTab[tocTab.length] = new Array("3.2:8", "", "Subsistema de Secretaria", "EARoot/EA3/EA2/EA241.htm", "10.png", "832", "829", "", "Component0","{05CCDB67-3FAC-4da9-A94B-483373DBDC89}");
+tocTab[tocTab.length] = new Array("3.2:9", "", "acesso", "EARoot/EA3/EA2/EA242.htm", "112.png", "963", "830", "", "ProvidedInterface0","{9AA88869-8381-4b37-B59F-45F34AA0D785}");
+tocTab[tocTab.length] = new Array("3.2:10", "", "Login", "EARoot/EA3/EA2/EA243.htm", "112.png", "836", "830", "", "ProvidedInterface0","{27308B90-5BF4-4728-8B72-D212FAF1C011}");
+tocTab[tocTab.length] = new Array("3.2:11", "", "Manutenção de Cursos", "EARoot/EA3/EA2/EA244.htm", "111.png", "837", "831", "", "RequiredInterface0","{4DB1034F-6DD8-4934-A79D-2BE43E8F8060}");
+tocTab[tocTab.length] = new Array("3.2:12", "", "Subsistema Acadêmico", "EARoot/EA3/EA2/EA245.htm", "10.png", "828", "832", "", "Component0","{5902804C-A2E4-46c7-9FD2-FAE5DA096083}");
+tocTab[tocTab.length] = new Array("3.2:13", "", "Subsistema Administrativo", "EARoot/EA3/EA2/EA246.htm", "10.png", "827", "832", "", "Component0","{3D170990-22F2-4751-BDA6-E74EBB4A16DE}");
+tocTab[tocTab.length] = new Array("3.2:3", "", "Servidor dde email", "EARoot/EA3/EA2/EA236.htm", "112.png", "1471", "827", "", "ProvidedInterface0","{E62B887C-0246-426e-9431-C677232B8DA4}");
+tocTab[tocTab.length] = new Array("3.2:4", "", "Controle Administrativo", "EARoot/EA3/EA2/EA237.htm", "111.png", "838", "827", "", "RequiredInterface0","{9FFEB8C9-8E6C-42b4-9662-7C70D1E51FA9}");
+tocTab[tocTab.length] = new Array("3.2:5", "", "Controle Acadêmico", "EARoot/EA3/EA2/EA238.htm", "111.png", "833", "828", "", "RequiredInterface0","{6840BFA8-54D8-4d33-802E-576E30B14EEF}");

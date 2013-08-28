@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("4.2.2.4:1", "", "Storyboard", "EARoot/EA4/EA2/EA2/EA4/EA639.htm", "188.png", "236", "0", "", "Custom diagram0","{FD08E632-1D4D-4ab6-8CA4-875C2185035B}");
+tocTab[tocTab.length] = new Array("4.2.2.4.1", "1", "Registrar Diário de Aula", "EARoot/EA4/EA2/EA2/EA4/EA641.htm", "4.png", "", "", "{F80DF5E1-5151-4212-9367-0A3B667322D4}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.4.2", "1", "Emitir Boletim Mensal", "EARoot/EA4/EA2/EA2/EA4/EA642.htm", "4.png", "", "", "{2F77DB64-F201-4006-8104-EEE66F0446EE}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.4.3", "1", "Emitir Boletim Semestral", "EARoot/EA4/EA2/EA2/EA4/EA643.htm", "4.png", "", "", "{6B226527-22CF-48b6-82CA-558DEB1CDF4A}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.4.4", "1", "Gerar Calendário do Semestre", "EARoot/EA4/EA2/EA2/EA4/EA644.htm", "4.png", "", "", "{9E3B4716-B342-4681-B783-BD046A4C1FA5}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.4.5", "1", "Abonar Falta", "EARoot/EA4/EA2/EA2/EA4/EA645.htm", "4.png", "", "", "{607CD764-7E4F-4b78-8F17-E8E05C5E5AC5}", "Package");
+tocTab[tocTab.length] = new Array("4.2.2.4.6", "1", "Gerar boletim Mensal", "EARoot/EA4/EA2/EA2/EA4/EA646.htm", "4.png", "", "", "{3102F8D3-EE18-4fe9-A317-B75E8A4EA8FC}", "Package");
