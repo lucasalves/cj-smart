@@ -34,14 +34,19 @@ App::uses('AppModel', 'Model');
 class Matricula extends AppModel {
 
     public $useTable = 'matricula';
-//    public $hasAndBelongsToMany = array(
-//                                    "Turma" => array(
-//                                        "className"  => "Turma",
-//                                        "joinTable"  => "turma_materia",
-//                                        "foreignKey" => "turma_id",
-//                                        "associationForeignKey" => "materia_id"
-//                                    )
-//                                );
+    
+    public $name = 'Matricula';
+
+    public $validate = array(
+                'senha' => array(
+                    'validationPeriod' => array(
+                        'rule' => array('validationPeriodRules'),
+                        'message' => 'O aluno já se cadatrou e menos de um neste curso.',
+                    ),
+
+                )
+            );
+
 
     public $hasOne = array(
         'Nota' => array(
@@ -65,6 +70,21 @@ class Matricula extends AppModel {
             $this->save($this->data);
         }
         return true;
+    }
+
+    public function validationPeriodRules($field = array()){
+        print_r($data[$this->name]['Turma']['Curso']['id']);
+        // $matricula = $this->find(
+        //                 'all',
+        //                 array(
+        //                     'conditions' => array(
+        //                                         $this->name . '.aluno_id '   => $data[$this->name]['id'],
+        //                                         $this->name . '.Turma.Curso.id' => $data[$this->name]['Turma']['Curso']['id']
+        //                                     )
+        //                 )
+                    // );
+
+        return false;
     }
 
 }
