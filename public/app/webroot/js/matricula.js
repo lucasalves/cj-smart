@@ -1,5 +1,4 @@
-
-(function($){    
+(function($){
     var Matricula = function (){
         var self = this;
 
@@ -21,13 +20,13 @@
                         self.exibeBotao(2);
                     }
                  }
-            });        
+            });
         };
          
         this.exibeBotao = function(status){
             if(status == 1){
                 $("#MatriculaAlunoId").val(this.aluno.id);
-                var html = 
+                var html =
                     
                 "<dt>Nome:</dt>"+
                 "<dd>"+this.aluno.nome+"</dd>"+
@@ -48,15 +47,15 @@
                 "<dd>"+this.aluno.responsavel+"</dd>"+
                 "<br>"+
                 
-                "<input type='submit' class='btn btn-large  btn-success' value='Matricular' />"
+                "<input type='submit' class='btn btn-large btn-success' value='Matricular' />"
             ;
                 
-            }else if(status == 2){      
+            }else if(status == 2){
                 $.get(ajaxurl + 'aluno/add', {rg: $("#rg").val()}, function(response){
                     var html = $(response).find("#corpo").html();
                     App.Modal.add(html, true, function(){
                         $("#AlunoNome").focus();
-                    });                    
+                    });
                     $("#botoes").html("");
                 });
             }
@@ -68,7 +67,7 @@
             e.preventDefault();
             
             var data = {};
-            var vals = $("#UsuarioAddForm input");
+            var vals = $("#AlunoAddForm input");
 
             for (var i = 0; i < vals.length; i++) {
                 if(vals[i].name){
@@ -87,9 +86,9 @@
 
             $.post(url, data, function(result){
                 if(result.status){
-                    self.aluno = result.Aluno;                    
+                    self.aluno = result.Aluno;
                     self.exibeBotao(1);
-                    App.Modal.close();             
+                    App.Modal.close();
                 }
             }, 'json');
         };
@@ -103,4 +102,4 @@
         });
     });
 
-})(jQuery);
+}(jQuery));
