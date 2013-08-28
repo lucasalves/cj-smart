@@ -75,9 +75,7 @@
                 }
             };
 
-            self.addAluno(data, function(save){
-
-            });
+            self.addAluno(data, function(save){});
         });
 
         this.addAluno = function(data, callback){
@@ -95,11 +93,13 @@
     };
 
     $(document) .ready(function(){
-        $("#matricula .find-aluno").on('click', function(e){
-            // Instancia de Matricula
+        if($("#matricula .find-aluno").length){
             objMatricula = new Matricula();
-            objMatricula.verifica();
-        });
+
+            $("#matricula .find-aluno").on('click', function(e){          
+                objMatricula.verifica();
+            });
+        }        
     });
 
 }(jQuery));
