@@ -54,6 +54,7 @@
                 $.get(ajaxurl + 'aluno/add', {rg: $("#rg").val()}, function(response){
                     var html = $(response).find("#corpo").html();
                     App.Modal.add(html, true, function(){
+                        $("#AlunoAddForm .btn-group a.btn").remove();
                         $("#AlunoNome").focus();
                     });
                     $("#botoes").html("");

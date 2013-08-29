@@ -47,8 +47,12 @@ App.Modal = {
 		return this;
 	},
 
-	close: function(){
+	close: function(callback){
 		$('#modal-default').modal('hide');
-		return this;
+		if(callback){
+			callback(this);
+		}else{
+			return this;
+		}		
 	}
 };
