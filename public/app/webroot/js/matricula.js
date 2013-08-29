@@ -87,9 +87,17 @@
                 if(result.status){
                     self.aluno = result.Aluno;
                     self.exibeBotao(1);
-                    App.Modal.close();
+                    App.Modal.close(function(){
+                        self.clearErrors();
+                    });
                 }
             }, 'json');
+        };
+        
+        this.clearErrors = function(){
+            $('.error-message').fadeOut(200, function(){
+                $('.error-message').remove();
+            })
         };
 
         this.isVlidationError = function(){
