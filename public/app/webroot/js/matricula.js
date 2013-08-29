@@ -90,16 +90,24 @@
                 }
             }, 'json');
         };
+
+        this.isVlidationError = function(){
+            return ($("#matricula #MatriculaAlunoId").val() ? true : false);
+        };
     };
 
     $(document) .ready(function(){
         if($("#matricula .find-aluno").length){
             objMatricula = new Matricula();
 
+            if(objMatricula.isVlidationError()){
+                objMatricula.verifica();
+            }
+
             $("#matricula .find-aluno").on('click', function(e){          
                 objMatricula.verifica();
             });
-        }        
+        }
     });
 
 }(jQuery));
