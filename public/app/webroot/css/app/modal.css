@@ -5,5 +5,5 @@
 	border: 0;
 }
 #modal-default .modal-body {
-    max-height: none;
+    max-height: 500px;
 }
