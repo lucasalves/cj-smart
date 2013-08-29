@@ -43,9 +43,11 @@ class Matricula extends AppModel {
                         'rule' => array('validationPeriodRules'),
                         'message' => 'O aluno já se cadastrou em menos de um ano neste curso.',
                     ),
-                    'existe' => array(
-                                    'required'  => true,
-                                    'message' => 'Selecione uma turma',
+                    'turma_selected' => array(   
+                                    'rule'    => 'numeric',                                 
+                                    'required'   => true,
+                                    'allowEmpty' => false,
+                                    'message'    => 'Selecione uma turma',
                                 )
 
                 )
