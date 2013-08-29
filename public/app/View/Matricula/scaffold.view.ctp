@@ -15,11 +15,7 @@
         <dt>Nome:</dt>
         <dd><?=$this->data["Aluno"]["rg"];?></dd>
         <br/>
-
-        <dt>CPF:</dt>
-        <dd><?=$this->data["Aluno"]["cpf"];?></dd>
-        <br/>
-
+        
         <dt>Logradouro:</dt>
         <dd><?=$this->data["Aluno"]["logradouro"];?></dd>
         <br/>
