@@ -38,18 +38,26 @@ class Matricula extends AppModel {
     public $name = 'Matricula';
 
     public $validate = array(
-                'turma_id' => array(
-                    'validationPeriod' => array(
-                        'rule' => array('validationPeriodRules'),
-                        'message' => 'O aluno já se cadastrou em menos de um ano neste curso.',
-                    ),
+                'turma_id' => array(                    
                     'turma_selected' => array(   
                                     'rule'    => 'numeric',                                 
                                     'required'   => true,
                                     'allowEmpty' => false,
-                                    'message'    => 'Selecione uma turma',
+                                    'message'    => 'Selecione uma turma'
                                 )
 
+                ),
+                'aluno_id' => array(
+                    'aluno_selected' => array(
+                        'rule'    => 'numeric',                                 
+                        'required'   => true,
+                        'allowEmpty' => false,
+                        'message'    => 'Adicione um aluno para matricular'
+                    ),
+                    'validationPeriod' => array(
+                        'rule' => array('validationPeriodRules'),
+                        'message' => 'O aluno já se cadastrou em menos de um ano neste curso.',
+                    ),
                 )
             );
 
