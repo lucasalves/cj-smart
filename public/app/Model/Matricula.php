@@ -38,10 +38,10 @@ class Matricula extends AppModel {
     public $name = 'Matricula';
 
     public $validate = array(
-                'senha' => array(
+                'turma_id' => array(
                     'validationPeriod' => array(
                         'rule' => array('validationPeriodRules'),
-                        'message' => 'O aluno já se cadatrou e menos de um neste curso.',
+                        'message' => 'O aluno já se cadatrou e menos de um ano neste curso.',
                     ),
 
                 )
@@ -73,18 +73,34 @@ class Matricula extends AppModel {
     }
 
     public function validationPeriodRules($field = array()){
-        print_r($data[$this->name]['Turma']['Curso']['id']);
-        // $matricula = $this->find(
-        //                 'all',
-        //                 array(
-        //                     'conditions' => array(
-        //                                         $this->name . '.aluno_id '   => $data[$this->name]['id'],
-        //                                         $this->name . '.Turma.Curso.id' => $data[$this->name]['Turma']['Curso']['id']
-        //                                     )
-        //                 )
-                    // );
+        $matriculas = $this->find(
+                        'all',
+                        array(
+                            'conditions' => array(
+                                                $this->name . '.aluno_id '   => $this->data[$this->name]['aluno_id']
+                                            )
+                        )
+                    );
+        
+        $curso = $this->Turma->find(
+                                'all',
+                                array(
+                                    'conditions' => array(
+                                                       'Turma.id' => $this->data[$this->name]['turma_id']
+                                                    )
+                                )
+                            );
+        $curso = $curso[0];
+        
+        foreach($matriculas as $matricula){
+            if($matricula['Turma']['curso_id'] === $curso['Curso']['id']){
+                if(!strtotime($curso['Turma']['data_criacao']) + 31556926 < strtotime($this->data[$this->name]['data'])){
+                    return false;
+                }
+            }
+        }
 
-        return false;
+        return true;
     }
 
 }
