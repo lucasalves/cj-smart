@@ -72,7 +72,8 @@
         objPresenca.setAulaId();    
         objPresenca.lista(); 
         objPresenca.listaNotas(); 
-            
+        objPresenca.listaOcorrencias();
+        
         $("#TurmaId").on('change', function(e){
             objPresenca.aulas();
             objPresenca.listaNotas(); 

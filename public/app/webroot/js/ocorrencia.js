@@ -5,8 +5,7 @@
 
         this.ocorrencia;
    
- 
-        
+
         this.add = function(matricula_id){
             $.get(ajaxurl + 'ocorrencia/add',
             {
@@ -38,7 +37,8 @@
                 $.post(ajaxurl + 'ocorrencia/add_ajax',data, function(response){
                     if(response.status){
                         App.Modal.close(); 
-                        
+                        $('.nav-tabs a[href=#ocorrencias]').tab('show');
+                       $("#PresencaAulaId").change();
                     }
                 }, 'json');                       
             });

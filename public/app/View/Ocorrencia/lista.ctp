@@ -1,15 +1,36 @@
+<?
 
-<? foreach ($ocorrencias as $ocorrencia): ?>
+$conta_miniatura = 0;
 
-    <div class="media">
-<!--        <a class="pull-left" href="#">
-            <img class="media-object" data-src="holder.js/64x64">
-        </a>-->
-        <div class="media-body">
-            <h4 class="media-heading"><?=$ocorrencia["nome"]?></h4>
-            <?=$ocorrencia["descricao"]?>
-            <span class="btn btn-success btn-small">Editar</span>
+foreach ($ocorrencias as $ocorrencia):
+    
+    if($ocorrencia["gravidade"] == 'B'){
+        $gravidade = "<span class='label label-info'>Baixa</span>";
+    }else{
+        $gravidade = "<span class='label label-important'>Grave</span>";
+    }
+    
+    
+    if ($conta_miniatura == 0) {
+        echo "<div class='row-fluid'>";
+    }
+    echo "
+    <div class='thumbnail span3'>
+        <div class='caption'>
+            {$gravidade}
+            <h4>{$ocorrencia["nome"]}</h4>
+            <strong>Matricula: {$ocorrencia["codigo"]}</strong>
+            <p class='texto-matricula'>{$ocorrencia["descricao"]}</p>
         </div>
     </div>
-<? endforeach; ?>
+    ";
+
+    $conta_miniatura++;
+
+    if ($conta_miniatura == 4) {
+        echo "</div>";
+        $conta_miniatura = 0;
+    }
+endforeach;
+?>
 

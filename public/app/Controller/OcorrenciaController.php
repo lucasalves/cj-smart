@@ -79,8 +79,12 @@ class OcorrenciaController extends AppController {
                 foreach ($ocorrencias as $ocorrencia):
 
                     if ($ocorrencia["aula_id"] == $aula_id) {
-                        $listaOcorrencia[] = array('nome' => $matricula["Aluno"]["nome"]
-                            , 'descricao' => $ocorrencia["descricao"]);
+                        $listaOcorrencia[] = array(
+                            'nome' => $matricula["Aluno"]["nome"]
+                            ,'codigo' => $matricula["Matricula"]["codigo"]
+                            , 'descricao' => $ocorrencia["descricao"]
+                            , 'gravidade' => $ocorrencia["gravidade"]
+                            );
                         ;
                     }
                 endforeach;
