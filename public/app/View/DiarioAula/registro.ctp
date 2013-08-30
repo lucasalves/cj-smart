@@ -67,8 +67,8 @@ if (url.match('#')) {
     $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
 } 
 
-// Change hash for page-reload
-$('.nav-tabs a').on('shown', function (e) {
-    window.location.hash = e.target.hash;
-})
+//// Change hash for page-reload
+//$('.nav-tabs a').on('shown', function (e) {
+//    window.location.hash = e.target.hash;
+//})
 </script>
