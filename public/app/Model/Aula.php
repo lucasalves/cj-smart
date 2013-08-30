@@ -59,12 +59,12 @@ class Aula extends AppModel {
     public function toEvents($data){   
     	$events = array();
 
-
     	foreach ($data as $event) {
     		$events[] = array(
-    						'id'  	=> $event['Aula']['id'],
-    						'title' => $event['Local']['local'],
-    						'start' => $event['Aula']['data']
+    						'id'  	    => $event['Aula']['id'],
+    						'title'     => $event['Local']['local'],
+    						'start'     => $event['Aula']['data'],
+                            'className' => 'period-' . $event['Turma']['periodo']
     					);
     	}
 
