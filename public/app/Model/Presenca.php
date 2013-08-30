@@ -47,39 +47,41 @@ class Presenca extends AppModel {
 
     public function getlistaPresenca($turma_id, $aula_id) {
 
-        $alunos = $this->Matricula->find('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
-
-        $ausentes = $this->find('all', array('conditions' => array('Presenca.aula_id' => $aula_id)));
-
         $listaPresenca = array();
-        foreach ($alunos as $aluno):
+        if ($aula_id != "") {
+            $alunos = $this->Matricula->find('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
 
-            $status = null;
+            $ausentes = $this->find('all', array('conditions' => array('Presenca.aula_id' => $aula_id)));
 
-            foreach ($ausentes as $ausente):
 
-                if ($ausente["Presenca"]["matricula_id"] == $aluno["Matricula"]["id"]) {
-                    $status = $ausente["Presenca"]["status"];
-                }
+            foreach ($alunos as $aluno):
+
+                $status = null;
+
+                foreach ($ausentes as $ausente):
+
+                    if ($ausente["Presenca"]["matricula_id"] == $aluno["Matricula"]["id"]) {
+                        $status = $ausente["Presenca"]["status"];
+                    }
+                endforeach;
+
+                $listaPresenca[] = array("codigo" => $aluno["Matricula"]["codigo"],
+                    "nome" => $aluno["Aluno"]["nome"],
+                    "matricula_id" => $aluno["Matricula"]["id"],
+                    "turma_id" => $turma_id,
+                    "aula_id" => $aula_id,
+                    "status" => $status
+                );
             endforeach;
-
-            $listaPresenca[] = array("codigo" => $aluno["Matricula"]["codigo"],
-                "nome" => $aluno["Aluno"]["nome"],
-                "matricula_id" => $aluno["Matricula"]["id"],
-                "turma_id" => $turma_id,
-                "aula_id" => $aula_id,
-                "status" => $status
-            );
-        endforeach;
-
+        }
         return $listaPresenca;
     }
 
     function add($matriculas, $aula_id) {
-        
+
         $this->create();
         $this->delete($aula_id);
-        
+
         // Insere as matriculas por vez, marcando a ausencia
         foreach ($matriculas as $id_matricula):
             $this->create();
@@ -93,9 +95,9 @@ class Presenca extends AppModel {
             $this->save();
         endforeach;
     }
-    
-    function delete($aula_id){
-        $this->deleteAll(array('aula_id'=> $aula_id));
+
+    function delete($aula_id) {
+        $this->deleteAll(array('aula_id' => $aula_id));
     }
 
 }

@@ -65,10 +65,25 @@ class NotaController extends AppController {
 
             $notas = $this->request->data["Nota"];
 
-            // Adicionada
-            $this->Nota->add($notas);
 
+            foreach ($this->Nota->formatAdd($notas) as $nota):
+                $erros = null;
 
+                $this->Nota->set($nota);
+
+                if ($this->Nota->validates()) {
+                    $this->Nota->add($nota);
+                } else {
+                    foreach ($this->Nota->invalidFields() as $e) {
+                        $erros .= $e[0] . "<br />";
+                        break;
+                    }
+                    $this->Session->setFlash($erros);
+                    
+                }
+
+            endforeach;
+            
             // Redireciona 
             $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}#notas");
         }

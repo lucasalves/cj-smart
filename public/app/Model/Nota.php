@@ -44,15 +44,15 @@ class Nota extends AppModel {
             'foreignKey' => 'matricula_id'
         )
     );
+    public $validate = array(
+        'valor' => array(
+            'between' => array(
+                'rule' => array('validationNotaRules'),
+                'message' => 'Insira um valor entre 0 e 10'
+            )
+        )
+    );
 
-//   public $validate = array(
-//        'valor' => array(
-//            'between' => array(
-//                'rule'    => array('between', 5, 15),
-//                'message' => 'Between 5 to 15 characters'
-//            )
-//        )
-//    );
 //    
 //    public $validate = array(
 //        'valor' => array(
@@ -65,13 +65,13 @@ class Nota extends AppModel {
 
 
     public function getlistaNota($turma_id, $materia_id = null, $aula_id = null) {
-        
-        
-        if(is_null($materia_id)){
+
+
+        if (is_null($materia_id)) {
             $materia_id = $this->getMateriaId($aula_id);
         }
-        
-        
+
+
         // Carrega a Lista Notas dos Alunos
         $meses = $this->Matricula->Turma->getMeses($turma_id);
 
@@ -124,7 +124,7 @@ class Nota extends AppModel {
         return $listaNota;
     }
 
-    function add($notas) {
+    function formatAdd($notas) {
 
         // Insere as notas
         for ($i = 0; $i < count($notas["valor"]); $i++):
@@ -132,21 +132,23 @@ class Nota extends AppModel {
             $valor = $notas["valor"][$i];
             $data = $notas["data"][$i];
 
-            if ($valor > 0) {
-
-                $this->create();
-                $dados = array(
+            if ($valor != "") {
+                $dados[] = array(
                     'valor' => $valor // Ausente
                     , 'matricula_id' => $notas["matricula_id"][$i]
                     , 'materia_id' => $notas["materia_id"][$i]
                     , 'data' => $data
                 );
-
-                $this->set($dados);
-
-                $this->save();
             }
         endfor;
+        
+        return $dados;
+    }
+    
+    function add($dados){
+        $this->create();
+        $this->set($dados);
+        $this->save();
     }
 
     public function getMateriaId($aula_id) {
@@ -164,11 +166,19 @@ class Nota extends AppModel {
 
         $aula_materia = $this->find('all', $options);
 
-        foreach($aula_materia as $materia):
+        foreach ($aula_materia as $materia):
             return $materia["Materia"]["id"];
         endforeach;
+    }
 
-        
+    public function validationNotaRules() {
+
+        $valor = $this->data[$this->name]['valor'];
+        if ($valor < 0 or $valor > 10) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
