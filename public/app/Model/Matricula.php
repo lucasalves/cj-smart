@@ -62,14 +62,11 @@ class Matricula extends AppModel {
             );
 
 
-    public $hasOne = array(
-        'Nota' => array(
-            'foreignKey' => 'matricula_id'
-        )
-    );
-
     public $hasMany = array(
         'Ocorrencia' => array(
+            'foreignKey' => 'matricula_id'
+        ),
+        'Nota' => array(
             'foreignKey' => 'matricula_id'
         )
     );
