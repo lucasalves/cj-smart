@@ -322,13 +322,13 @@ ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `nota`;
 CREATE  TABLE IF NOT EXISTS `cjsmart`.`nota` (
-  `id` INT(10) NOT NULL ,
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `valor` DOUBLE NOT NULL ,
   `tipo` VARCHAR(45) NULL ,
   `data` DATE NOT NULL ,
   `materia_id` INT(11) NOT NULL ,
   `matricula_id` INT(10) NOT NULL ,
-  PRIMARY KEY (`id`, `data`, `materia_id`, `matricula_id`) )
+  PRIMARY KEY (`id`, `data`, `materia_id`, `matricula_id`))
 ENGINE = InnoDB;
 
 -- --------------------------------------------------------
