@@ -34,9 +34,6 @@
                 "<dt>Rg:</dt>"+
                 "<dd>"+this.aluno.rg+"</dd>"+
 
-                "<dt>CPF:</dt>"+
-                "<dd>"+this.aluno.cpf+"</dd>"+
-
                 "<dt>Logradouro:</dt>"+
                 "<dd>"+this.aluno.logradouro+"</dd>"+
             
