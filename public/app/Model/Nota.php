@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -20,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -32,52 +32,143 @@ App::uses('AppModel', 'Model');
  * @package       app.Model
  */
 class Nota extends AppModel {
-    public $useTable = 'nota';
 
+    public $useTable = 'nota';
     public $belongsTo = array(
         'Materia' => array(
-            'className'  => 'Materia',
+            'className' => 'Materia',
             'foreignKey' => 'materia_id'
         ),
         'Matricula' => array(
-            'className'  => 'Matricula',
+            'className' => 'Matricula',
             'foreignKey' => 'matricula_id'
         )
     );
-    
-    
-    public function getlistaNota($turma_id){
-        
 
-        $alunos = $this->Matricula->find('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
-        
-//        print_r($this->Matricula->Turma);
-        $this->Matricula->Turma->getMeses($turma_id);
-        //$meses = $this->find('all', array('conditions' => array('Presenca.aula_id' => $aula_id)));
+//   public $validate = array(
+//        'valor' => array(
+//            'between' => array(
+//                'rule'    => array('between', 5, 15),
+//                'message' => 'Between 5 to 15 characters'
+//            )
+//        )
+//    );
+//    
+//    public $validate = array(
+//        'valor' => array(
+//            'rule' => array('minLength', 1),
+//            'required' => true,
+//            'message' => 'Valor não pode ser vazio',
+//        )
+//    );
 
-//        $listaPresenca = array();
-//        foreach ($alunos as $aluno):
-//
-//            $status = null;
-//
-//            foreach ($ausentes as $ausente):
-//
-//                if ($ausente["Presenca"]["matricula_id"] == $aluno["Matricula"]["id"]) {
-//                    $status = $ausente["Presenca"]["status"];
-//                }
-//            endforeach;
-//
-//            $listaPresenca[] = array("codigo" => $aluno["Matricula"]["codigo"],
-//                "nome" => $aluno["Aluno"]["nome"],
-//                "matricula_id" => $aluno["Matricula"]["id"],
-//                "turma_id" => $turma_id,
-//                "aula_id" => $aula_id,
-//                "status" => $status
-//            );
-//        endforeach;
-//
-//        return $listaPresenca;
+
+
+    public function getlistaNota($turma_id, $materia_id = null, $aula_id = null) {
+        
+        
+        if(is_null($materia_id)){
+            $materia_id = $this->getMateriaId($aula_id);
+        }
+        
+        
+        // Carrega a Lista Notas dos Alunos
+        $meses = $this->Matricula->Turma->getMeses($turma_id);
+
+        $alunos = $this->Matricula->find('all', array(
+            'fields' => array('Matricula.id', 'Aluno.nome', 'Matricula.codigo'),
+            'conditions' => array('Matricula.turma_id' => $turma_id),
+            'group' => 'Matricula.id'
+                )
+        );
+
+        $notas = $this->find('all', array(
+            'fields' => array('Nota.data', 'Nota.valor', 'Matricula.id'),
+            'conditions' => array('Matricula.turma_id' => $turma_id, 'Nota.materia_id' => $materia_id),
+                )
+        );
+
+        App::uses('CakeTime', 'Utility');
+
+        foreach ($alunos as $aluno):
+
+            // Zero o array
+            $notas_meses = null;
+
+            foreach ($meses as $mes):
+
+                // Zero o valor
+                $valor = 0;
+
+                foreach ($notas as $nota):
+                    if ($nota["Nota"]["data"] == $mes['data'] and $aluno["Matricula"]["id"] == $nota["Matricula"]["id"]) {
+                        $valor = $nota["Nota"]["valor"];
+                    }
+                endforeach;
+
+                $notas_meses[] = array('data' => $mes['data'], 'data-formatada' => $mes['data-formatada'], 'valor' => $valor);
+
+            endforeach;
+
+            $listaNota[] = array(
+                "codigo" => $aluno["Matricula"]["codigo"],
+                "nome" => $aluno["Aluno"]["nome"],
+                "matricula_id" => $aluno["Matricula"]["id"],
+                "turma_id" => $turma_id,
+                "materia_id" => $materia_id,
+                "notas" => $notas_meses,
+            );
+
+        endforeach;
+
+        return $listaNota;
+    }
+
+    function add($notas) {
+
+        // Insere as notas
+        for ($i = 0; $i < count($notas["valor"]); $i++):
+
+            $valor = $notas["valor"][$i];
+            $data = $notas["data"][$i];
+
+            if ($valor > 0) {
+
+                $this->create();
+                $dados = array(
+                    'valor' => $valor // Ausente
+                    , 'matricula_id' => $notas["matricula_id"][$i]
+                    , 'materia_id' => $notas["materia_id"][$i]
+                    , 'data' => $data
+                );
+
+                $this->set($dados);
+
+                $this->save();
+            }
+        endfor;
+    }
+
+    public function getMateriaId($aula_id) {
+
+        $options['joins'] = array(
+            array('table' => 'aula',
+                'alias' => 'a',
+                'type' => 'LEFT',
+                'conditions' => array(
+                    'a.materia_id = Nota.materia_id',
+                    'a.id' => $aula_id
+                )
+            )
+        );
+
+        $aula_materia = $this->find('all', $options);
+
+        foreach($aula_materia as $materia):
+            return $materia["Materia"]["id"];
+        endforeach;
+
         
     }
-    
+
 }

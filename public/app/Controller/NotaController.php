@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -31,24 +32,61 @@ App::uses('AppController', 'Controller');
  */
 class NotaController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
+    /**
+     * Controller name
+     *
+     * @var string
+     */
     public $name = 'Nota';
     public $uses = array('Nota');
-
     public $scaffold;
-    
+
     public function lista() {
-        
-        $this->autoRender = false;
+
+//        $this->autoRender = false;
         $turma_id = $this->request->query["turma_id"];
+        $aula_id = $this->request->query["aula_id"];
+        $materia_id = $this->request->query["materia_id"];
 
         // Carrega a Lista Notas dos Alunos
-        $alunos = $this->Nota->getlistaNota($this->request->query["turma_id"]);
+        $alunos = $this->Nota->getlistaNota($turma_id, $aula_id, $materia_id);
 
-        $this->set(array('alunos' => $alunos, 'turma_id' => $turma_id));
+        $this->set(array('alunos' => $alunos, 'turma_id' => $turma_id, 'aula_id' => $aula_id));
     }
+
+    public function add() {
+
+
+        if ($this->request->data) {
+            $this->autoRender = false;
+
+            $turma_id = $this->request->data["Turma"]["id"];
+            $aula_id = $this->request->data["Presenca"]["aula_id"];
+
+            $notas = $this->request->data["Nota"];
+
+            // Adicionada
+            $this->Nota->add($notas);
+
+
+            // Redireciona 
+            $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}#notas");
+        }
+    }
+
+    public function carregar_materia() {
+        //$this->autoRender=false;
+        $this->loadModel('Aula');
+        $aula_id = $this->request->query;
+
+        // Carrega a Lista de Aulas
+        $materias = $this->Aula->find('all', array(
+            'fields' => array('Materia.id', 'Materia.nome'),
+            'conditions' => array('Aula.id' => $aula_id)
+                ));
+
+
+        $this->set(array('materias' => $materias));
+    }
+
 }

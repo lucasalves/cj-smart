@@ -63,4 +63,6 @@ class AulaController extends AppController {
     	$this->Aula->id   = $id;
   		$this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
     }
+    
+
 }

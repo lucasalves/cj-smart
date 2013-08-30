@@ -83,9 +83,34 @@ class Turma extends AppModel {
             $duracao_meses = $turma["Curso"]["duracao"];
         endforeach;
 
+
         // called as CakeTime
         App::uses('CakeTime', 'Utility');
- 
+
+        $mes_criacao = CakeTime::format('2011-08-22', '%m');
+        $ano_criacao = CakeTime::format('2011-08-22', '%Y');
+
+        $meses = array();
+        for ($i = 1; $i <= $duracao_meses; $i++) {
+
+            if ($mes_criacao >= 12) {
+                $ano_criacao++;
+                $mes_criacao = 1;
+            } else {
+                $mes_criacao++;
+            }
+
+            $meses[] = array(
+                'data' => CakeTime::format($ano_criacao . "-" . $mes_criacao . "-01", '%Y-%m-%d'),
+                'data-formatada' => CakeTime::format($ano_criacao . "-" . $mes_criacao . "-01", '%m/%Y')
+            );
+        }
+
+        return $meses;
+    }
+
+    public function listaAlunos($turma_id) {
+        return $this->Matricula('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
     }
 
 }

@@ -1,8 +1,8 @@
 <?php echo $this->Form->create(null, array('url' => '/nota/add')); ?>
 
 <input type="hidden"  name='data[Turma][id]' value="<?= $turma_id ?>"  />
+<input type="hidden"  name='data[Presenca][aula_id]' value="<?= $aula_id ?>"  />
 
-<? // if (count($this->viewVars['alunos']) > 0) { ?>
 <div class="row-fluid">
     <input type ='submit' value = 'Salvar Notas' id = 'Inserir' class='btn btn-success' style='float:right; margin-bottom: 5px;'/>
 </div>
@@ -12,36 +12,42 @@
         <tr>
             <th>Matrícula</th>
             <th>Nome</th>
-            <th class="data-nota">Junho</th>
-            <th class="data-nota">Julho</th>
-            <th class="data-nota">Agosto</th>
-            <th class="data-nota">Setembro</th>
-            <th class="data-nota">Outubro</th>
+            <?
+            foreach ($this->viewVars['alunos'] as $aluno):
+                foreach ($aluno["notas"] as $nota):
+                    echo "<th class='data-nota'>{$nota["data-formatada"]}</th>";
+                endforeach;
+                break;
+            endforeach;
+            ?>
+
         </tr>
-        
-        <?for($i=0; $i<=20; $i++):?>
-        <tr>
-            <td>0111</td>
-            <td>Bruno Leonardo</td>
-            <td class="valor-nota"><input type="text" /></td>
-            <td class="valor-nota"><input type="text" /></td>
-            <td class="valor-nota"><input type="text" /></td>
-            <td class="valor-nota"><input type="text" /></td>
-            <td class="valor-nota"><input type="text" /></td>
-        </tr>
-        <?endfor;?>
+
         <?
-//            foreach ($this->viewVars['alunos'] as $aluno):
-//
-//                echo "<tr>";
-//                echo "<td>{$aluno["codigo"]}</td>";
-//                echo "<td>{$aluno["nome"]}</td>";
-//                echo "</tr>";
-//            endforeach;
+        foreach ($this->viewVars['alunos'] as $aluno):
+            echo "<tr>";
+            echo "<td>{$aluno["codigo"]}</td>";
+            echo "<td>{$aluno["nome"]}</td>";
+            
+
+            foreach ($aluno["notas"] as $nota):
+                echo "<td class='valor-nota'>";
+                echo "  <input type='text' name='data[Nota][valor][]' value='{$nota["valor"]}' />";
+                echo "  <input type='hidden' name='data[Nota][data][]' value='{$nota["data"]}' />";
+                echo "  <input type='hidden' name='data[Nota][materia_id][]' value='{$aluno["materia_id"]}' />";
+                echo "  <input type ='hidden' name='data[Nota][matricula_id][]' value='{$aluno["matricula_id"]}' />";
+                echo "</td>";
+            endforeach;
+
+
+            echo "</tr>";
+        endforeach;
         ?>
+
+
     </table>
 
 </div>
 
-<? // } ?>
+
 <?= $this->Form->end(); ?>

@@ -62,18 +62,18 @@ class PresencaController extends AppController {
 
 
             // Redireciona 
-            $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}");
+            $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}#faltas");
         }
     }
 
     public function marcar($turma_id = null, $aula_id = null) {
-//$this->autoRender = false;
+        //$this->autoRender = false;
 // Carrega a Lista de Turmas
         $this->loadModel('Turma');
         $turmas = $this->Turma->find('list', array('fields' => array('Turma.id', 'Turma.nome')
                 ));
 
-// Carrega a Lista de Aulas
+        // Carrega a Lista de Aulas
         $aulas = $this->Presenca->Aula->find('list', array(
             'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => $turma_id)
                 ));
@@ -86,7 +86,7 @@ class PresencaController extends AppController {
         $turma_id = $this->request->query["turma_id"];
         $aula_id = $this->request->query["aula_id"];
 
-// Carrega a Lista de Aluno
+        // Carrega a Lista de Aluno
         $alunos = $this->Presenca->getlistaPresenca($this->request->query["turma_id"], $this->request->query["aula_id"]);
 
         $this->set(array('alunos' => $alunos, 'turma_id' => $turma_id, 'aula_id' => $aula_id));
@@ -96,7 +96,7 @@ class PresencaController extends AppController {
 
         $turma_id = $this->request->query;
 
-// Carrega a Lista de Aulas
+        // Carrega a Lista de Aulas
         $aulas = $this->Presenca->Aula->find('list', array(
             'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => $turma_id)
                 ));

@@ -34,7 +34,8 @@
         
         this.listaNotas = function(){            
             $.get(ajaxurl + 'nota/lista', {
-                turma_id: $("#TurmaId").val()
+                 turma_id: $("#TurmaId").val()
+                ,aula_id: this.aula_id
             }, function(response){
                 var html = $(response).find("#corpo").html();
                 $("#ListaNotas").html(html);
@@ -80,6 +81,7 @@
         $("#PresencaAulaId").on('change', function(e){
             objPresenca.setAulaId();    
             objPresenca.lista();  
+            objPresenca.listaNotas(); 
             objPresenca.listaOcorrencias();
         });
     });
