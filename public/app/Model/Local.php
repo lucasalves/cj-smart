@@ -34,7 +34,9 @@ App::uses('AppModel', 'Model');
 class Local extends AppModel {
 
     public $useTable = 'local';
+    
     public $displayField = 'local';
+
     public $hasMany = array(
         'Aula' => array(
             'className' => 'Aula',

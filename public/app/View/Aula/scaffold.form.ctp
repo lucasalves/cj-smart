@@ -8,7 +8,7 @@
     <div class="well">
         <legend>Aula</legend>
         <?php 
-            echo $this->Form->input('Aula.local');
+            echo $this->Form->input('Aula.local_id');
 
             echo $this->Form->input('Aula.data', $this->Aula->SolveDate($this->request, array('dateFormat' => 'DMY')));
 

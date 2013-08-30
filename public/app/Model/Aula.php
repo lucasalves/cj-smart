@@ -42,6 +42,11 @@ class Aula extends AppModel {
         'Materia' => array(
             'className'  => 'Materia',
             'foreignKey' => 'materia_id'
+        ),
+        'Local' => array(
+            'className'  => 'Local',
+            'foreignKey' => 'local_id'
+
         )
     );
 
@@ -58,7 +63,7 @@ class Aula extends AppModel {
     	foreach ($data as $event) {
     		$events[] = array(
     						'id'  	=> $event['Aula']['id'],
-    						'title' => $event['Aula']['local'],
+    						'title' => $event['Local']['local'],
     						'start' => $event['Aula']['data']
     					);
     	}

@@ -18,7 +18,7 @@
         <h2>Aula</h2>
 
         <dt>Local:</dt>
-        <dd><?php echo $this->data["Aula"]["local"]; ?></dd>
+        <dd><?php echo $this->data["Local"]["local"]; ?></dd>
         <br/>
         <dt>Data:</dt>
         <dd><?php echo $this->Time->format('d/m/Y', $this->data["Aula"]["data"]); ?></dd>
