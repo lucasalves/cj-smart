@@ -3,6 +3,7 @@
 <input type="hidden"  name='data[Turma][id]' value="<?= $turma_id ?>"  />
 <input type="hidden"  name='data[Presenca][aula_id]' value="<?= $aula_id ?>"  />
 
+<? if (count($this->viewVars['alunos']) > 0) { ?>
 <div class="row-fluid">
     <input type ='submit' value = 'Salvar Notas' id = 'Inserir' class='btn btn-success' style='float:right; margin-bottom: 5px;'/>
 </div>
@@ -49,5 +50,5 @@
 
 </div>
 
-
+<?}?>
 <?= $this->Form->end(); ?>

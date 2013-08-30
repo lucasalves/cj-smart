@@ -268,14 +268,15 @@ INSERT INTO `usuario_grupo` (`id`, `nome`) VALUES
 --
 
 DROP TABLE IF EXISTS `aula`;
-CREATE TABLE IF NOT EXISTS `aula` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `local` varchar(200) DEFAULT NULL,
-  `data` date DEFAULT NULL,
-  `turma_id` int(11) DEFAULT NULL,
-  `materia_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`aula` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `data` DATE NULL DEFAULT NULL ,
+  `turma_id` INT(11) NULL DEFAULT NULL ,
+  `materia_id` INT(11) NULL DEFAULT NULL ,
+  `local_id` INT NOT NULL ,
+  PRIMARY KEY (`id`, `local_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
 -- --------------------------------------------------------
 
@@ -319,6 +320,7 @@ ENGINE = InnoDB;
 --
 
 
+DROP TABLE IF EXISTS `nota`;
 CREATE  TABLE IF NOT EXISTS `cjsmart`.`nota` (
   `id` INT(10) NOT NULL ,
   `valor` DOUBLE NOT NULL ,
@@ -334,11 +336,23 @@ ENGINE = InnoDB;
 --
 -- Estrutura da tabela `presenca`
 --
-
+DROP TABLE IF EXISTS `presenca`;
 CREATE  TABLE IF NOT EXISTS `cjsmart`.`presenca` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `status` ENUM('Presente','Ausente') NOT NULL ,
   `aula_id` INT(10) NOT NULL ,
   `matricula_id` INT(10) NOT NULL ,
   PRIMARY KEY (`id`, `aula_id`) )
+ENGINE = InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `local`
+--
+DROP TABLE IF EXISTS `local`;
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`local` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `local` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
