@@ -34,34 +34,29 @@ App::uses('AppModel', 'Model');
 class Matricula extends AppModel {
 
     public $useTable = 'matricula';
-    
     public $name = 'Matricula';
-
     public $validate = array(
-                'turma_id' => array(                    
-                    'turma_selected' => array(   
-                                    'rule'    => 'numeric',                                 
-                                    'required'   => true,
-                                    'allowEmpty' => false,
-                                    'message'    => 'Selecione uma turma'
-                                )
-
-                ),
-                'aluno_id' => array(
-                    'aluno_selected' => array(
-                        'rule'    => 'numeric',                                 
-                        'required'   => true,
-                        'allowEmpty' => false,
-                        'message'    => 'Adicione um aluno para matricular'
-                    ),
-                    'validationPeriod' => array(
-                        'rule' => array('validationPeriodRules'),
-                        'message' => 'O aluno já se cadastrou em menos de um ano neste curso.',
-                    ),
-                )
-            );
-
-
+        'turma_id' => array(
+            'turma_selected' => array(
+                'rule' => 'numeric',
+                'required' => true,
+                'allowEmpty' => false,
+                'message' => 'Selecione uma turma'
+            )
+        ),
+        'aluno_id' => array(
+            'aluno_selected' => array(
+                'rule' => 'numeric',
+                'required' => true,
+                'allowEmpty' => false,
+                'message' => 'Adicione um aluno para matricular'
+            ),
+            'validationPeriod' => array(
+                'rule' => array('validationPeriodRules'),
+                'message' => 'O aluno já se cadastrou em menos de um ano neste curso.',
+            ),
+        )
+    );
     public $hasMany = array(
         'Ocorrencia' => array(
             'foreignKey' => 'matricula_id'
@@ -75,44 +70,59 @@ class Matricula extends AppModel {
         'Turma'
     );
 
-    public function afterSave($options){       
-        if(empty($this->data['Matricula']['codigo'])){
-            $this->data['Matricula']['codigo'] = $this->data['Matricula']['id'];           
+    public function afterSave($options) {
+        if (empty($this->data['Matricula']['codigo'])) {
+            $this->data['Matricula']['codigo'] = $this->data['Matricula']['id'];
             $this->save($this->data, false);
         }
 
         return true;
     }
 
-    public function validationPeriodRules($field = array()){
+    public function validationPeriodRules($field = array()) {
         $matriculas = $this->find(
-                        'all',
-                        array(
-                            'conditions' => array(
-                                                $this->name . '.aluno_id '   => $this->data[$this->name]['aluno_id']
-                                            )
-                        )
-                    );
-        
+                'all', array(
+            'conditions' => array(
+                $this->name . '.aluno_id ' => $this->data[$this->name]['aluno_id']
+            )
+                )
+        );
+
         $curso = $this->Turma->find(
-                                'all',
-                                array(
-                                    'conditions' => array(
-                                                       'Turma.id' => $this->data[$this->name]['turma_id']
-                                                    )
-                                )
-                            );
+                'all', array(
+            'conditions' => array(
+                'Turma.id' => $this->data[$this->name]['turma_id']
+            )
+                )
+        );
         $curso = $curso[0];
-        
-        foreach($matriculas as $matricula){
-            if($matricula['Turma']['curso_id'] === $curso['Curso']['id']){
-                if(!strtotime($curso['Turma']['data_criacao']) + 31556926 < strtotime($this->data[$this->name]['data'])){
+
+        foreach ($matriculas as $matricula) {
+            if ($matricula['Turma']['curso_id'] === $curso['Curso']['id']) {
+                if (!strtotime($curso['Turma']['data_criacao']) + 31556926 < strtotime($this->data[$this->name]['data'])) {
                     return false;
                 }
             }
         }
 
         return true;
+    }
+
+    public function getIdByNome($nome) {
+        $matriculas = $this->find('all', array(
+            'fields' => array('Matricula.id'),
+            'conditions' => array('Aluno.nome like ' => "%{$nome}%"),
+            'group' => 'Matricula.id'
+        ));
+            
+        $id = null;    
+        foreach($matriculas as $x):
+            $id[] = $x["Matricula"]["id"];
+        endforeach;
+        
+        return $id;
+            
+           
     }
 
 }

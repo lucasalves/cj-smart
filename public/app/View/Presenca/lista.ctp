@@ -19,7 +19,7 @@
             <?
             foreach ($this->viewVars['alunos'] as $aluno):
 
-                if (!is_null($aluno["status"])) {
+                if (($aluno["status"] == "Ausente")) {
                     $checked = "checked";
                 } else {
                     $checked = null;
@@ -28,7 +28,11 @@
                 echo "<tr>";
                 echo "<td>{$aluno["codigo"]}</td>";
                 echo "<td>{$aluno["nome"]}</td>";
-                echo "<td> <input type ='checkbox' name='data[Presenca][matricula_id][]' value = '{$aluno["matricula_id"]}' {$checked} /></td>";
+                echo "<td> 
+                           <input type ='hidden' name='data[Presenca][id][]' value = '{$aluno["presenca_id"]}' {$checked} />
+                           <input type ='checkbox' name='data[Presenca][status][]' value = '2' {$checked} /> 
+                           <input type ='hidden' name='data[Presenca][matricula_id][]' value = '{$aluno["matricula_id"]}'  />
+                     </td>";
                 echo "<td><span type='button' name='{$aluno["matricula_id"]}' class='btn btn-small btn-info NovaOcorrencia'>Add Ocorrência</span></td>";
                 echo "</tr>";
             endforeach;

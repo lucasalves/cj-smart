@@ -73,7 +73,7 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <?= $this->element('topo', array('nome' => 'Curso')); ?>
         </div>
-        <br><br><br>
+        <br><br>
         <div class="container-fluid">
             <?= $this->element('menu', array('nome' => 'Curso')); ?>
         </div><!--/row-->
@@ -91,4 +91,4 @@
 
     </body>
 </html>
-<?php echo $this->element('sql_dump'); ?>
+<?echo $this->element('sql_dump'); ?>

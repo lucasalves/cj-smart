@@ -57,11 +57,14 @@ class Presenca extends AppModel {
             foreach ($alunos as $aluno):
 
                 $status = null;
-
+                $presenca_id = null;
                 foreach ($ausentes as $ausente):
+
+
 
                     if ($ausente["Presenca"]["matricula_id"] == $aluno["Matricula"]["id"]) {
                         $status = $ausente["Presenca"]["status"];
+                        $presenca_id = $ausente["Presenca"]["id"];
                     }
                 endforeach;
 
@@ -70,34 +73,48 @@ class Presenca extends AppModel {
                     "matricula_id" => $aluno["Matricula"]["id"],
                     "turma_id" => $turma_id,
                     "aula_id" => $aula_id,
-                    "status" => $status
+                    "status" => $status,
+                    "presenca_id" => $presenca_id
                 );
             endforeach;
         }
         return $listaPresenca;
     }
 
-    function add($matriculas, $aula_id) {
+    function add($dados, $aula_id) {
 
         $this->create();
-        $this->delete($aula_id);
 
-        // Insere as matriculas por vez, marcando a ausencia
-        foreach ($matriculas as $id_matricula):
+        $contador = 0;
+
+        foreach ($dados["matricula_id"] as $id_matricula):
+
+            if (isset($dados["status"][$contador])) {
+                $status = 2;
+            } else {
+                $status = 1;
+            }
+
             $this->create();
             $this->set(
                     array(
-                        'status' => 2 // Ausente
+                        'status' => $status // Ausente
                         , 'aula_id' => $aula_id
                         , 'matricula_id' => $id_matricula
+                        , 'id' => $dados["id"][$contador]
             ));
 
             $this->save();
+            $contador++;
         endforeach;
     }
 
-    function delete($aula_id) {
-        $this->deleteAll(array('aula_id' => $aula_id));
+    public function abonarFalta($presenca_id) {
+        $this->set(array(
+            'status' => 3, 'id' => $presenca_id
+        ));
+
+        return $this->save();
     }
 
 }

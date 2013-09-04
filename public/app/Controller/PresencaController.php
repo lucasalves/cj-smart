@@ -50,10 +50,10 @@ class PresencaController extends AppController {
             $turma_id = $this->request->data["Turma"]["id"];
             $aula_id = $this->request->data["Presenca"]["aula_id"];
 
-            if (isset($this->request->data["Presenca"]["matricula_id"])) {
+            if (isset($this->request->data["Presenca"])) {
                 // Recebe o array de matriculas selecionadas
-                $matriculas = $this->request->data["Presenca"]["matricula_id"];
-            }else{
+                $matriculas = $this->request->data["Presenca"];
+            } else {
                 $matriculas = array();
             }
 
@@ -103,5 +103,40 @@ class PresencaController extends AppController {
 
         $this->set(array('aulas' => $aulas));
     }
+
+    public function abonar() {
+        $nome = null;
+        $faltas = array();
+        
+        // Realiza o Abono
+        if (isset($this->request->query["presenca_id"])) {
+            if($this->Presenca->abonarFalta($this->request->query["presenca_id"])){
+                $this->Session->setFlash("Falta abonada com sucesso!");
+            }
+            
+        }
+        
+        
+        // Busca o nome
+        if (isset($this->request->query["nome"])) {
+            
+            $nome = $this->request->query["nome"];
+            
+            // Busca o id da matricula por nome
+            $matriculas = $this->Presenca->Matricula->getIdByNome($nome);
+            
+            // Faltas das matriculas
+            $faltas = $this->Presenca->find('all',array(
+                'conditions' => array(
+                    'matricula_id' => $matriculas,
+                    'status' => array(2,3)
+                    )
+            ));
+            
+        }
+  
+        $this->set(array('faltas' => $faltas, 'nome' => $nome));
+    }
+    
 
 }

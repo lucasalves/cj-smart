@@ -1,41 +1,54 @@
-<?php echo $this->Form->create(null, array('url' => '/presenca/add')); ?>
-
-<input type="hidden"  name='data[Turma][id]' value="<?= $turma_id ?>"  />
-<input type="hidden"  name='data[Presenca][aula_id]' value="<?= $aula_id ?>"  />
-
-<? if (count($this->viewVars['alunos']) > 0) { ?>
+<div>
+    <h3>
+        Abonar Falta
+    </h3>
     <div class="row-fluid">
-        <input type ='submit' value = 'Salvar Faltas' id = 'Inserir' class='btn btn-success' style='float:right; margin-bottom: 5px;'/>
+        <div  class="navbar-form pull-left main_pesquisa">
+            <form action="<?php echo Router::url('/presenca/abonar'); ?>" method="GET">
+                <input type="text" id="valorPesquisa" class="valorPesquisa" name="nome" value="<?= $nome ?>" />
+                <button class="btn" id="search">Pesquisar aluno por nome</button>
+            </form>
+        </div>
     </div>
-    <div class="row-fluid">
 
+    <div class="row-fluid">
+        <p class='totalLinhas'>
+
+            (<?= count($faltas) ?>) Registro(s) encontrado(s)
+
+        </p>
         <table cellpadding="0" cellspacing="0" class='table table-striped' id='relatorio'>
             <tr>
-                <th>Matrícula</th>
+                <th>Matricula</th>
                 <th>Nome</th>
-                <th>Faltou?</th>
-                <th>Ocorrência</th>
+                <th>Abonar</th>
+                <th></th>
             </tr>
-            <?
-            foreach ($this->viewVars['alunos'] as $aluno):
+            <? foreach ($faltas as $falta): ?>
+                <form action="<?php echo Router::url('/presenca/abonar'); ?>" method="GET">
+                    <tr>
+                        <td><?= $falta["Matricula"]["codigo"] ?></td>
+                        <td><input type="hidden" name="nome" value="<?= $nome ?>" /><?= $nome ?></td>
+                        <td>
+                            <? if ($falta["Presenca"]["status"] == 'Abonado') { ?>
+                                <span class='badge'>Falta Abonada</span>
+                            <? } else { ?>
+                                <input type="hidden" name="presenca_id" value="<?= $falta["Presenca"]["id"] ?>" />
+                                <button class="btn btn-small btn-danger">Abonar Falta</button>
+                            <? } ?>
 
-                if (!is_null($aluno["status"])) {
-                    $checked = "checked";
-                } else {
-                    $checked = null;
-                }
-
-                echo "<tr>";
-                echo "<td>{$aluno["codigo"]}</td>";
-                echo "<td>{$aluno["nome"]}</td>";
-                echo "<td> <input type ='checkbox' name='data[Presenca][matricula_id][]' value = '{$aluno["matricula_id"]}' {$checked} /></td>";
-                echo "<td><span type='button' name='{$aluno["matricula_id"]}' class='btn btn-small btn-info NovaOcorrencia'>Add Ocorrência</span></td>";
-                echo "</tr>";
-            endforeach;
-            ?>
+                        </td>
+                        <td></td>
+                    </tr>
+                </form>
+            <? endforeach; ?>
         </table>
 
-    </div>
 
-<? } ?>
-<?= $this->Form->end(); ?>
+    </div>
+</div>
+
+
+
+
+
