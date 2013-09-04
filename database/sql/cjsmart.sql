@@ -339,7 +339,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `presenca`;
 CREATE  TABLE IF NOT EXISTS `cjsmart`.`presenca` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
-  `status` ENUM('Presente','Ausente') NOT NULL ,
+  `status` ENUM('Presente','Ausente','Abonado') NOT NULL ,
   `aula_id` INT(10) NOT NULL ,
   `matricula_id` INT(10) NOT NULL ,
   PRIMARY KEY (`id`, `aula_id`) )
