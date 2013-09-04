@@ -5,7 +5,7 @@
     <div class="row-fluid">
         <div  class="navbar-form pull-left main_pesquisa">
             <form action="<?php echo Router::url('/presenca/abonar'); ?>" method="GET">
-                <input type="text" id="valorPesquisa" class="valorPesquisa" name="nome" value="<?= $nome ?>" />
+                <input type="text" id="valorPesquisa" class="valorPesquisa" name="nome" value="<?= $nome_pesquisa ?>" />
                 <button class="btn" id="search">Pesquisar aluno por nome</button>
             </form>
         </div>
@@ -21,6 +21,7 @@
             <tr>
                 <th>Matricula</th>
                 <th>Nome</th>
+                <th>Data</th>
                 <th>Abonar</th>
                 <th></th>
             </tr>
@@ -28,7 +29,8 @@
                 <form action="<?php echo Router::url('/presenca/abonar'); ?>" method="GET">
                     <tr>
                         <td><?= $falta["Matricula"]["codigo"] ?></td>
-                        <td><input type="hidden" name="nome" value="<?= $nome ?>" /><?= $nome ?></td>
+                        <td><input type="hidden" name="nome" value="<?= $nome_pesquisa ?>" /><?= $nome ?></td>
+                        <td><?= $falta["Aula"]["data"] ?></td>
                         <td>
                             <? if ($falta["Presenca"]["status"] == 'Abonado') { ?>
                                 <span class='badge'>Falta Abonada</span>

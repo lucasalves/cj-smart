@@ -106,8 +106,10 @@ class PresencaController extends AppController {
 
     public function abonar() {
         $nome = null;
+        $nome_pesquisa = null;
         $faltas = array();
         
+//        $this->autoRender=false;
         // Realiza o Abono
         if (isset($this->request->query["presenca_id"])) {
             if($this->Presenca->abonarFalta($this->request->query["presenca_id"])){
@@ -120,22 +122,28 @@ class PresencaController extends AppController {
         // Busca o nome
         if (isset($this->request->query["nome"])) {
             
-            $nome = $this->request->query["nome"];
+            $nome_pesquisa = $this->request->query["nome"];
             
             // Busca o id da matricula por nome
-            $matriculas = $this->Presenca->Matricula->getIdByNome($nome);
+            $matriculas = $this->Presenca->Matricula->getIdByNome($nome_pesquisa);
+            
+            if(!empty($matriculas["nome"][0])){
+                $nome = $matriculas["nome"][0];
+            }else{
+                $nome= null;
+            }
             
             // Faltas das matriculas
             $faltas = $this->Presenca->find('all',array(
                 'conditions' => array(
-                    'matricula_id' => $matriculas,
+                    'matricula_id' => $matriculas["matricula_id"],
                     'status' => array(2,3)
                     )
             ));
             
         }
   
-        $this->set(array('faltas' => $faltas, 'nome' => $nome));
+        $this->set(array('faltas' => $faltas, 'nome' => $nome,'nome_pesquisa' => $nome_pesquisa));
     }
     
 

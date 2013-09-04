@@ -109,20 +109,24 @@ class Matricula extends AppModel {
     }
 
     public function getIdByNome($nome) {
-        $matriculas = $this->find('all', array(
-            'fields' => array('Matricula.id'),
-            'conditions' => array('Aluno.nome like ' => "%{$nome}%"),
-            'group' => 'Matricula.id'
-        ));
-            
-        $id = null;    
-        foreach($matriculas as $x):
-            $id[] = $x["Matricula"]["id"];
-        endforeach;
-        
-        return $id;
-            
-           
+
+        $aluno = null;
+
+        if ($nome != "") {
+            $matriculas = $this->find('all', array(
+                'fields' => array('Matricula.id', 'Aluno.nome'),
+                'conditions' => array('Aluno.nome like ' => "%{$nome}%"),
+                'group' => 'Matricula.id'
+                    ));
+
+
+            foreach ($matriculas as $x):
+                $aluno["matricula_id"][] = $x["Matricula"]["id"];
+                $aluno["nome"][] = $x["Aluno"]["nome"];
+            endforeach;
+        }
+
+        return $aluno;
     }
 
 }
