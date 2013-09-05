@@ -117,3 +117,55 @@
     });
 
 }(jQuery));
+
+// var Matricula = function(){
+//     var self = this;
+    
+//     this.add = function(){
+
+//     };
+
+//     this.edit = function(){
+
+//     };
+
+//     this.Aluno = {
+//         Aluno: new Aluno(),
+
+//         add: function(){
+
+//         },
+
+//         view: function(){
+
+//         },
+
+//         find: function(rg){
+//             this.Aluno.viewOrAdd({rg: rg}, this.Aluno.content);
+//         },
+
+//         content: function(html, addListernerEvent){
+//             $(".matricula .aluno").hide('slide', {}, 100, function(){
+//                 $(".matricula .aluno").html(html).show('slide', {}, 100, addListernerEvent);
+//             });
+//         }
+//     };
+
+//     //AddListersEvent
+//     (function(){        
+
+//         $(document).ready(function(){
+//             $(".matricula .find-aluno").on('click', function(){
+//                 self.Aluno.find( $("#rg").val() );
+//             });
+//         });
+
+//     }());
+// };
+
+
+// $(document).ready(function(){
+//     if($('.matricula').length){
+//         var matricula = new Matricula;
+//     }
+// });
