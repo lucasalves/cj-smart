@@ -40,4 +40,31 @@ class TurmaController extends AppController {
     public $uses = array('Turma');
 
     public $scaffold;
+    
+    public function finalizarSemestre() {
+//        $this->autoRender=false;
+
+        $this->loadModel('Turma');
+
+
+        // Turmas do Curso
+        $turmas_abertas = $this->Turma->getTurmasAbertas();
+        $turmas_encerradas = $this->Turma->getTurmasEncerradas();
+
+        $this->set(array('turmas_abertas' => $turmas_abertas, 'turmas_encerradas' => $turmas_encerradas));
+    }
+
+    public function finalizar() {
+        
+        if ($this->request->query["turma_id"]) {
+            
+            $turma_id = $this->request->query["turma_id"];
+            
+            $this->loadModel('Turma');
+            if($this->Turma->encerrarTurma($turma_id)){
+                $this->Session->setFlash("Semestre Finalizado com Sucesso. Por Favor aguarde o término da impressão dos certificados");
+            };
+        }
+     
+    }
 }

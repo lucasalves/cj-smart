@@ -47,33 +47,6 @@ class CursoController extends AppController {
      * @param mixed What page to display
      * @return void
      */
-    public function finalizarSemestre($idCurso) {
-//        $this->autoRender=false;
 
-        $this->loadModel('Turma');
-
-        // Curso
-        $curso = $this->Curso->findAllById($idCurso);
-
-        // Turmas do Curso
-        $turmas_abertas = $this->Turma->getTurmasAbertas($idCurso);
-        $turmas_encerradas = $this->Turma->getTurmasEncerradas($idCurso);
-
-        $this->set(array('curso' => $curso[0], 'turmas_abertas' => $turmas_abertas, 'turmas_encerradas' => $turmas_encerradas));
-    }
-
-    public function finalizar() {
-        
-        if ($this->request->query["turma_id"]) {
-            
-            $turma_id = $this->request->query["turma_id"];
-            
-            $this->loadModel('Turma');
-            if($this->Turma->encerrarTurma($turma_id)){
-                $this->Session->setFlash("Semestre Finalizado com Sucesso. Por Favor aguarde o término da impressão dos certificados");
-            };
-        }
-     
-    }
 
 }

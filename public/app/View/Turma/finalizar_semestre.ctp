@@ -4,7 +4,7 @@
     </h3>
     <div class="row-fluid well">
         <div class='span3'>
-            <?= $curso["Curso"]["nome"] ?>
+            
         </div>
     </div>
     <ul id="myTab" class="nav nav-tabs">
@@ -14,7 +14,7 @@
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="abertas">
             <? foreach ($turmas_abertas as $turma): ?>
-                <form action="<?php echo Router::url('/curso/finalizar'); ?>" method="GET">
+                <form action="<?php echo Router::url('/turma/finalizar'); ?>" method="GET">
                     <div class="media linha">
                         <a class="pull-left" href="#">
                             <img class="media-object"  src="<?php echo $this->Html->url("/img/icones/icone-livro.png"); ?>">
@@ -33,7 +33,7 @@
 
         <div class="tab-pane fade" id="encerradas">
             <? foreach ($turmas_encerradas as $turma): ?>
-                <form action="<?php echo Router::url('/curso/finalizar'); ?>" method="GET">
+                <form action="<?php echo Router::url('/turma/imprimir'); ?>" method="GET">
                     <div class="media linha">
                         <a class="pull-left" href="#">
                             <img class="media-object"  src="<?php echo $this->Html->url("/img/icones/icone-formando.png"); ?>">

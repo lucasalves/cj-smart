@@ -113,11 +113,10 @@ class Turma extends AppModel {
         return $this->Matricula('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
     }
 
-    public function getTurmasAbertas($idCurso) {
-
+    public function getTurmasAbertas() {
 
         $turmas = $this->find('all', array(
-            'conditions' => array('Curso.id' => $idCurso, 'Turma.data_encerramento' => null),
+            'conditions' => array('Turma.data_encerramento' => null),
             'group' => array('Turma.id')
                 ));
 
@@ -128,10 +127,10 @@ class Turma extends AppModel {
         }
     }
     
-    public function getTurmasEncerradas($idCurso) {
+    public function getTurmasEncerradas() {
 
         $turmas = $this->find('all', array(
-            'conditions' => array('Curso.id' => $idCurso, 'Turma.data_encerramento' => null),
+            'conditions' => array('Turma.data_encerramento is not null'),
             'group' => array('Turma.id')
                 ));
 
