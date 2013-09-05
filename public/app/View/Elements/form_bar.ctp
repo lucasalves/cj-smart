@@ -1,6 +1,6 @@
 <div class='row-fluid'>
     <div class='span2'>
-        <?php echo $this->Form->create(); ?>
+<!--        <h3><?=$nome?></h3>-->
     </div>
     <div class='btn-group btn-navba' style='float:right'>
         <?= $this->Html->link(__d('cake', 'Voltar '), array('action' => 'index'), array('class' => 'btn')); ?>

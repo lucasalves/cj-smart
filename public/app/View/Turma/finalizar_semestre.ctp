@@ -4,7 +4,7 @@
     </h3>
     <div class="row-fluid well">
         <div class='span3'>
-            
+
         </div>
     </div>
     <ul id="myTab" class="nav nav-tabs">
@@ -20,8 +20,9 @@
                             <img class="media-object"  src="<?php echo $this->Html->url("/img/icones/icone-livro.png"); ?>">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading"><?= $turma["Turma"]["nome"] ?></h4>
-                            Data de Criação: <?= $turma["Turma"]["data_criacao"] ?>
+                            <h4 class="media-heading"><?= $turma["Curso"]["nome"] ?></h4>
+                            <strong>Turma: <?= $turma["Turma"]["nome"] ?></strong><br/>
+                            Aberta em: <?= $turma["Turma"]["data_criacao"] ?>
                             <input type="hidden" name="turma_id" value="<?= $turma["Turma"]["id"] ?>" />
                             <button class="btn btn-success btn-small">Finalizar Semestre</button>
                         </div >
@@ -39,21 +40,17 @@
                             <img class="media-object"  src="<?php echo $this->Html->url("/img/icones/icone-formando.png"); ?>">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading"><?= $turma["Turma"]["nome"] ?></h4>
-                            <p>
-                                Data de Criação: <?= $turma["Turma"]["data_criacao"] ?>
-                            </p>
-                            <p>
-                                Data de Encerramento: <?= $turma["Turma"]["data_encerramento"] ?>
-                                <input type="hidden" name="turma_id" value="<?= $turma["Turma"]["id"] ?>" />
-                                <button class="btn btn-info btn-small">Imprimir Certificados</button>
-                            </p>
+                            <h4 class="media-heading"><?= $turma["Curso"]["nome"] ?></h4>
+                            <strong>Turma: <?= $turma["Turma"]["nome"] ?></strong><br/>
+                            Aberta em: <?= $turma["Turma"]["data_criacao"] ?><br>
+                            Encerrada em: <?= $turma["Turma"]["data_encerramento"] ?>
+                            <input type="hidden" name="turma_id" value="<?= $turma["Turma"]["id"] ?>" />
+                            <button class="btn btn-info btn-small">Imprimir Certificados</button>
                         </div >
 
                     </div>
                 </form>
             <? endforeach; ?>
         </div>
-
     </div>
 </div>

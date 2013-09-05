@@ -1,9 +1,9 @@
 <?= $this->Html->script(array('curso.js')); ?>
 <?= $this->Form->create(); ?>   
 <div class="form">
-    <?= $this->element('form_bar', array('nome' => 'Curso')); ?>
+    <?= $this->element('form_bar', array('nome' => 'Curso')); ?>    
     <div class="well">
-        <legend>Curso</legend>
+    
 
         <div class="row-fluid">
 
@@ -29,12 +29,7 @@
                 echo "<span  class='btn btn-success' id='NovaMateria'>Nova Matéria</span>"
                 ?>
                 
-                
-                <div class="row-fluid">
-                    <span>Android</span> <span class="badge">Excluir</span><br/>
-                    <span>Inglês</span> <span class="badge">Excluir</span><br/>
-                    <span>Android</span> <span class="badge">Excluir</span><br/>
-                </div>
+            
                 
             </div>
 
