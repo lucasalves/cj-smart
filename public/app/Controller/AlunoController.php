@@ -62,8 +62,4 @@ class AlunoController extends AppController {
 
     	echo json_encode($resp);
     }
-
-    public function add(){
-        $this->redirect('/matricula/add/');
-    }
 }
