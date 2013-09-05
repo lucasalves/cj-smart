@@ -59,7 +59,10 @@
                     'fullcalendar.min.js',
                     'app/app.js',
                     'app/modal.js',
-                    'aula/calendario'
+                    'app/request.js',
+                    'app/ajaxLoad.js',
+                    'aula/calendario',
+                    'aluno'
                 )
         );
 
