@@ -87,8 +87,8 @@ class Turma extends AppModel {
         // called as CakeTime
         App::uses('CakeTime', 'Utility');
 
-        $mes_criacao = CakeTime::format('2011-08-22', '%m');
-        $ano_criacao = CakeTime::format('2011-08-22', '%Y');
+        $mes_criacao = CakeTime::format($data_criacao, '%m') - 1;
+        $ano_criacao = CakeTime::format($data_criacao, '%Y');
 
         $meses = array();
         for ($i = 1; $i <= $duracao_meses; $i++) {
