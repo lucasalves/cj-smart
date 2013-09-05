@@ -113,4 +113,50 @@ class Turma extends AppModel {
         return $this->Matricula('all', array('conditions' => array('Matricula.turma_id' => $turma_id)));
     }
 
+    public function getTurmasAbertas($idCurso) {
+
+
+        $turmas = $this->find('all', array(
+            'conditions' => array('Curso.id' => $idCurso, 'Turma.data_encerramento' => null),
+            'group' => array('Turma.id')
+                ));
+
+        if (empty($turmas)) {
+            return array();
+        } else {
+            return $turmas;
+        }
+    }
+    
+    public function getTurmasEncerradas($idCurso) {
+
+        $turmas = $this->find('all', array(
+            'conditions' => array('Curso.id' => $idCurso, 'Turma.data_encerramento' => null),
+            'group' => array('Turma.id')
+                ));
+
+        if (empty($turmas)) {
+            return array();
+        } else {
+            return $turmas;
+        }
+    }
+
+    public function encerrarTurma($idTurma) {
+        $this->validator()
+                ->remove('nome')
+                ->remove('periodo')
+                ->remove('curso_id')
+                ->remove('data_criacao');
+
+        $this->create();
+        $this->set(
+                array(
+                    'id' => $idTurma,
+                    'data_encerramento' => date("Ymd"),
+        ));
+
+        return $this->save();
+    }
+
 }

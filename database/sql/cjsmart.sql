@@ -210,11 +210,14 @@ CREATE  TABLE IF NOT EXISTS `cjsmart`.`turma` (
   `nome` VARCHAR(200) NOT NULL ,
   `periodo` VARCHAR(1) NOT NULL COMMENT 'M:Manhã, T:Tarde, N:Noite' ,
   `data_criacao` DATE NULL DEFAULT NULL ,
+  `data_encerramento` DATE NULL ,
   `curso_id` INT(11) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = latin1;
+
+
 
 -- --------------------------------------------------------
 
