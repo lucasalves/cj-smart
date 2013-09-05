@@ -130,7 +130,7 @@ class Turma extends AppModel {
     public function getTurmasEncerradas() {
 
         $turmas = $this->find('all', array(
-            'conditions' => array('Turma.data_encerramento is not null'),
+            'conditions' => array('not'=>array('Turma.data_encerramento'=>null)),
             'group' => array('Turma.id')
                 ));
 
