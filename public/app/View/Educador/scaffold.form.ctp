@@ -30,6 +30,21 @@
         </div>
         <div class="row-fluid">
             <?
+            echo $this->Form->input('Educador.materia_id', array(
+                'label' => 'Matéria',
+                'div' => 'span4'
+            ));
+            echo $this->Form->input('Educador.status', array(
+                'selected' => $this->data["Educador"]["status"],
+                'options' => array('A' => 'Ativado', 'D' => 'Desativado'),
+                'empty' => false,
+                'label' => 'Status',
+                'div' => 'span2'));
+            ?>
+        </div>
+        <hr/>
+        <div class="row-fluid">
+            <?
             echo $this->Form->input('Educador.endereco', array(
                 'label' => 'Endereço',
                 'div' => 'span4'
@@ -61,20 +76,7 @@
 
 
         </div>
-        <div class="row-fluid">
-            <?
-            echo $this->Form->input('Educador.materia_id', array(
-                'label' => 'Matéria',
-                'div' => 'span4'
-            ));
-            echo $this->Form->input('Educador.status', array(
-                'selected' => $this->data["Educador"]["status"],
-                'options' => array('A' => 'Ativado', 'D' => 'Desativado'),
-                'empty' => false,
-                'label' => 'Status',
-                'div' => 'span2'));
-            ?>
-        </div>
+
         <div class="row-fluid">
             <?
             ?>

@@ -40,4 +40,9 @@ class EducadorController extends AppController {
     public $uses = array();
 
     public $scaffold;
+    
+     public function beforeFilter(){
+        parent::beforeFilter();
+        $this->set('fields', array('id', 'nome', 'materia_id'));
+    }
 }
