@@ -126,11 +126,11 @@ class Turma extends AppModel {
             return $turmas;
         }
     }
-    
+
     public function getTurmasEncerradas() {
 
         $turmas = $this->find('all', array(
-            'conditions' => array('not'=>array('Turma.data_encerramento'=>null)),
+            'conditions' => array('not' => array('Turma.data_encerramento' => null)),
             'group' => array('Turma.id')
                 ));
 
@@ -157,5 +157,6 @@ class Turma extends AppModel {
 
         return $this->save();
     }
+
 
 }
