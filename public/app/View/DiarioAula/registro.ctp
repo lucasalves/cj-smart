@@ -19,7 +19,8 @@
                         'options' => $this->viewVars['turmas'],
                         'multiple' => false,
                         'empty' => 'Selecione a Turma',
-                        'selected' => $turma_id
+                        'selected' => $turma_id,
+                        'div' => 'required'
                     ));
                     ?>
                 </div>
@@ -30,7 +31,8 @@
                         'options' => $this->viewVars['aulas'],
                         'multiple' => false,
                         'empty' => 'Selecione a Aula',
-                        'selected' => $aula_id
+                        'selected' => $aula_id,
+                        'div' => 'required'
                     ));
                     ?>
                 </div>
