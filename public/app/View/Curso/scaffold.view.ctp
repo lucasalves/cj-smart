@@ -10,20 +10,18 @@
 
         <dt>Nome:</dt>
         <dd><?=$this->data["Curso"]["nome"];?></dd>
-        <br/>
         <dt>Descrição:</dt>
         <dd><?=$this->data["Curso"]["descricao"];?></dd>
-        <br/>
         <dt>Duração:</dt>
         <dd><?=$this->data["Curso"]["duracao"];?> meses</dd>        
-        <br/>
         <dt>Matérias:</dt>
+        <ol>
         <?
         foreach ($this->data["Materia"] as $materia):
-            echo "<dd>{$materia["nome"]}</dd>";
+            echo "<li><dd>{$materia["nome"]}</dd></li>";
         endforeach;
         ?>
-        
+        </ol>
     </div>
 
 </div>
