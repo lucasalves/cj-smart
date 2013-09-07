@@ -146,5 +146,10 @@ class PresencaController extends AppController {
         $this->set(array('faltas' => $faltas, 'nome' => $nome,'nome_pesquisa' => $nome_pesquisa));
     }
     
+    public function testaFalta(){
+        $this->autoRender = false;
+        $this->Presenca->verificaAvisoPorFalta(1, 19);
+    }
+    
 
 }

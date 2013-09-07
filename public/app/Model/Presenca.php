@@ -42,6 +42,10 @@ class Presenca extends AppModel {
         'Aula' => array(
             'className' => 'Aula',
             'foreignKey' => 'aula_id'
+        ),
+        'Aviso' => array(
+            'className' => 'Aviso',
+            'foreignKey' => 'aviso_id'
         )
     );
 
@@ -105,6 +109,8 @@ class Presenca extends AppModel {
             ));
 
             $this->save();
+            $this->create();
+            $this->verificaAvisoPorFalta($id_matricula,$aula_id);
             $contador++;
         endforeach;
     }
@@ -115,6 +121,55 @@ class Presenca extends AppModel {
         ));
 
         return $this->save();
+    }
+
+    public function verificaAvisoPorFalta($matricula_id, $aula_id) {
+              
+        // Quantidade de dias verificar
+        $conf_dias = 5;
+        // Quantidade de dias permitido faltar dentro dos dias verificados
+        $conf_faltas_permitidas =1;
+        
+        // Busca a data da Falta
+        $aula = $this->Aula->findAllById($aula_id);
+        
+        $data_falta = $aula[0]["Aula"]["data"];
+        
+        $data_inicial = date('Y-m-d', strtotime("-{$conf_dias} days", (strtotime($data_falta))));
+        $data_final = $data_falta;
+
+
+        $faltas = $this->find('all', array(
+            'fields' => array('Aula.data', 'Presenca.id'),
+            'conditions' => array(
+                'Presenca.aviso_id' => null,
+                'Presenca.matricula_id' => $matricula_id,
+                'Presenca.status' => 'Ausente',
+                'Aula.data BETWEEN ? AND ?' => array( $data_inicial, $data_final),
+                
+            ),
+            'order' => 'Aula.data ASC'
+                ));
+        
+        
+        // Total de Faltas encontradas no periodo de 5 dias
+        $total_faltas = count($faltas);
+
+        
+        // Gera ocorrencia e marca as faltas como consultadas
+        if($total_faltas > $conf_faltas_permitidas){           
+           
+            $aviso = $this->Aviso->addAviso($matricula_id, $aula_id);
+            
+            foreach($faltas as $falta):
+                $this->set(array(
+                    'aviso_id' => $aviso["Aviso"]["id"],
+                    'id' => $falta["Presenca"]["id"]
+                ));
+                
+                $this->save();
+            endforeach;
+        }
     }
 
 }
