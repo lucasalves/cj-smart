@@ -21,11 +21,11 @@
             <?php endif; ?>
             
             <div class="row">
-                <div class="span3">               
+                <div class="span4">               
                     <?php echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg')); ?>
                 </div>
-                <div class="span2 button-aluno">
-                    <span title="Procurar Aluno" class="btn find-aluno">Adicionar Aluno</span>
+                <div class="span3 button-aluno">
+                    <span title="Procurar Aluno" class="btn find-aluno btn-success">Adicionar Aluno</span>
                 </div>
             </div>
 
