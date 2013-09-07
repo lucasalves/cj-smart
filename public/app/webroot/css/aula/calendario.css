@@ -5,13 +5,15 @@
 
 
 .period-M{
-	background-color: #00BFFF !important;
+	background-color: #ed9e2c !important;
+        border:#c78627;
 }
 
 .period-T{
-	background-color: #EEDD82 !important;
+	background-color: #92bac0 !important;
 }
 
 .period-N{
-	background-color: #36648B !important;
+	background-color: #a5c140 !important;
+        border:#7b8f31;
 }

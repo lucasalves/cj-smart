@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -20,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -32,42 +32,41 @@ App::uses('AppModel', 'Model');
  * @package       app.Model
  */
 class Aula extends AppModel {
-    public $useTable = 'aula';
 
+    public $useTable = 'aula';
     public $belongsTo = array(
         'Turma' => array(
-            'className'  => 'Turma',
+            'className' => 'Turma',
             'foreignKey' => 'turma_id'
         ),
         'Materia' => array(
-            'className'  => 'Materia',
+            'className' => 'Materia',
             'foreignKey' => 'materia_id'
         ),
         'Local' => array(
-            'className'  => 'Local',
+            'className' => 'Local',
             'foreignKey' => 'local_id'
-
         )
     );
-
     public $hasMany = array(
         'Ocorrencia' => array(
             'foreignKey' => 'aula_id'
         )
     );
 
-    public function toEvents($data){   
-    	$events = array();
+    public function toEvents($data) {
+        $events = array();
 
-    	foreach ($data as $event) {
-    		$events[] = array(
-    						'id'  	    => $event['Aula']['id'],
-    						'title'     => $event['Local']['local'],
-    						'start'     => $event['Aula']['data'],
-                            'className' => 'period-' . $event['Turma']['periodo']
-    					);
-    	}
+        foreach ($data as $event) {
+            $events[] = array(
+                'id' => $event['Aula']['id'],
+                'title' => $event['Turma']['nome'],
+                'start' => $event['Aula']['data'],
+                'className' => 'period-' . $event['Turma']['periodo']
+            );
+        }
 
-    	return $events;
+        return $events;
     }
+
 }
