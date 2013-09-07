@@ -136,8 +136,8 @@ class PresencaController extends AppController {
             // Faltas das matriculas
             $faltas = $this->Presenca->find('all',array(
                 'conditions' => array(
-                    'matricula_id' => $matriculas["matricula_id"],
-                    'status' => array(2,3)
+                    'Presenca.matricula_id' => $matriculas["matricula_id"],
+                    'Presenca.status' => array(2,3)
                     )
             ));
             
