@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -20,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -32,30 +32,29 @@ App::uses('AppModel', 'Model');
  * @package       app.Model
  */
 class Aluno extends AppModel {
+
     public $useTable = 'aluno';
-    
-     public $displayField = 'nome';
-
-    public  $hasMany = array(
-                    'Matricula' => array(
-                       'foreignKey' => 'aluno_id'
-                    )
-                ); 
-
+    public $displayField = 'nome';
+    public $hasMany = array(
+        'Matricula' => array(
+            'foreignKey' => 'aluno_id'
+        )
+    );
     public $validation = array(
-    						'telefone' => array(
-								'rule'    => 'numeric',                                 
-                                'required'   => true,
-                                'allowEmpty' => false,
-                                'message'    => 'Digite um numero de telefone valido'
-    						),
-    						'data_nascimento' => 'date',
-    						'rg' => array(
-    							'unique' => array(
-							        'rule' => 'isUnique',
-							        'required' => 'create'
-							    )
-    						),
-    						''
-    				);
+        'telefone' => array(
+            'rule' => 'numeric',
+            'required' => true,
+            'allowEmpty' => false,
+            'message' => 'Digite um numero de telefone valido'
+        ),
+        'data_nascimento' => 'date',
+        'rg' => array(
+            'unique' => array(
+                'rule' => 'isUnique',
+                'required' => 'create'
+            )
+        ),
+        ''
+    );
+
 }
