@@ -218,6 +218,20 @@ AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = latin1;
 
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `aviso`
+--
+DROP TABLE IF EXISTS `cjsmart`.`aviso`;
+CREATE  TABLE IF NOT EXISTS `cjsmart`.`aviso` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `descricao` VARCHAR(1000) NOT NULL ,
+  `status` ENUM('Enviada','Arquivada') NOT NULL ,
+  `data_cadastro` DATE NULL ,
+  `data_envio` DATE NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
 
 -- --------------------------------------------------------
 
@@ -345,9 +359,9 @@ CREATE  TABLE IF NOT EXISTS `cjsmart`.`presenca` (
   `status` ENUM('Presente','Ausente','Abonado') NOT NULL ,
   `aula_id` INT(10) NOT NULL ,
   `matricula_id` INT(10) NOT NULL ,
-  PRIMARY KEY (`id`, `aula_id`) )
+  `aviso_id` INT NULL ,
+  PRIMARY KEY (`id`, `aula_id`))
 ENGINE = InnoDB;
-
 -- --------------------------------------------------------
 
 --
