@@ -48,7 +48,7 @@
             <table cellpadding="0" cellspacing="0" class='table table-striped' id='relatorio'>
                 <tr>
                     <th style="width:10px"></th>
-                    <?php foreach ($scaffoldFields as $_field): ?>
+                    <?php foreach ($this->viewVars['fields'] as $_field): ?>
                         <th><?php echo $this->Paginator->sort($_field, $this->Html->DescricaoCampo($_field)); ?></th>
                     <?php endforeach; ?>
                     <th><?php // echo __d('cake', 'Actions');        ?></th>
@@ -61,7 +61,7 @@
 
                     echo $this->Html->link('', array('action' => 'view', ${$singularVar}[$modelClass][$primaryKey]), array('class' => 'link link-visualizar', 'title' => 'Visualizar Registro'));
                     echo '</td>';
-                    foreach ($scaffoldFields as $_field) {
+                    foreach ($this->viewVars['fields'] as $_field) {
                         $isKey = false;
                         if (!empty($associations['belongsTo'])) {
                             foreach ($associations['belongsTo'] as $_alias => $_details) {
