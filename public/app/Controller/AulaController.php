@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -31,38 +32,36 @@ App::uses('AppController', 'Controller');
  */
 class AulaController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
+    /**
+     * Controller name
+     *
+     * @var string
+     */
     public $name = 'Aula';
     public $uses = array();
-
     public $scaffold;
 
-    public function get(){
-    	$this->autoRender = false;
-    	echo json_encode(
-    					$this->Aula->toEvents(
-    							$this->Aula->find('all', array(
-															'conditions' => array('UNIX_TIMESTAMP(data) >= ' => $this->request->query['start'], 'UNIX_TIMESTAMP(data) <= ' => $this->request->query['end'])
-														)
-    							)
-						)
-    		);
+    public function get() {
+        $this->autoRender = false;
+        echo json_encode(
+                $this->Aula->toEvents(
+                        $this->Aula->find('all', array(
+                            'conditions' => array('UNIX_TIMESTAMP(data) >= ' => $this->request->query['start'], 'UNIX_TIMESTAMP(data) <= ' => $this->request->query['end'])
+                                )
+                        )
+                )
+        );
     }
 
-    public function update_date(){
-    	$this->autoRender = false;
-    	extract($this->request->data);
-    	$aula = $this->Aula->find('all', array(
-											'conditions' => array('Aula.id' => $id)
-										)
-    								);
-    	$this->Aula->id   = $id;
-  		$this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
+    public function update_date() {
+        $this->autoRender = false;
+        extract($this->request->data);
+        $aula = $this->Aula->find('all', array(
+            'conditions' => array('Aula.id' => $id)
+                )
+        );
+        $this->Aula->id = $id;
+        $this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
     }
-    
 
 }

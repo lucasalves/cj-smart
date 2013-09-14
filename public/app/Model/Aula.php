@@ -60,7 +60,7 @@ class Aula extends AppModel {
         foreach ($data as $event) {
             $events[] = array(
                 'id' => $event['Aula']['id'],
-                'title' => $event['Turma']['nome'],
+                'title' => $event['Turma']['nome'] . " - " . $event['Local']['local'],
                 'start' => $event['Aula']['data'],
                 'className' => 'period-' . $event['Turma']['periodo']
             );
