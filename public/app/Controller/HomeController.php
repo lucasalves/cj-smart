@@ -48,5 +48,12 @@ class HomeController extends AppController {
  * @return void
  */
 	public function index() {
+            
+            // Avisos de Falta
+            $this->loadModel("Aviso");
+            $aviso_falta = $this->Aviso->getAvisosAbertos();
+            
+            $this->set(array(
+                'aviso_falta'=>$aviso_falta));
 	}
 }

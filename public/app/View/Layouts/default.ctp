@@ -31,6 +31,7 @@
         echo $this->Html->css(
                 array(
                     'bootstrap.css',
+                    //'bootstrap-responsive.css',
                     'search.css',
                     'fullcalendar.print.css',
                     'fullcalendar.css',
