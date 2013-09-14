@@ -37,14 +37,37 @@ class Aviso extends AppModel {
     
     
     public function addAviso($matricula_id, $aula_id) {
-       
+
         $this->set(array(
-            'descricao' => 'Ocorrência Automática - Aluno Faltou mais de 1 vez no período de 5 dias',
-            'status' => 'Enviada',
+            'descricao' => 'Aluno Faltou mais de 1 vez no período de 5 dias',
+            'status' => 'Aberto',
             'aula_id' => $aula_id,
-            'matricula_id' => $matricula_id
+            'matricula_id' => $matricula_id,
+            'data_cadastro' => date('Ymd')
         ));
-        
+
+        return $this->save();
+    }
+
+    public function getAvisosAbertos() {
+        return $this->find('count', array(
+                    'conditions' => array('Aviso.status' => 'Aberto')
+                ));
+    }
+
+    public function arquivar($id) {
+        $this->set(array(
+            'status' => 'Arquivado'
+            , 'id' => $id));
+
+        return $this->save();
+    }
+    
+    public function enviar($id) {
+        $this->set(array(
+            'status' => 'Enviado'
+            , 'id' => $id));
+
         return $this->save();
     }
 

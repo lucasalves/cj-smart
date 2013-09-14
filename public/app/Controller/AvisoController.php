@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -29,42 +30,25 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class AlunoController extends AppController {
+class AvisoController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
-    public $name = 'Aluno';
-    public $uses = array('Aluno');
-
+    /**
+     * Controller name
+     *
+     * @var string
+     */
+    public $name = 'Aviso';
+    public $uses = array('Aviso');
     public $scaffold;
-    
-     public function beforeFilter(){
-        parent::beforeFilter();
-        $this->set('fields', array('id', 'nome','rg', 'email'));
+
+    public function enviarEmailResponsavel() {
+        $this->autoRender=false;
+        
+//        $this->Email->delivery = 'debug';
+        $this->Email->from = 'Fulano <fulano@exemplo.com>';
+//        $this->Email->to = 'Ciclano <ciclano@exemplo.com>';
+//        $this->Email->subject = 'Teste';
+//        $this->Email->send('Corpo da mensagem!');
     }
 
-    public function add_ajax(){
-    	$this->autoRender = false;
-
-    	if($this->request->is('post')){
-    		if($resp = $this->Aluno->save($this->request->data)){
-	   				$resp = array_merge(
-    							array('status' => true),
-    							$resp   					
-    						);
-    		}else{    			
-    			$resp = array_merge(
-    							array('status' => false),
-    							array(
-                                    'errors' => $this->Aluno->validationErrors
-                                )
-    						);
-    		}
-    	}
-
-    	echo json_encode($resp);
-    }
 }
