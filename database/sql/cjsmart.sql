@@ -227,11 +227,12 @@ DROP TABLE IF EXISTS `cjsmart`.`aviso`;
 CREATE  TABLE IF NOT EXISTS `cjsmart`.`aviso` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `descricao` VARCHAR(1000) NOT NULL ,
-  `status` ENUM('Enviada','Arquivada') NOT NULL ,
+  `status` ENUM('Aberto','Enviado','Arquivado') NOT NULL ,
   `data_cadastro` DATE NULL ,
   `data_envio` DATE NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
+  `matricula_id` INT(10) NOT NULL ,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 -- --------------------------------------------------------
 
