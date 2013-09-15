@@ -42,7 +42,7 @@ class Aluno extends AppModel {
                     )
                 ); 
 
-    public $validation = array(
+    public $validate = array(
     						'telefone' => array(
 								'rule'    => 'numeric',                                 
                                 'required'   => true,
