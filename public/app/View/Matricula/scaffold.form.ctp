@@ -19,19 +19,24 @@
             <?php if ($this->Form->isFieldError('Matricula.aluno_id')): ?>
                 <?php echo $this->Form->error('Matricula.aluno_id'); ?>
             <?php endif; ?>
-            
-            <div class="row">
-                <div class="span4">               
-                    <?php echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg')); ?>
-                </div>
-                <div class="span3 button-aluno">
-                    <span title="Procurar Aluno" class="btn find-aluno btn-success">Adicionar Aluno</span>
-                </div>
-            </div>
 
-            <div id="botoes"></div>
-
+            <?php if(empty($this->data['Aluno']['rg'])): ?>
+                <div class="row">
+                    <div class="span3">
+                        <?php echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg')); ?>
+                    </div>
+                    <div class="span4 button-aluno">
+                        <span title="Procurar Aluno" class="btn find-aluno">Adicionar Aluno</span>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
     <?= $this->Form->end(); ?>
+
+    <div class="aluno"></div>
+
+    <div id="botoes">
+        <button class='btn btn-large btn-success matricula-create'>Matricular</button>
+    </div>
 </div>
