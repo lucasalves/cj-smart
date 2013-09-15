@@ -40,17 +40,15 @@ class AlunoController extends AppController {
     public $uses = array('Aluno');
 
     public $scaffold;
-    
-     public function beforeFilter(){
-        parent::beforeFilter();
-        $this->set('fields', array('id', 'nome','rg', 'email'));
-    }
 
     public function add_ajax(){
     	$this->autoRender = false;
 
     	if($this->request->is('post')){
-    		if($resp = $this->Aluno->save($this->request->data)){
+            $this->Aluno->set($this->request->data);
+    		
+            if($this->Aluno->validates()){
+                $resp = $this->Aluno->save($this->request->data);
 	   				$resp = array_merge(
     							array('status' => true),
     							$resp   					
