@@ -107,6 +107,14 @@ class AppHelper extends Helper {
         }
         return $options;
     }
+
+    public function displayFiels($scope, $default){
+        if(!empty($scope->viewVars['fields'])){
+            return $scope->viewVars['fields'];
+        }
+
+        return $default;
+    }
     
     
 }
