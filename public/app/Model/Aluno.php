@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Application model for Cake.
  *
@@ -21,6 +20,7 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
 App::uses('AppModel', 'Model');
 
 /**
@@ -32,29 +32,49 @@ App::uses('AppModel', 'Model');
  * @package       app.Model
  */
 class Aluno extends AppModel {
-
     public $useTable = 'aluno';
-    public $displayField = 'nome';
-    public $hasMany = array(
-        'Matricula' => array(
-            'foreignKey' => 'aluno_id'
-        )
-    );
-    public $validation = array(
-        'telefone' => array(
-            'rule' => 'numeric',
-            'required' => true,
-            'allowEmpty' => false,
-            'message' => 'Digite um numero de telefone valido'
-        ),
-        'data_nascimento' => 'date',
-        'rg' => array(
-            'unique' => array(
-                'rule' => 'isUnique',
-                'required' => 'create'
-            )
-        ),
-        ''
-    );
+    
+     public $displayField = 'nome';
 
+    public  $hasMany = array(
+                    'Matricula' => array(
+                       'foreignKey' => 'aluno_id'
+                    )
+                ); 
+
+    public $validation = array(
+    						'telefone' => array(
+								'rule'    => 'numeric',                                 
+                                'required'   => true,
+                                'allowEmpty' => false,
+                                'message'    => 'Digite um numero de telefone valido'
+    						),
+    						'data_nascimento' => 'date',
+    						'rg' => array(
+    							'unique' => array(
+							        'rule' => 'isUnique',
+							        'required' => 'create'
+							    )
+    						),
+    						'' 
+    				);
+
+    public function viewOrAdd($where){
+        $aluno = $this->find('all', array(
+                'conditions' =>  $where
+            )
+        );
+
+        if(!empty($aluno)){
+            return 'view/' . $aluno[0]['Aluno']['id'];
+        }else{
+            $url = 'add?';
+
+            foreach ($where as $key => $value) {
+                $url .= $key . '=' . $value;
+            }
+
+            return $url;
+        }
+    }
 }

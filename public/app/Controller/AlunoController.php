@@ -65,4 +65,8 @@ class AlunoController extends AppController {
 
     	echo json_encode($resp);
     }
+
+    public function view_or_add(){
+        $this->redirect( $this->Aluno->viewOrAdd( $this->request->query ), 301);
+    }
 }
