@@ -52,7 +52,8 @@ class Matricula extends AppModel {
                 'message' => 'Adicione um aluno para matricular'
             ),
             'validationPeriod' => array(
-                'rule' => array('validationPeriodRules'),
+                'on'      => 'create',
+                'rule'    => array('validationPeriodRules'),
                 'message' => 'O aluno já se cadastrou em menos de um ano neste curso.',
             ),
         )
