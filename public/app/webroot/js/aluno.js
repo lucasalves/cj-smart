@@ -10,4 +10,8 @@ var Aluno = function(){
 	this.view = function(id, addListerEvent){
 		App.Request.get('aluno/view/' + id, {}, $('.aluno'), addListerEvent);		
 	};
+
+	this.edit = function(id, addListerEvent){
+		App.Request.get('aluno/edit/' + id, {}, $('.aluno'), addListerEvent);		
+	};
 };

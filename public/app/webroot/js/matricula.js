@@ -50,23 +50,34 @@ var Matricula = function(){
             var aluno = this;
             this.Aluno.viewOrAdd({rg: rg}, function(html){
                 aluno.content(html, function(){
-                    if($("#AlunoAddForm").find().length){
-                        $("#AlunoNome").focus();                        
-                    }else{                       
+                    if($(html).find("#AlunoAddForm").length){
+                        $("#AlunoNome").focus();
+                        aluno.btnEdit.remove();                
+                    }else{                   
                         self.setHiddenData({
                             id: parseInt($('.aluno dd:first').html())
                         });
                         self.submitButton.display();
+                        aluno.btnEdit.add();
                     }
 
                     $("html, body").animate({scrollTop:  270}, 1000);
                     $(".aluno .btn-group a").remove();
-                    $(".error-message").remove();
+                    $(".error-message").remove();                    
                 });
             });
         },
 
-        content: function(html, addListernerEvent){    
+        btnEdit: {
+            add: function(){
+                $('.aluno .btn-group').append('<buton class="edit btn">Editar</buton>');
+            },
+            remove: function(){
+                $('.aluno .btn-group .edit').remove();
+            }
+        },
+
+        content: function(html, addListernerEvent){
             var html = $(html).find(".aluno").hide().html();
             $(".matricula .aluno").html(html).show('slide', {}, 300);
             addListernerEvent();
@@ -78,13 +89,23 @@ var Matricula = function(){
                 aluno.content(html, function(){
                     $(".aluno .btn-group a").remove();
                     self.submitButton.display();
+                    aluno.btnEdit.add();
                 })
+            });
+        },
+
+        edit: function(id){
+            var aluno = this;
+            this.Aluno.edit(id, function(html){
+                aluno.content(html, function(){})
+                self.submitButton.hidden();
+                $(".aluno .btn-group a").remove();
             });
         }
     };
 
     this.displayAlunoMatricula = function(){
-        if($("#matricula #MatriculaAlunoId").val().length && $('.aluno').html().length === 0){
+        if($("#matricula #MatriculaAlunoId").val() && $('.aluno').html().length === 0){
             this.Aluno.view($("#matricula #MatriculaAlunoId").val());
         }
     };
@@ -114,13 +135,17 @@ var Matricula = function(){
                 }
             });
             
-            $("body").on('submit', '#AlunoAddForm', function(e){
+            $("body").on('submit', '#AlunoAddForm, #AlunoEditForm', function(e){
                 e.preventDefault();
-                self.Aluno.add($("#AlunoAddForm input"));
+                self.Aluno.add($("#AlunoAddForm input, #AlunoEditForm input"));
             });
 
             $('.matricula button.matricula-create').on('click', function(){
                 $("#matricula").submit();
+            });
+
+             $("body").on('click', '.aluno .edit', function(e){                
+                self.Aluno.edit(parseInt($('.aluno dd:first').html()));
             });
         });
 
