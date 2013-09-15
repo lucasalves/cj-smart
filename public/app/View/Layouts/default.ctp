@@ -36,7 +36,8 @@
                     'fullcalendar.print.css',
                     'fullcalendar.css',
                     'app/modal.css',
-                    'aula/calendario.css'
+                    'aula/calendario.css',
+                    'matricula.css'
                 )
         );
 
@@ -62,6 +63,7 @@
                     'app/modal.js',
                     'app/request.js',
                     'app/ajaxLoad.js',
+                    'app/notify.js',
                     'aula/calendario',
                     'aluno'
                 )
