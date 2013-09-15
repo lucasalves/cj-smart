@@ -41,6 +41,11 @@ class AlunoController extends AppController {
 
     public $scaffold;
 
+    public function beforeFilter(){
+        parent::beforeFilter();
+        $this->set('fields', array('id', 'nome','rg', 'email'));
+    }
+
     public function add_ajax(){
     	$this->autoRender = false;
 
