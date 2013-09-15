@@ -1,171 +1,135 @@
-(function($){
-    var Matricula = function (){
-        var self = this;
+var Matricula = function(){
+    var self = this;
+    
+    this.add = function(){
 
-        this.aluno;
-           
-        this.verifica = function(){
-            var self = this;
-            $.ajax({
-                dataType: "json",
-                 url: ajaxurl + "matricula/verifica",
-                 data:{
-                     rg: $("#rg").val()
-                 },
-                 success: function(resp){
-                    if(typeof resp.Aluno !== "undefined"){
-                        self.aluno = resp.Aluno;
-                        self.exibeBotao(1);
-                    }else{
-                        self.exibeBotao(2);
-                    }
-                 }
-            });
-        };
-         
-        this.exibeBotao = function(status){
-            if(status == 1){
-                $("#MatriculaAlunoId").val(this.aluno.id);
-                var html =
-                    
-                "<dt>Nome:</dt>"+
-                "<dd>"+this.aluno.nome+"</dd>"+
-                    
-                "<dt>Rg:</dt>"+
-                "<dd>"+this.aluno.rg+"</dd>"+
-
-                "<dt>Logradouro:</dt>"+
-                "<dd>"+this.aluno.logradouro+"</dd>"+
-            
-                "<dt>CEP:</dt>"+
-                "<dd>"+this.aluno.cep+"</dd>"+
-            
-                "<dt>Responsável:</dt>"+
-                "<dd>"+this.aluno.responsavel+"</dd>"+
-                "<br>"+
-                
-                "<input type='submit' class='btn btn-large btn-success' value='Matricular' />"
-            ;
-                
-            }else if(status == 2){
-                $.get(ajaxurl + 'aluno/add', {rg: $("#rg").val()}, function(response){
-                    var html = $(response).find("#corpo").html();
-                    App.Modal.add(html, true, function(){
-                        $("#AlunoAddForm .btn-group a.btn").remove();
-                        $("#AlunoNome").focus();
-                    });
-                    $("#botoes").html("");
-                });
-            }
-            
-            $("#botoes").html(html);
-        };
-
-        $('body').on('click', '#AlunoAddForm #Inserir', function(e){
-            e.preventDefault();
-            
-            var data = {};
-            var vals = $("#AlunoAddForm input");
-
-            for (var i = 0; i < vals.length; i++) {
-                if(vals[i].name){
-                    data[vals[i].name] = vals[i].value;
-                }
-            };
-
-            self.addAluno(data, function(save){});
-        });
-
-        this.addAluno = function(data, callback){
-            var self = this;
-            var url = ajaxurl + 'aluno/add_ajax';
-
-            $.post(url, data, function(result){
-                if(result.status){
-                    self.aluno = result.Aluno;
-                    self.exibeBotao(1);
-                    App.Modal.close(function(){
-                        self.clearErrors();
-                    });
-                }
-            }, 'json');
-        };
-        
-        this.clearErrors = function(){
-            $('.error-message').fadeOut(200, function(){
-                $('.error-message').remove();
-            })
-        };
-
-        this.isVlidationError = function(){
-            return ($("#matricula #MatriculaAlunoId").val() ? true : false);
-        };
     };
 
-    $(document) .ready(function(){
-        if($("#matricula .find-aluno").length){
-            objMatricula = new Matricula();
+    this.edit = function(){
 
-            if(objMatricula.isVlidationError()){
-                objMatricula.verifica();
+    };
+
+    this.submitButton = {
+        display: function(){
+            $("#botoes button").fadeIn();
+        },
+        hidden: function(){
+            $("#botoes button").fadeOut();
+        }
+    };
+
+    this.setHiddenData = function(aluno){
+        $("#MatriculaAlunoId").val(aluno.id);
+    };
+
+    this.Aluno = {
+        Aluno: new Aluno(),
+
+        add: function(inputs){
+            var data = {};
+
+            for (var i = 0; i < inputs.length; i++) {
+                if(inputs[i].name){
+                    data[inputs[i].name] = inputs[i].value;
+                }
             }
 
-            $("#matricula .find-aluno").on('click', function(e){          
-                objMatricula.verifica();
+            var aluno = this;
+            this.Aluno.add(data, function(response){
+                if(response.status){
+                    $(".matricula .find-aluno").trigger('click');
+                    self.setHiddenData(response.Aluno);
+                    self.submitButton.display();
+                }else{
+                    App.Notify.errors(response.errors, $('.aluno'));
+                }
+            });
+        },
+
+        find: function(rg){
+            var aluno = this;
+            this.Aluno.viewOrAdd({rg: rg}, function(html){
+                aluno.content(html, function(){
+                    if($("#AlunoAddForm").find().length){
+                        $("#AlunoNome").focus();                        
+                    }else{                       
+                        self.setHiddenData({
+                            id: parseInt($('.aluno dd:first').html())
+                        });
+                        self.submitButton.display();
+                    }
+
+                    $("html, body").animate({scrollTop:  270}, 1000);
+                    $(".aluno .btn-group a").remove();
+                    $(".error-message").remove();
+                });
+            });
+        },
+
+        content: function(html, addListernerEvent){    
+            var html = $(html).find(".aluno").hide().html();
+            $(".matricula .aluno").html(html).show('slide', {}, 300);
+            addListernerEvent();
+        },
+
+        view: function(id){
+            var aluno = this;
+            this.Aluno.view(id, function(html){
+                aluno.content(html, function(){
+                    $(".aluno .btn-group a").remove();
+                    self.submitButton.display();
+                })
             });
         }
-    });
+    };
 
-}(jQuery));
+    this.displayAlunoMatricula = function(){
+        if($("#matricula #MatriculaAlunoId").val().length && $('.aluno').html().length === 0){
+            this.Aluno.view($("#matricula #MatriculaAlunoId").val());
+        }
+    };
 
-// var Matricula = function(){
-//     var self = this;
-    
-//     this.add = function(){
+    //AddListersEvent
+    (function(){
 
-//     };
+        $(document).ready(function(){
+            self.displayAlunoMatricula();
 
-//     this.edit = function(){
+            $(".matricula .find-aluno").on('click', function(){
+                self.Aluno.find( $("#rg").val() );
+            });
 
-//     };
+            $(".matricula #rg").on('keyup', function(){
+                $("#AlunoAddForm #AlunoRg").val( $(this).val() );
+            });
 
-//     this.Aluno = {
-//         Aluno: new Aluno(),
+            $("body").on('keyup', '#AlunoAddForm #AlunoRg', function(){
+                $(".matricula #rg").val( $(this).val() );
+            });
 
-//         add: function(){
+            $("#matricula").on('submit', function(e){                
+                if(!$("#matricula #MatriculaAlunoId").val().length){
+                    e.preventDefault();
+                    self.Aluno.find( $("#rg").val() );
+                }
+            });
+            
+            $("body").on('submit', '#AlunoAddForm', function(e){
+                e.preventDefault();
+                self.Aluno.add($("#AlunoAddForm input"));
+            });
 
-//         },
+            $('.matricula button.matricula-create').on('click', function(){
+                $("#matricula").submit();
+            });
+        });
 
-//         view: function(){
-
-//         },
-
-//         find: function(rg){
-//             this.Aluno.viewOrAdd({rg: rg}, this.Aluno.content);
-//         },
-
-//         content: function(html, addListernerEvent){
-//             $(".matricula .aluno").hide('slide', {}, 100, function(){
-//                 $(".matricula .aluno").html(html).show('slide', {}, 100, addListernerEvent);
-//             });
-//         }
-//     };
-
-//     //AddListersEvent
-//     (function(){        
-
-//         $(document).ready(function(){
-//             $(".matricula .find-aluno").on('click', function(){
-//                 self.Aluno.find( $("#rg").val() );
-//             });
-//         });
-
-//     }());
-// };
+    }());
+};
 
 
-// $(document).ready(function(){
-//     if($('.matricula').length){
-//         var matricula = new Matricula;
-//     }
-// });
+$(document).ready(function(){
+    if($('.matricula').length){
+        var matricula = new Matricula;
+    }
+});
