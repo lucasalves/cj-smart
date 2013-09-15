@@ -4,6 +4,7 @@
         <div class="well">
             <legend>Aluno</legend>
             <?
+            echo $this->Form->input('Aluno.id');
             echo $this->Form->input('Aluno.nome');
             echo $this->Form->input('Aluno.telefone');
             echo $this->Form->input('Aluno.data_nascimento', array('dateFormat' => 'DMY'));
