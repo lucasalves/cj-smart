@@ -51,7 +51,7 @@ class HomeController extends AppController {
             
             // Avisos de Falta
             $this->loadModel("Aviso");
-            $aviso_falta = $this->Aviso->getAvisosAbertos();
+            $aviso_falta = count($this->Aviso->getAvisosAbertos());
             
             $this->set(array(
                 'aviso_falta'=>$aviso_falta));

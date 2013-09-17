@@ -151,5 +151,7 @@ class PresencaController extends AppController {
         $this->Presenca->verificaAvisoPorFalta(1, 19);
     }
     
+    
 
+    
 }
