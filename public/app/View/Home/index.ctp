@@ -4,7 +4,7 @@
         <div class="alert alert-block">
             <h4>Aviso de Falta</h4>
             você possui <?=$aviso_falta?>  aviso(s) de falta(s) 
-            <a class="btn btn-small btn-navba" href="<?php echo Router::url("/aviso"); ?>">Visualizar </a>
+            <a class="btn btn-small btn-navba" href="<?php echo Router::url("/aviso/avisoFalta"); ?>">Visualizar </a>
             
         </div>
     </div>

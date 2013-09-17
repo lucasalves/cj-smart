@@ -34,6 +34,14 @@ App::uses('AppModel', 'Model');
 class Aviso extends AppModel {
 
     public $useTable = 'aviso';
+    public $emailCoordenadora = "brunoipjg@gmail.com";
+    
+    public $belongsTo = array(
+        'Matricula' => array(
+            'className' => 'Matricula',
+            'foreignKey' => 'matricula_id'
+        )
+    );
     
     
     public function addAviso($matricula_id, $aula_id) {
@@ -47,12 +55,6 @@ class Aviso extends AppModel {
         ));
 
         return $this->save();
-    }
-
-    public function getAvisosAbertos() {
-        return $this->find('count', array(
-                    'conditions' => array('Aviso.status' => 'Aberto')
-                ));
     }
 
     public function arquivar($id) {
@@ -69,6 +71,26 @@ class Aviso extends AppModel {
             , 'id' => $id));
 
         return $this->save();
+    }
+    
+    public function getAvisosAbertos(){
+        $avisos = $this->query("
+            Select Matricula.codigo
+                  ,Matricula.id
+                  ,Aluno.nome
+                  ,Aluno.responsavel
+                  ,Aluno.telefone_responsavel
+                  ,Aluno.email_responsavel
+                  ,Aviso.id
+              from aviso Aviso
+                  ,matricula Matricula
+                  ,aluno Aluno
+             where Aluno.id = Matricula.aluno_id
+               and Matricula.id = Aviso.matricula_id
+               and Aviso.status = 'Aberto'");
+                
+        return $avisos;
+        
     }
 
 }
