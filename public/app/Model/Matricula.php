@@ -35,6 +35,15 @@ class Matricula extends AppModel {
 
     public $useTable = 'matricula';
     public $name = 'Matricula';
+    
+    public $virtualFields = array(
+        'nome' => '(select nome from aluno Aluno where Matricula.aluno_id = Aluno.id)',
+        'email_responsavel' => '(select email_responsavel from aluno Aluno where Matricula.aluno_id = Aluno.id)',
+        'telefone_responsavel' => '(select telefone_responsavel from aluno Aluno where Matricula.aluno_id = Aluno.id)',
+        'responsavel' => '(select responsavel from aluno Aluno where Matricula.aluno_id = Aluno.id)',
+    );
+    
+    
     public $validate = array(
         'turma_id' => array(
             'turma_selected' => array(
@@ -63,6 +72,9 @@ class Matricula extends AppModel {
             'foreignKey' => 'matricula_id'
         ),
         'Nota' => array(
+            'foreignKey' => 'matricula_id'
+        ),
+        'Aviso' => array(
             'foreignKey' => 'matricula_id'
         )
     );
