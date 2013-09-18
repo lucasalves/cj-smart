@@ -14,7 +14,7 @@ class UsuariosController extends AppController {
 
      public function beforeFilter(){
         parent::beforeFilter();
-        $this->set('fields', array('id', 'email', 'nome', 'ultimo_nome', 'usuario', 'ativo', 'grupo_usuario_id'));
+        $this->set('fields', array('id', 'email', 'nome', 'ultimo_nome', 'usuario', 'ativo'));
     }
 
     public function login(){
