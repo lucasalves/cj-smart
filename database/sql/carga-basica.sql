@@ -10,8 +10,8 @@ truncate table nota;
 truncate table presenca;
 truncate table turma;
 truncate table aluno;
+truncate table local;
 
-local
 --
 -- Extraindo dados da tabela `aluno`
 --
