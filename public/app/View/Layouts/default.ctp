@@ -37,7 +37,8 @@
                     'fullcalendar.css',
                     'app/modal.css',
                     'aula/calendario.css',
-                    'matricula.css'
+                    'matricula.css',
+                    'usuario'
                 )
         );
 
@@ -65,7 +66,9 @@
                     'app/ajaxLoad.js',
                     'app/notify.js',
                     'aula/calendario',
-                    'aluno'
+                    'aluno',
+                    'usuario',
+                    'grupoUsuario'
                 )
         );
 
