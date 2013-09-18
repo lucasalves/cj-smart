@@ -1,9 +1,9 @@
 <div class="row-fluid">
-    <div  class="navbar-form pull-left main_pesquisa">
+    <div  class="navbar-form pull-left main_pesquisa well">
         <form action="<?php echo Router::url("/" . $controller . '/search'); ?>" method="GET">
             <input type="text" id="valorPesquisa" class="valorPesquisa" name="per" value="<?php echo $valor ?>"/>
             <input type="hidden" name="in" value="<?php echo $controller ?>"/>
-            <button class="btn" id="search">Pesquisar  <?php echo Inflector::humanize($controller); ?></button>
+            <button class="btn" id="search">Pesquisar </button>
             <select id="qtdLinhas" class="control-group">
                 <option>20</option>
                 <option>50</option>

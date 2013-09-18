@@ -1,5 +1,5 @@
 <div class="row-fluid">
-    <div class="span2">
+    <div class=" main-menu">
         <div class="sidebar-nav well">
             <ul class='nav nav-list' >
                 <li class='nav-header'>Coordenação</li>

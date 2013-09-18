@@ -4,7 +4,7 @@
     </h3>
 
     <div class="row-fluid">
-        <div  class="navbar-form pull-left main_pesquisa">
+        <div  class="navbar-form pull-left main_pesquisa well">
             <form action="<?php echo Router::url("/" . $pluralHumanName . '/search'); ?>" method="GET">
                 <input type="text" id="valorPesquisa" class="valorPesquisa" name="per" value=""/>
                 <input type="hidden" name="in" value="<?php echo $pluralHumanName ?>"/>

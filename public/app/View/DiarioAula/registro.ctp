@@ -12,7 +12,7 @@
     <div class="row-fluid">
         <div class="well" >
             <div class='row-fluid'>
-                <div class='span3'>
+                <div class='span4'>
                     <?
                     echo $this->Form->input('Turma.id', array(
                         'label' => 'Turma',
@@ -24,7 +24,7 @@
                     ));
                     ?>
                 </div>
-                <div class='span3'>
+                <div class='span4'>
                     <?
                     echo $this->Form->input('Presenca.aula_id', array(
                         'label' => 'Aula',

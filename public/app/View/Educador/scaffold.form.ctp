@@ -53,18 +53,19 @@
             echo $this->Form->input('Educador.numero', array(
                 'label' => 'Nº',
                 'div' => 'span2',
-                'style' => 'width:80px;'));
+                'style' => 'width:50px;'));
 
             echo $this->Form->input('Educador.bairro', array(
                 'label' => 'Bairro',
-                'div' => 'span4'));
+                'div' => 'span2',
+                'style'=>'width:120px;'));
             ?>
         </div>
         <div class="row-fluid">
             <?
             echo $this->Form->input('Educador.cep', array(
                 'label' => 'CEP',
-                'div' => 'span2',
+                'div' => 'span3',
                 'style' => 'width:100px;'
             ));
 

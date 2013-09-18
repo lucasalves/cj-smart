@@ -3,7 +3,7 @@
         Abonar Falta
     </h3>
     <div class="row-fluid">
-        <div  class="navbar-form pull-left main_pesquisa">
+        <div  class="navbar-form pull-left main_pesquisa well">
             <form action="<?php echo Router::url('/presenca/abonar'); ?>" method="GET">
                 <input type="text" id="valorPesquisa" class="valorPesquisa" name="nome" value="<?= $nome_pesquisa ?>" />
                 <button class="btn" id="search">Pesquisar aluno por nome</button>

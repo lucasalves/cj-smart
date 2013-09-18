@@ -31,7 +31,7 @@
         echo $this->Html->css(
                 array(
                     'bootstrap.css',
-                    //'bootstrap-responsive.css',
+                    'bootstrap-responsive.css',
                     'search.css',
                     'fullcalendar.print.css',
                     'fullcalendar.css',
@@ -79,8 +79,7 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <?= $this->element('topo', array('nome' => 'Curso')); ?>
         </div>
-        <br><br>
-        <div class="container-fluid">
+        <div class="container-fluid" id="main-corpo">
             <?= $this->element('menu', array('nome' => 'Curso')); ?>
         </div><!--/row-->
         <hr>
