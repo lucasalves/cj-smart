@@ -22,11 +22,11 @@
 
             <?php if(empty($this->data['Aluno']['rg'])): ?>
                 <div class="row">
-                    <div class="span3">
+                    <div class="span4">
                         <?php echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg')); ?>
                     </div>
-                    <div class="span4 button-aluno">
-                        <span title="Procurar Aluno" class="btn find-aluno">Adicionar Aluno</span>
+                    <div class="span5 button-aluno">
+                        <span title="Procurar Aluno" class="btn find-aluno btn-info">Adicionar Aluno</span>
                     </div>
                 </div>
             <?php endif; ?>
@@ -34,9 +34,10 @@
     </div>
     <?= $this->Form->end(); ?>
 
-    <div class="aluno"></div>
-
     <div id="botoes">
         <button class='btn btn-large btn-success matricula-create'>Matricular</button>
     </div>
+    <div class="aluno"></div>
+
+
 </div>
