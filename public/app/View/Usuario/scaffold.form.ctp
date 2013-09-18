@@ -12,11 +12,17 @@
 
     <div class="well">
         <?php
-        echo $this->Form->create();
-        echo $this->Form->inputs($this->viewVars['fields'], array('created', 'modified', 'updated'));
-        echo $this->Form->input('senha', array('type' => 'password', 'value' => ''));
-        echo $this->Form->input('confirmar_senha', array('type' => 'password', 'value' => ''));
-        echo $this->Form->end();
+            echo $this->Form->create();
+            echo $this->Form->inputs($this->viewVars['fields'], array('created', 'modified', 'updated'));
+        ?>
+        <div class="row">
+            <?php   echo $this->Form->input('grupo_usuario_id', array('div' => '')); ?>        
+            <span class="btn btn-success btn-small add-group">Adicionar Grupo</span>
+        </div>
+        <?php
+            echo $this->Form->input('senha', array('type' => 'password', 'value' => ''));
+            echo $this->Form->input('confirmar_senha', array('type' => 'password', 'value' => ''));
+            echo $this->Form->end();
         ?>
     </div>
 
