@@ -40,6 +40,10 @@ class GrupoUsuario extends AppModel {
                           "Usuario" => array( 
                             "className"  => "Usuario",
                             "foreignKey" => "grupo_usuario_id",
+                          ),
+                          "GrupoPermissoes" => array( 
+                            "className"  => "GrupoPermissao",
+                            "foreignKey" => "usuario_grupos_id",
                           )
                         );
 
@@ -51,4 +55,36 @@ class GrupoUsuario extends AppModel {
                 )                           
     );
 
+    public function formCreateDefault(){
+      $default = 'master';
+      $groupMirror = $this->find('all', array(
+                                          'conditions' => array(
+                                                            'nome' => $default                                                            
+                                          )
+                                )
+                            );
+
+      return $this->formatToForm($groupMirror);
+    }
+
+    public function formatToForm($unstructured){
+      if(empty($unstructured[0])){
+        return array();
+      }
+
+      $unstructured = $unstructured[0];
+      extract($unstructured);
+
+      $organized = array();
+      foreach($GrupoPermissoes as $permission){
+        $organized[] = array(
+                          'pagina'     => $permission['pagina'],
+                          'visualizar' => $permission['visualizar'],
+                          'editar'     => $permission['editar'],
+                          'apagar'     => $permission['apagar']
+                      );
+      }
+
+      return array('GrupoPermissoes' => $organized);
+    }
 }
