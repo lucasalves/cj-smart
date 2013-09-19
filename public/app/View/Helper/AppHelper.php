@@ -89,7 +89,19 @@ class AppHelper extends Helper {
             "turma_id"  => "Turma",
             "data"          => "Data",
             "data_formato"  => "d/m/Y",
-            "data_encerramento" => "Data Encerramento"
+            "data_encerramento" => "Data Encerramento",
+            "aluno" => "Aluno",
+            "curso" => "Curso",
+            "educador" => "Educador",
+            "home"     => "Home",
+            "materia"  => "Materia",
+            "turma"    => "Turma",
+            "usuarios" => "Usuarios",
+            "aula"     => "Aula",
+            "aula"     => "Matricula",
+            "diarioaula"          => "Diario de Aula",
+            "presenca"            => "Presença",
+            "FinalizarSemestre"   => "Finalizar Semestre",
             
         );
 

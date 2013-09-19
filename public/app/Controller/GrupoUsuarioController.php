@@ -13,9 +13,6 @@ class GrupoUsuarioController extends AppController {
     public $scaffold;
 
     public function form(){
-        
-    
-        
-        
+        $this->set('permissions', $this->GrupoUsuario->formCreateDefault());        
     }
 }
