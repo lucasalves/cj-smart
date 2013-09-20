@@ -4,7 +4,7 @@
     <div class="form">
         <div class="well">
             <legend>Matricula</legend>
-
+            <div class="row-fluid">
             <?php
                 echo $this->Form->input('Matricula.aluno_id', array('type' => 'hidden'));
                 echo $this->Form->input('Matricula.codigo', array('type' => 'hidden'));
@@ -21,7 +21,8 @@
             <?php endif; ?>
 
             <?php if(empty($this->data['Aluno']['rg'])): ?>
-                <div class="row">
+            </div>
+                <div class="row-fluid">
                     <div class="span4">
                         <?php echo $this->Form->input('rg', array('label' => 'RG', 'id' => 'rg')); ?>
                     </div>

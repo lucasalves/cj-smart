@@ -103,8 +103,8 @@ class AvisoController extends AppController {
 
         $this->Email->sendAs = 'both'; // html, text, both
         $this->set('conteudo', $msg); // especifica variavel da mensagem para o template
-        $this->Email->layout = 'contact'; // views/elements/email/html/contact.ctp
-//        $this->Email->template = 'contact';
+        $this->Email->layout;//= 'contact'; // views/elements/email/html/contact.ctp
+//        $this->Email->template = 'padrao';
         // set view variables as normal
         $this->set('from', $name);
         $this->set('msg', $msg);
@@ -165,6 +165,10 @@ class AvisoController extends AppController {
         $avisos = $this->Aviso->getAvisosAbertos();
 
         $this->set('avisos', $avisos);
+    }
+    
+    public function TestalayoutEmail(){
+        
     }
 
 }

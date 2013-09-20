@@ -53,7 +53,12 @@ class Aula extends AppModel {
             'foreignKey' => 'aula_id'
         )
     );
-
+    
+    public $virtualFields = array(
+        'nome_aula' => "concat((select Materia.nome from Materia where Materia.id = Aula.materia_id), ' - ', date_format(Aula.data,'%d/%m/%Y'))"
+    );
+            
+    
     public function toEvents($data) {
         $events = array();
 

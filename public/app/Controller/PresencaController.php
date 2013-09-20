@@ -98,7 +98,7 @@ class PresencaController extends AppController {
 
         // Carrega a Lista de Aulas
         $aulas = $this->Presenca->Aula->find('list', array(
-            'fields' => array('Aula.id', 'Aula.data'), 'conditions' => array('Aula.turma_id' => $turma_id)
+            'fields' => array('Aula.id', 'Aula.nome_aula'), 'conditions' => array('Aula.turma_id' => $turma_id)
                 ));
 
         $this->set(array('aulas' => $aulas));

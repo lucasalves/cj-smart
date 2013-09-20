@@ -56,5 +56,7 @@ class MatriculaController extends AppController {
             echo json_encode(array());
         }    
     }
+    
+
 
 }
