@@ -87,4 +87,29 @@ class GrupoUsuario extends AppModel {
 
       return array('GrupoPermissoes' => $organized);
     }
+
+    public function persist($data){
+      $data['GrupoUsuario']['nome'] = strtolower($data['GrupoUsuario']['nome']);
+      $group = $this->save($data['GrupoUsuario']);
+
+      //set falses
+      $permissions = array();
+
+      $i = 0;
+      foreach($data['GrupoPermissao'] as $page => $permission){
+        $permission = (is_array($permission) ? $permission : array());
+
+        foreach ($permission as $value) {
+          $permissions[$i][$value] = true;
+        }
+
+        $permissions[$i]['pagina']            = $page;
+        $permissions[$i]['usuario_grupos_id'] = $group['GrupoUsuario']['id'];
+
+        $permissions[$i] = array_merge(array('visualizar' => 0, 'editar' => 0, 'apagar' => 0), $permissions[$i]);
+       $i += 1;
+      }
+
+      $this->GrupoPermissoes->saveAll($permissions);
+    }
 }

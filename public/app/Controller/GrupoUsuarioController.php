@@ -15,4 +15,11 @@ class GrupoUsuarioController extends AppController {
     public function form(){
         $this->set('permissions', $this->GrupoUsuario->formCreateDefault());        
     }
+
+    public function add_ajax(){
+        $this->autoRender = false;
+
+        $grupo = $this->GrupoUsuario->persist($this->request['data']);    
+        echo json_encode($grupo);    
+    }
 }
