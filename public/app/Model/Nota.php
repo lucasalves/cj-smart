@@ -70,7 +70,7 @@ class Nota extends AppModel {
         if (is_null($materia_id)) {
             $materia_id = $this->getMateriaId($aula_id);
         }
-
+        
 
         // Carrega a Lista Notas dos Alunos
         $meses = $this->Matricula->Turma->getMeses($turma_id);

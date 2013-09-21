@@ -93,7 +93,7 @@ class Presenca extends AppModel {
 
         foreach ($dados["matricula_id"] as $id_matricula):
 
-            if (isset($dados["status"][$contador])) {
+            if (in_array($id_matricula, $dados["status"])) {
                 $status = 2;
             } else {
                 $status = 1;

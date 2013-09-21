@@ -46,10 +46,14 @@ class NotaController extends AppController {
 //        $this->autoRender = false;
         $turma_id = $this->request->query["turma_id"];
         $aula_id = $this->request->query["aula_id"];
-        $materia_id = $this->request->query["materia_id"];
+        
+        $materia_id = null;
+        if (!empty($this->request->query["materia_id"])) {
+            $materia_id = $this->request->query["materia_id"];
+        }
 
         // Carrega a Lista Notas dos Alunos
-        $alunos = $this->Nota->getlistaNota($turma_id, $aula_id, $materia_id);
+        $alunos = $this->Nota->getlistaNota($turma_id, $materia_id, $aula_id);
 
         $this->set(array('alunos' => $alunos, 'turma_id' => $turma_id, 'aula_id' => $aula_id));
     }
@@ -79,11 +83,10 @@ class NotaController extends AppController {
                         break;
                     }
                     $this->Session->setFlash($erros);
-                    
                 }
 
             endforeach;
-            
+
             // Redireciona 
             $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}#notas");
         }

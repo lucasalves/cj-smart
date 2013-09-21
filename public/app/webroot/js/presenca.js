@@ -24,19 +24,27 @@
         };
         
         this.listaOcorrencias = function(){            
+            $("#ListaOcorrencias").html("<img src='"+ajaxurl+"img/carregando.gif' />");
+            
             $.get(ajaxurl + 'ocorrencia/lista', {
                 aula_id: this.aula_id
             }, function(response){
+                
                 var html = $(response).find("#corpo").html();
                 $("#ListaOcorrencias").html(html);
             });
         };    
         
         this.listaNotas = function(){            
+            
+            $("#ListaNotas").html("<img src='"+ajaxurl+"img/carregando.gif' />");
+            
             $.get(ajaxurl + 'nota/lista', {
-                 turma_id: $("#TurmaId").val()
-                ,aula_id: this.aula_id
+                turma_id: $("#TurmaId").val()
+                ,
+                aula_id: this.aula_id
             }, function(response){
+                
                 var html = $(response).find("#corpo").html();
                 $("#ListaNotas").html(html);
             });
@@ -44,6 +52,8 @@
         
         
         this.lista = function(){            
+            $("#ListaPresenca").html("<img src='"+ajaxurl+"img/carregando.gif' />");
+            
             $.get(ajaxurl + 'presenca/lista', {
                 turma_id: $("#TurmaId").val()
                 ,

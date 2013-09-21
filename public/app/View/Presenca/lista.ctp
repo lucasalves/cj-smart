@@ -30,7 +30,7 @@
                 echo "<td>{$aluno["nome"]}</td>";
                 echo "<td> 
                            <input type ='hidden' name='data[Presenca][id][]' value = '{$aluno["presenca_id"]}' {$checked} />
-                           <input type ='checkbox' name='data[Presenca][status][]' value = '2' {$checked} /> 
+                           <input type ='checkbox' name='data[Presenca][status][]' value='{$aluno["matricula_id"]}' {$checked} /> 
                            <input type ='hidden' name='data[Presenca][matricula_id][]' value = '{$aluno["matricula_id"]}'  />
                      </td>";
                 echo "<td><span type='button' name='{$aluno["matricula_id"]}' class='btn btn-small btn-info NovaOcorrencia'>Add Ocorrência</span></td>";

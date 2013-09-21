@@ -47,6 +47,7 @@ class Aviso extends AppModel {
     public function addAviso($matricula_id, $aula_id) {
 
         $this->set(array(
+            'id' => null,
             'descricao' => 'Aluno Faltou mais de 1 vez no período de 5 dias',
             'status' => 'Aberto',
             'aula_id' => $aula_id,
