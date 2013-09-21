@@ -21,6 +21,7 @@ class Usuario extends AppModel{
 
 	public $loginError = null;
 
+	public $permissionError = null;
 
 	public function beforeSave($options){
 		$pass = $this->data[ $this->name ]['senha'];
@@ -119,6 +120,7 @@ class Usuario extends AppModel{
 											)
 						)
 					);
+
 		if(empty($user[0]['Usuario'])){
 			$this->loginError = 'Nome de usuário incorreto ou senha incorreta.';
 			return false;
@@ -187,9 +189,46 @@ class Usuario extends AppModel{
 	 */
 
 	private function loadPermissions($user){
-		$this->GrupoUsuario->set($user['GrupoUsuario']);
-		$all = $this->GrupoUsuario->find();
 
-		return array('GrupoPermissoes' => $all['GrupoPermissoes']);
+		$all = $this->GrupoUsuario->find('all', array('conditions' => $user['GrupoUsuario']));
+
+		$permissions = array();
+        foreach($all[0]['GrupoPermissoes'] as $permission){
+            $permissions[$permission['pagina']] = $permission;
+        }
+		return $permissions;
+	}
+
+
+	/**
+	 * Verifica se o usuário tem acesso ao controller solicitado
+	 *
+	 * @access private
+	 * @param array User
+	 * @return array 
+	 *
+	 */
+
+	public function allowAccess($request){
+		if($request['controller'] == 'usuarios' && $request['action'] == 'login'){
+			return true;
+		}
+	
+		if($request['controller'] == 'Home'){
+			return true;
+		}
+
+		$permission = SessionComponent::read('Usuario.permissions');
+
+		if(empty($permission[$request['controller']])){
+			return true;
+		}
+
+		if($permission[$request['controller']]['visualizar']){
+			return true;
+		}
+
+		$this->permissionError = 'Você não tem permissão para acessar a página ' . strtoupper($request['controller']);
+		return false;
 	}
 }
