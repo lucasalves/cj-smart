@@ -322,6 +322,7 @@ CREATE TABLE IF NOT EXISTS `grupo_permissoes` (
 -- Extraindo dados da tabela `grupo_permissoes`
 --
 
+
 INSERT INTO `grupo_permissoes` (`id`, `pagina`, `visualizar`, `editar`, `apagar`, `usuario_grupos_id`) VALUES
 (1, 'aluno', 1, 1, 1, 1),
 (2, 'curso', 1, 1, 1, 1),
@@ -386,7 +387,15 @@ INSERT INTO `grupo_permissoes` (`id`, `pagina`, `visualizar`, `editar`, `apagar`
 (87, 'FinalizarSemestre', 1, 1, 1, 20),
 (88, 'coordenacao', 0, 0, 0, 20),
 (89, 'academico', 1, 1, 1, 20),
-(90, 'administrativo', 0, 0, 0, 20);
+(90, 'administrativo', 0, 0, 0, 20),
+(91, 'boletim', 0, 0, 0, 20),
+(92, 'boletim', 1, 1, 1, 19),
+(93, 'boletim', 0, 0, 0, 18),
+(94, 'boletim', 0, 0, 0, 1),
+(95, 'GrupoUsuario', 0, 0, 0, 20),
+(96, 'GrupoUsuario', 0, 0, 0, 19),
+(97, 'GrupoUsuario', 0, 0, 0, 18),
+(98, 'GrupoUsuario', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
