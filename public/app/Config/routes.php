@@ -44,3 +44,8 @@
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
+
+/*
+ * Permitir extensão pdf
+ */
+        Router::parseExtensions('pdf');

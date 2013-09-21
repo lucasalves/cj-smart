@@ -71,6 +71,8 @@ class Nota extends AppModel {
             $materia_id = $this->getMateriaId($aula_id);
         }
         
+        
+           
 
         // Carrega a Lista Notas dos Alunos
         $meses = $this->Matricula->Turma->getMeses($turma_id);
@@ -125,13 +127,16 @@ class Nota extends AppModel {
     }
 
     function formatAdd($notas) {
+        
 
+        
         // Insere as notas
         for ($i = 0; $i < count($notas["valor"]); $i++):
 
             $valor = $notas["valor"][$i];
             $data = $notas["data"][$i];
-
+            
+            
             if ($valor != "") {
                 $dados[] = array(
                     'valor' => $valor // Ausente
@@ -153,19 +158,15 @@ class Nota extends AppModel {
 
     public function getMateriaId($aula_id) {
 
-        $options['joins'] = array(
-            array('table' => 'aula',
-                'alias' => 'a',
-                'type' => 'LEFT',
-                'conditions' => array(
-                    'a.materia_id = Nota.materia_id',
-                    'a.id' => $aula_id
-                )
-            )
-        );
 
-        $aula_materia = $this->find('all', $options);
-
+        $aula_materia = $this->query("
+            select *
+              from aula Aula
+                  ,materia Materia
+             where materia.id = aula.materia_id
+               and aula.id = {$aula_id}
+            ");
+        
         foreach ($aula_materia as $materia):
             return $materia["Materia"]["id"];
         endforeach;

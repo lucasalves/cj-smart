@@ -179,9 +179,6 @@ CREATE TABLE IF NOT EXISTS `materia` (
 -- Extraindo dados da tabela `materia`
 --
 
-INSERT INTO `materia` (`id`, `nome`, `codigo`) VALUES
-(1, 'Cabelo', '');
-
 -- --------------------------------------------------------
 
 --

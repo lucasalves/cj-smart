@@ -46,7 +46,7 @@ class NotaController extends AppController {
 //        $this->autoRender = false;
         $turma_id = $this->request->query["turma_id"];
         $aula_id = $this->request->query["aula_id"];
-        
+
         $materia_id = null;
         if (!empty($this->request->query["materia_id"])) {
             $materia_id = $this->request->query["materia_id"];
@@ -70,13 +70,15 @@ class NotaController extends AppController {
             $notas = $this->request->data["Nota"];
 
 
+
             foreach ($this->Nota->formatAdd($notas) as $nota):
                 $erros = null;
-
+            
+            
                 $this->Nota->set($nota);
 
                 if ($this->Nota->validates()) {
-                    $this->Nota->add($nota);
+//                    $this->Nota->add($nota);
                 } else {
                     foreach ($this->Nota->invalidFields() as $e) {
                         $erros .= $e[0] . "<br />";
@@ -88,7 +90,7 @@ class NotaController extends AppController {
             endforeach;
 
             // Redireciona 
-            $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}#notas");
+//            $this->redirect("/diarioaula/registro/{$turma_id}/{$aula_id}#notas");
         }
     }
 
@@ -105,6 +107,21 @@ class NotaController extends AppController {
 
 
         $this->set(array('materias' => $materias));
+    }
+
+    public function boletim() {
+
+//        $this->autoRender=false;
+        //$nome = null;
+        $mes = '01';
+        $ano = '2013';
+        $codigo_matricula = '6';
+
+        $matriculas = array();
+
+        $matriculas = $this->Nota->getAlunosBoletim($mes, $ano, $codigo_matricula);
+
+        $this->set('matriculas', $matriculas);
     }
 
 }

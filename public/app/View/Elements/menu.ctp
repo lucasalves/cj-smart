@@ -13,6 +13,7 @@
                 <li><a href="<?php echo Router::url("/aluno"); ?>">Alunos</a></li>
                 <li><a href="<?php echo Router::url("/diarioaula/"); ?>">Diário de Aula</a></li>
                 <li><a href="<?php echo Router::url("/presenca/abonar"); ?>">Abonar Falta</a></li>
+                <li><a href="<?php echo Router::url("/boletim"); ?>">Boletins</a></li>
                 <li class='nav-header'>Acadêmico</li>
                 <li><a href="<?php echo Router::url("/turma/FinalizarSemestre"); ?>">Finalizar Semestre</a></li>
             </ul>
