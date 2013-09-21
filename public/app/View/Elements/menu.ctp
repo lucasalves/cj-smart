@@ -2,19 +2,25 @@
     <div class=" main-menu">
         <div class="sidebar-nav well">
             <ul class='nav nav-list' >
-                <li class='nav-header'>Coordenação</li>
-                <li><a href="<?php echo Router::url("/curso"); ?>">Cursos</a></li>
-                <li><a href="<?php echo Router::url("/educador"); ?>">Educadores</a></li>
-                <li><a href="<?php echo Router::url("/turma"); ?>">Turmas</a></li>
-                <li><a href="<?php echo Router::url("/aula"); ?>">Aulas</a></li>
+                <?php echo $this->Permissions->groupMenu('coordenacao', 'Coordenação'); ?>                
+                
+                <?php echo $this->Permissions->itemMenu('curso',    'Cursos'); ?>
+                <?php echo $this->Permissions->itemMenu('educador', 'Educadores'); ?>
+                <?php echo $this->Permissions->itemMenu('turma',    'Turmas'); ?>
+                <?php echo $this->Permissions->itemMenu('aula',     'Aulas'); ?>
+
                 <!--<li><a href="<?php // echo Router::url("/materia"); ?>">Matérias</a></li>-->
-                <li class='nav-header'>Administrativo</li>
-                <li><a href="<?php echo Router::url("/matricula"); ?>">Matrículas</a></li>
-                <li><a href="<?php echo Router::url("/aluno"); ?>">Alunos</a></li>
-                <li><a href="<?php echo Router::url("/diarioaula/"); ?>">Diário de Aula</a></li>
-                <li><a href="<?php echo Router::url("/presenca/abonar"); ?>">Abonar Falta</a></li>
-                <li class='nav-header'>Acadêmico</li>
-                <li><a href="<?php echo Router::url("/turma/FinalizarSemestre"); ?>">Finalizar Semestre</a></li>
+                <?php echo $this->Permissions->groupMenu('administrativo', 'Administrativo'); ?>
+
+                <?php echo $this->Permissions->itemMenu('matricula',  'Matrículas'); ?>
+                <?php echo $this->Permissions->itemMenu('aluno',      'Alunos'); ?>
+                <?php echo $this->Permissions->itemMenu('diarioaula', 'Diário de Aula'); ?>
+                <?php echo $this->Permissions->itemMenu('presenca',   'Abonar Falta', '/presenca/abonar'); ?>
+
+
+                <?php echo $this->Permissions->groupMenu('academico', 'Acadêmico'); ?>
+
+                <?php echo $this->Permissions->itemMenu('FinalizarSemestre',   'Finalizar Semestre', '/turma/FinalizarSemestre'); ?>
             </ul>
         </div><!--/.well -->
     </div><!--/span-->
