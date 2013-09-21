@@ -94,6 +94,11 @@ class AppController extends Controller {
         ){
             $this->Session->setFlash('Você precisa fazer login para acessar esta página');
             $this->redirect('/usuarios/login/');
+        }else{
+            if(!$this->Usuario->allowAccess($this->request->params)){
+                $this->Session->setFlash($this->Usuario->permissionError);
+                $this->redirect(array('controller' => 'home', 'action' => 'index'));
+            }
         }
     }
   
