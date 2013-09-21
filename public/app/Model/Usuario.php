@@ -119,6 +119,7 @@ class Usuario extends AppModel{
 											)
 						)
 					);
+
 		if(empty($user[0]['Usuario'])){
 			$this->loginError = 'Nome de usuário incorreto ou senha incorreta.';
 			return false;
@@ -187,9 +188,13 @@ class Usuario extends AppModel{
 	 */
 
 	private function loadPermissions($user){
-		$this->GrupoUsuario->set($user['GrupoUsuario']);
-		$all = $this->GrupoUsuario->find();
 
-		return array('GrupoPermissoes' => $all['GrupoPermissoes']);
+		$all = $this->GrupoUsuario->find('all', array('conditions' => $user['GrupoUsuario']));
+
+		$permissions = array();
+        foreach($all[0]['GrupoPermissoes'] as $permission){
+            $permissions[$permission['pagina']] = $permission;
+        }
+		return $permissions;
 	}
 }
