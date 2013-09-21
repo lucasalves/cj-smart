@@ -6,6 +6,13 @@
         </div>
     </div>
     <div class="well">
+        <h2>Matricula</h2>
+        <dt>Codigo:</dt>
+        <dd><?=$this->data["Matricula"]["codigo"];?></dd>        
+
+        <dt>Turma:</dt>
+        <dd><?=$this->data["Turma"]["nome"];?></dd>        
+
         <h2>Aluno</h2>
 
         <dt>Nome:</dt>
