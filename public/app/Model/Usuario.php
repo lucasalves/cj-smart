@@ -119,7 +119,6 @@ class Usuario extends AppModel{
 											)
 						)
 					);
-
 		if(empty($user[0]['Usuario'])){
 			$this->loginError = 'Nome de usuário incorreto ou senha incorreta.';
 			return false;
@@ -147,7 +146,8 @@ class Usuario extends AppModel{
 
 	private function setCredentials($user){
 		unset($user['Usuario']['senha']);
-		SessionComponent::write('Usuario.credenciais', $user);
+		SessionComponent::write('Usuario.credenciais', $user);		
+		SessionComponent::write('Usuario.permissions', $this->loadPermissions($user));
 	}
 
 	/**
@@ -173,5 +173,23 @@ class Usuario extends AppModel{
 
 	public function logout(){
 		SessionComponent::delete('Usuario.credenciais');
+		SessionComponent::delete('Usuario.permissions');
+	}
+
+	
+	/**
+	 * Carrega as permissões do usuário.
+	 *
+	 * @access private
+	 * @param array User
+	 * @return array GrupoPermissoes
+	 *
+	 */
+
+	private function loadPermissions($user){
+		$this->GrupoUsuario->set($user['GrupoUsuario']);
+		$all = $this->GrupoUsuario->find();
+
+		return array('GrupoPermissoes' => $all['GrupoPermissoes']);
 	}
 }
