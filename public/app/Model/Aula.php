@@ -74,7 +74,8 @@ class Aula extends AppModel {
         $aulas = $this->find('all', array(
                                         'conditions' => array(
                                                        $this->name . '.data'     => $this->data[$this->name]['data'],
-                                                       $this->name . '.local_id' => $this->data[$this->name]['local_id']
+                                                       $this->name . '.local_id' => $this->data[$this->name]['local_id'],
+                                                       $this->name . '.id != '   => $this->id
                                                     )
                                     )
                             );
