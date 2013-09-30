@@ -68,7 +68,8 @@
                     'aula/calendario',
                     'aluno',
                     'usuario',
-                    'grupoUsuario'
+                    'grupoUsuario',
+                    'aula'
                 )
         );
 

@@ -53,6 +53,28 @@ class AulaController extends AppController {
         );
     }
 
+    public function is_valid(){
+        $this->disableCache();
+        $this->autoRender = false;
+
+        if($this->request->is('post') || $this->request->is('put')){
+            $this->Aula->set($this->request->data);
+            
+            if($this->Aula->validates()){
+                $resp =  array('status' => true);
+            }else{              
+                $resp = array_merge(
+                                array('status' => false),
+                                array(
+                                    'errors' => $this->Aula->validationErrors
+                                )
+                            );
+            }
+
+            echo json_encode($resp);
+        }
+    }
+
     public function update_date() {
         $this->autoRender = false;
         extract($this->request->data);
