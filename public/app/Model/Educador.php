@@ -35,6 +35,13 @@ class Educador extends AppModel {
 
     public $useTable = 'educador';
     public $belongsTo = array('Materia');
+    public $hasMany = array(
+        'Atividade' => array(
+            'className' => 'Atividade',
+            'foreignKey' => 'atividade_id'
+        )
+    );
+
     public $displayField = 'nome';
     public $validate = array(
         'nome' => array(
