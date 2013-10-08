@@ -446,3 +446,15 @@ INSERT INTO `usuario_grupo` (`id`, `nome`) VALUES
 (18, 'coordenacao'),
 (19, 'administrativo'),
 (20, 'academico');
+
+
+DROP TABLE IF EXISTS `atividade`;
+CREATE  TABLE IF NOT EXISTS `atividade` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `data` DATE NULL DEFAULT NULL ,
+  `local_id` INT NOT NULL ,
+  `materia_id` INT(11) NOT NULL,
+  `turma_id` INT(10) NOT NULL ,
+  `educador_id` INT(10) NOT NULL ,
+  PRIMARY KEY (`id`)
+);
