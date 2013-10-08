@@ -69,7 +69,8 @@
                     'aluno',
                     'usuario',
                     'grupoUsuario',
-                    'aula'
+                    'aula',
+                    'atividade'
                 )
         );
 
