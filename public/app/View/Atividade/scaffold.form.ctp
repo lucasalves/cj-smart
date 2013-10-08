@@ -7,8 +7,11 @@
     </div>
     <div class="well">
         <legend>Atividade</legend>
-        <?php echo $this->Form->input('Atividade.local_id');
-
+        <div class="form-group">
+            <?php echo $this->Form->input('Atividade.local_id', array('after' => '<span class="btn-local add-local btn-info btn btn-small">Adicionar Novo Local</span>')); ?>
+            
+        </div>
+        <?php
             echo $this->Form->input('Atividade.data', $this->Aula->SolveDate($this->request, array('dateFormat' => 'DMY')));
 
             echo $this->Form->input('Atividade.turma_id', array(
