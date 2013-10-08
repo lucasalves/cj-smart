@@ -4,10 +4,11 @@
             <ul class='nav nav-list' >
                 <?php echo $this->Permissions->groupMenu('coordenacao', 'Coordenação'); ?>                
                 
-                <?php echo $this->Permissions->itemMenu('curso',    'Cursos'); ?>
-                <?php echo $this->Permissions->itemMenu('educador', 'Educadores'); ?>
-                <?php echo $this->Permissions->itemMenu('turma',    'Turmas'); ?>
-                <?php echo $this->Permissions->itemMenu('aula',     'Aulas'); ?>
+                <?php echo $this->Permissions->itemMenu('curso',     'Cursos'); ?>
+                <?php echo $this->Permissions->itemMenu('educador',  'Educadores'); ?>
+                <?php echo $this->Permissions->itemMenu('turma',     'Turmas'); ?>
+                <?php echo $this->Permissions->itemMenu('aula',      'Aulas'); ?>
+                <?php echo $this->Permissions->itemMenu('atividade', 'Atividades'); ?>
 
                 <?php echo $this->Permissions->groupMenu('administrativo', 'Administrativo'); ?>
 
