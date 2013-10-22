@@ -45,15 +45,23 @@ class BoletimController extends AppController {
 
 //        $this->autoRender=false;
         //$nome = null;
-        $mes = '01';
-        $ano = '2013';
-        $codigo_matricula = '6';
-
+        $mes = null;
+        $ano = null;
+        $codigo_matricula = null;
         $matriculas = array();
+        
+        if (!empty($this->request->query)) {
+            $mes = $this->request->query["mes"];
+            $ano = $this->request->query["ano"];
+            $codigo_matricula = $this->request->query["codigo_matricula"];
 
-        $matriculas = $this->Boletim->getAlunosBoletim($mes, $ano, $codigo_matricula);
-
+            $matriculas = $this->Boletim->getAlunosBoletim($mes, $ano, $codigo_matricula);
+        }
+        
         $this->set('matriculas', $matriculas);
+        $this->set('mes', $mes);
+        $this->set('ano', $ano);
+        $this->set('codigo_matricula',$codigo_matricula);
     }
 
     public function gerarBoletim($matricula_id) {
@@ -70,23 +78,25 @@ class BoletimController extends AppController {
              ,aluno Aluno
              ,matricula Matricula
              ,materia   Materia
+             ,turma     Turma
          where Matricula.aluno_id = Aluno.id
            and Nota.matricula_id = Matricula.id
-           and Nota.matricula_id = 6  
+           and Nota.matricula_id = {$matricula_id} 
            and Nota.materia_id = Materia.id
+           and Turma.id        = Matricula.turma_id
           order by Nota.materia_id, Nota.data
         ");
 
         $materias = array();
-        
+
         for ($i = 0; $i < count($notas); $i++):
             if (!in_array($notas[$i]["Materia"], $materias)) {
                 $materias[] = $notas[$i]["Materia"];
             }
         endfor;
-        
+
         $datas = array();
-        
+
         for ($i = 0; $i < count($notas); $i++):
             if (!in_array($notas[$i]["Nota"]["data"], $datas)) {
                 $datas[] = $notas[$i]["Nota"]["data"];

@@ -37,16 +37,17 @@ class Boletim extends AppModel {
     var $useTable = false;
     
     
-    public function getAlunosBoletim($mes, $ano, $codigo_matricula){
+    public function getAlunosBoletim($mes, $ano, $codigo_matricula=null){
         
+      
         $sql = "
         select Aluno.nome
              , Turma.nome
              , Matricula.codigo
              , Matricula.id
-          from Turma Turma
-              ,Matricula Matricula
-              ,Aluno Aluno
+          from turma Turma
+              ,matricula Matricula
+              ,aluno Aluno
          where Matricula.turma_id = Turma.id
            and Matricula.aluno_id = Aluno.id
            and {$ano}{$mes} >= date_format(Turma.data_criacao, '%Y%m') 

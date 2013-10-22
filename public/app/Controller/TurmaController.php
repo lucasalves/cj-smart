@@ -41,6 +41,7 @@ class TurmaController extends AppController {
     public $uses = array('Turma');
     public $scaffold;
 
+    
     public function finalizarSemestre() {
 //        $this->autoRender=false;
 
