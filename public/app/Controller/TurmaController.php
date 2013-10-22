@@ -66,4 +66,14 @@ class TurmaController extends AppController {
         }
     }
 
+    public function stats(){
+        
+    }
+
+    public function stats_ajax(){
+        $this->autoRender = false;
+        $this->disableCache();
+        echo json_encode( $this->Turma->statisticsNotesAverage() );
+    }
+
 }

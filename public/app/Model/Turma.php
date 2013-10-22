@@ -158,5 +158,23 @@ class Turma extends AppModel {
         return $this->save();
     }
 
+    public function statisticsNotesAverage(){
+        $SQL   = 'SELECT AVG(nota.valor) as media, turma.nome as turma FROM `turma` RIGHT JOIN matricula ON matricula.turma_id = turma.id LEFT JOIN nota ON nota.matricula_id = matricula.id  group by turma.id HAVING media IS NOT NULL;';
+        $averages  = $this->query($SQL);
+
+        $data = array();
+        
+        //format
+        foreach($averages as $avg){
+            $data[] = array(
+                'name' => $avg['turma']['turma'],
+                'data' => array((float) $avg[0]['media'])
+            );
+        }
+
+        return $data;
+    }
+
 
 }
+    
