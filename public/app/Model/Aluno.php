@@ -40,7 +40,6 @@ class Aluno extends AppModel {
             'foreignKey' => 'aluno_id'
         )
     );
-
     public $validate = array(
         'telefone' => array(
             'rule' => 'numeric',
@@ -86,16 +85,16 @@ class Aluno extends AppModel {
             $nomecompleto = $linha[0];
 
             $nomeQuebrado = explode(" ", $linha[0]);
-            
-            $rg_parte_1= str_pad(rand(1,50), 2, STR_PAD_LEFT);
-            $rg_parte_2= str_pad(rand(1,999), 3, STR_PAD_LEFT);
-            $rg_parte_3= str_pad(rand(1,999), 3, STR_PAD_LEFT);
-            $rg_parte_4= rand(1,9);
-            $cep = str_pad(rand(1,99999), 5, STR_PAD_LEFT);
-            $numero_casa = rand(1,2000);
-            
-            $telefone = rand(1,99999999);
-            
+
+            $rg_parte_1 = str_pad(rand(1, 50), 2, STR_PAD_LEFT);
+            $rg_parte_2 = str_pad(rand(1, 999), 3, STR_PAD_LEFT);
+            $rg_parte_3 = str_pad(rand(1, 999), 3, STR_PAD_LEFT);
+            $rg_parte_4 = rand(1, 9);
+            $cep = str_pad(rand(1, 99999), 5, STR_PAD_LEFT);
+            $numero_casa = rand(1, 2000);
+
+            $telefone = rand(1, 99999999);
+
             $aluno = array(
                 'nome' => $linha[0],
                 'telefone' => $telefone,
@@ -104,12 +103,12 @@ class Aluno extends AppModel {
                 'telefone_responsavel' => $telefone,
                 'email_responsavel' => strtolower('brunoipjg@gmail.com'),
                 'rg' => "{$rg_parte_1}.{$rg_parte_2}.{$rg_parte_3}-{$rg_parte_4}",
-                'cep' => $cep.'-000',
-                'logradouro' => 'Rua Dos ' . $linha[0].'s',
+                'cep' => $cep . '-000',
+                'logradouro' => 'Rua Dos ' . $linha[0] . 's',
                 'numero' => $numero_casa,
                 'bairro' => 'Aclimação',
                 'cidade' => 'São Paulo',
-                'email' => strtolower($nomeQuebrado[0].".".$nomeQuebrado[1] . '@gmail.com')
+                'email' => strtolower($nomeQuebrado[0] . "." . $nomeQuebrado[1] . '@gmail.com')
             );
 
             $this->create();
@@ -156,6 +155,98 @@ class Aluno extends AppModel {
             $contador++;
             $contaAluno++;
         endforeach;
+    }
+
+    public function getMelhoresAlunos($curso_id, $criterios, $quantidade) {
+        
+        $sql = "
+SELECT *
+  FROM matricula Matricula
+       RIGHT JOIN (-- Faltas
+                   SELECT resumo_faltas.matricula_id,
+                          sum(resumo_faltas.quantidade) total_faltas
+                     FROM (SELECT Presenca.matricula_id,
+                                  CASE
+                                     WHEN Presenca.status = 'Ausente' THEN 1
+                                     ELSE 0
+                                  END
+                                     quantidade
+                             FROM presenca Presenca) resumo_faltas
+                   GROUP BY resumo_faltas.matricula_id) faltas
+          ON faltas.matricula_id = Matricula.id
+       RIGHT JOIN (-- Ocorrencias
+                   SELECT resumo_ocorrencias.matricula_id,
+                          sum(resumo_ocorrencias.quantidade)
+                             total_ocorrencias
+                     FROM (SELECT count(1) quantidade,
+                                  Ocorrencia.matricula_id
+                             FROM ocorrencia Ocorrencia) resumo_ocorrencias
+                   GROUP BY resumo_ocorrencias.matricula_id) ocorrencias
+          ON ocorrencias.matricula_id = Matricula.id
+       RIGHT JOIN (-- Notas
+                   SELECT   (  sum(valor)
+                             / (SELECT count(1)
+                                  FROM curso_materia CursoMateria,
+                                       turma Turma
+                                 WHERE CursoMateria.curso_id = Curso.id))
+                          / 6
+                             media_geral,
+                          Nota.materia_id,
+                          Matricula.id matricula_id,
+                          Aluno.nome,
+                          Aluno.logradouro,
+                          Aluno.numero,
+                          Aluno.bairro,
+                          Aluno.cidade
+                     FROM nota Nota,
+                          matricula Matricula,
+                          aluno Aluno,
+                          curso Curso,
+                          turma Turma
+                    WHERE     Nota.matricula_id = Matricula.id
+                          AND Aluno.id = Matricula.id
+                          AND Curso.id = Turma.curso_id
+                          AND Turma.id = Matricula.turma_id
+                          AND Curso.id = {$curso_id}
+                   GROUP BY Matricula.id) notas
+          ON notas.matricula_id = Matricula.id
+          
+
+-- 
+order by ";
+      
+       $order_by = null;
+       
+       if(in_array('notas', $criterios)){
+           if(!is_null($order_by)){
+               $order_by .= ",";
+           }
+           $order_by .=" media_geral desc";
+       }
+       
+       
+       if(in_array('faltas', $criterios)){
+           
+           if(!is_null($order_by)){
+               $order_by .= ",";
+           }
+           $order_by .=" total_faltas asc";
+       }
+       
+
+       if(in_array('ocorrencias ', $criterios)){
+           if(!is_null($order_by)){
+               $order_by .= ",";
+           }
+           $order_by .=" total_ocorrencias asc";
+       }
+       
+       $sql.= $order_by . " limit " . $quantidade;
+       
+    
+        
+        return $this->query($sql);
+        
     }
 
 }

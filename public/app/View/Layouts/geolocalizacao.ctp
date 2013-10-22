@@ -1,33 +1,18 @@
-<?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-?>
 <!DOCTYPE html>
 <html>
     <head>
         <script type="text/javascript">
             var ajaxurl = "<?php echo Router::url('/'); ?>";
         </script>
-        <?php echo $this->Html->charset(); ?>
-        <title><?php echo $title_for_layout; ?></title>
-        <?php
-        echo $this->Html->meta('icon');
 
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <style type="text/css">
+            html { height: 100% }
+            body { height: 100%; margin: 0; padding: 0 }
+            #map_canvas { height: 100% }
+        </style>
+
+        <?
         echo $this->Html->css(
                 array(
                     'bootstrap.css',
@@ -42,7 +27,6 @@
                 )
         );
 
-
         echo $this->Html->script(
                 array(
                     'jquery/jquery-2.0.2.js',
@@ -51,7 +35,7 @@
                     'bootstrap-modal',
                     'bootstrap-dropdown',
                     'bootstrap-scrollspy',
-                    'bootstrap-tab', 
+                    'bootstrap-tab',
                     'bootstrap-tooltip',
                     'bootstrap-popover',
                     'bootstrap-button',
@@ -72,31 +56,31 @@
                 )
         );
 
-
         echo $this->fetch('meta');
         echo $this->fetch('css');
         echo $this->fetch('script');
         ?>
+
+        <script type="text/javascript">
+            
+            function loadScript() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyBNId0y6vDSRPEna8PMsoG3HVYoQMHji-M&sensor=true&callback=initialize";
+                document.body.appendChild(script);
+            }
+
+            window.onload = loadScript;
+        </script>
     </head>
-    <body>
+    <body >
         <div class="navbar navbar-inverse navbar-fixed-top">
             <?= $this->element('topo', array('nome' => 'Curso')); ?>
         </div>
-        <div class="container-fluid" id="main-corpo">
-            <?= $this->element('menu', array('nome' => 'Curso')); ?>
-        </div><!--/row-->
-        <hr>
-        <footer>
 
-        </footer>
-
-
-
-        <!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-
-
+        
+            <?= $this->fetch('content'); ?>
     </body>
 </html>
-<? echo $this->element('sql_dump'); ?>
+
+

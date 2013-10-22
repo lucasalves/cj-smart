@@ -85,7 +85,7 @@ class Nota extends AppModel {
         );
 
         $notas = $this->find('all', array(
-            'fields' => array('Nota.data', 'Nota.valor', 'Matricula.id'),
+            'fields' => array('Nota.data', 'Nota.valor', 'Matricula.id', 'Nota.id'),
             'conditions' => array('Matricula.turma_id' => $turma_id, 'Nota.materia_id' => $materia_id),
                 )
         );
@@ -101,14 +101,15 @@ class Nota extends AppModel {
 
                 // Zero o valor
                 $valor = 0;
-
+                $id = null;
                 foreach ($notas as $nota):
                     if ($nota["Nota"]["data"] == $mes['data'] and $aluno["Matricula"]["id"] == $nota["Matricula"]["id"]) {
                         $valor = $nota["Nota"]["valor"];
+                       $id = $nota["Nota"]["id"];
                     }
                 endforeach;
 
-                $notas_meses[] = array('data' => $mes['data'], 'data-formatada' => $mes['data-formatada'], 'valor' => $valor);
+                $notas_meses[] = array('data' => $mes['data'], 'data-formatada' => $mes['data-formatada'], 'valor' => $valor, 'nota_id'=>$id);
 
             endforeach;
 
@@ -118,7 +119,7 @@ class Nota extends AppModel {
                 "matricula_id" => $aluno["Matricula"]["id"],
                 "turma_id" => $turma_id,
                 "materia_id" => $materia_id,
-                "notas" => $notas_meses,
+                "notas" => $notas_meses
             );
 
         endforeach;
@@ -138,12 +139,21 @@ class Nota extends AppModel {
             
             
             if ($valor != "") {
+                
+                if(isset($notas["id"][$i]) ){
+                    $id = $notas["id"][$i];
+                }else{
+                    $id = null;
+                }
+                
                 $dados[] = array(
                     'valor' => $valor // Ausente
                     , 'matricula_id' => $notas["matricula_id"][$i]
                     , 'materia_id' => $notas["materia_id"][$i]
                     , 'data' => $data
+                    ,'id' => $id
                 );
+                
             }
         endfor;
         
@@ -163,8 +173,8 @@ class Nota extends AppModel {
             select *
               from aula Aula
                   ,materia Materia
-             where materia.id = aula.materia_id
-               and aula.id = {$aula_id}
+             where Materia.id = Aula.materia_id
+               and Aula.id = {$aula_id}
             ");
         
         foreach ($aula_materia as $materia):

@@ -34,11 +34,12 @@
         </div>
     </div>
     <?= $this->Form->end(); ?>
-
+    
     <div id="botoes">
         <button class='btn btn-large btn-success matricula-create'>Matricular</button>
     </div>
     <div class="aluno"></div>
+    
 
 
 </div>

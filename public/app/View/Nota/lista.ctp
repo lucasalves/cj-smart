@@ -36,6 +36,7 @@
                 echo "  <input type='text' name='data[Nota][valor][]' value='{$nota["valor"]}' />";
                 echo "  <input type='hidden' name='data[Nota][data][]' value='{$nota["data"]}' />";
                 echo "  <input type='hidden' name='data[Nota][materia_id][]' value='{$aluno["materia_id"]}' />";
+                echo "  <input type='hidden' name='data[Nota][id][]' value='{$nota["nota_id"]}' />";
                 echo "  <input type ='hidden' name='data[Nota][matricula_id][]' value='{$aluno["matricula_id"]}' />";
                 echo "</td>";
             endforeach;

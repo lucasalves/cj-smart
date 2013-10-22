@@ -5,8 +5,9 @@
     <div class="row-fluid">
         <div  class="navbar-form pull-left main_pesquisa well">
             <form action="<?php echo Router::url('/boletim/index '); ?>" method="GET">
-                <input type="text" name="mes" value="<? ?>" />
-                <input type="text" name="ano" value="<? ?>" />
+                Código Matricula: <input type="text" name="codigo_matricula" value="<?= $codigo_matricula ?>" style="width: 50px;" maxlength="2" />
+                Mes: <input type="text" name="mes" value="<?= $mes ?>" style="width: 50px;" maxlength="2" />
+                Ano: <input type="text" name="ano" value="<?= $ano ?>" style="width: 50px;" maxlength="4"/>
                 <button class="btn" id="search">Buscar Matrículas</button>
             </form>
         </div>
@@ -31,7 +32,7 @@
                         <td><?= $matricula["Matricula"]["codigo"] ?></td>
                         <td><?= $matricula["Aluno"]["nome"] ?></td>
                         <td><?= $matricula["Turma"]["nome"] ?></td>
-                        <td><?= $this->Html->link(__d('cake', "Emitir Boletim", 'boletim'), array('action' => "gerarBoletim/{$matricula["Matricula"]["id"]}"), array('class' => 'btn btn-success','target' => '_blank')); ?>
+                        <td><?= $this->Html->link(__d('cake', "Emitir Boletim", 'boletim'), array('action' => "gerarBoletim/{$matricula["Matricula"]["id"]}"), array('class' => 'btn btn-success', 'target' => '_blank')); ?>
                     </tr>
                 </form>
             <? endforeach; ?>
@@ -40,8 +41,6 @@
 
     </div>
 </div>
-
-
 
 
 

@@ -23,7 +23,7 @@ USE `cjsmart`;
 --
 
 DROP TABLE IF EXISTS `aluno`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`aluno` (
+CREATE  TABLE IF NOT EXISTS  `aluno` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(50) NULL DEFAULT NULL ,
   `telefone` INT(9) NULL ,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `curso_materia` (
 --
 
 DROP TABLE IF EXISTS `educador`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`educador` (
+CREATE  TABLE IF NOT EXISTS  `educador` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(100) NOT NULL ,
   `email` VARCHAR(100) NOT NULL ,
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `responsavel` (
 --
 
 DROP TABLE IF EXISTS `turma`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`turma` (
+CREATE  TABLE IF NOT EXISTS  `turma` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(200) NOT NULL ,
   `periodo` VARCHAR(1) NOT NULL COMMENT 'M:Manhã, T:Tarde, N:Noite' ,
@@ -190,8 +190,8 @@ DEFAULT CHARACTER SET = latin1;
 --
 -- Estrutura da tabela `aviso`
 --
-DROP TABLE IF EXISTS `cjsmart`.`aviso`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`aviso` (
+DROP TABLE IF EXISTS  `aviso`;
+CREATE  TABLE IF NOT EXISTS  `aviso` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `descricao` VARCHAR(1000) NOT NULL ,
   `status` ENUM('Aberto','Enviado','Arquivado') NOT NULL ,
@@ -209,7 +209,7 @@ ENGINE = InnoDB;
 --
 
 DROP TABLE IF EXISTS `aula`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`aula` (
+CREATE  TABLE IF NOT EXISTS  `aula` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `data` DATE NULL DEFAULT NULL ,
   `turma_id` INT(11) NULL DEFAULT NULL ,
@@ -226,7 +226,7 @@ DEFAULT CHARACTER SET = latin1;
 --
 
 DROP TABLE IF EXISTS `matricula`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`matricula` (
+CREATE  TABLE IF NOT EXISTS  `matricula` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `codigo` VARCHAR(200) NOT NULL ,
   `data` DATE NULL DEFAULT NULL ,
@@ -245,7 +245,7 @@ DEFAULT CHARACTER SET = latin1;
 --
 
 DROP TABLE IF EXISTS `ocorrencia`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`ocorrencia` (
+CREATE  TABLE IF NOT EXISTS  `ocorrencia` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `descricao` TEXT NOT NULL ,
   `gravidade` VARCHAR(1) NULL DEFAULT 'B' COMMENT 'A:Alta - B:Baixa' ,
@@ -262,7 +262,7 @@ ENGINE = InnoDB;
 
 
 DROP TABLE IF EXISTS `nota`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`nota` (
+CREATE  TABLE IF NOT EXISTS  `nota` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `valor` DOUBLE NOT NULL ,
   `tipo` VARCHAR(45) NULL ,
@@ -278,7 +278,7 @@ ENGINE = InnoDB;
 -- Estrutura da tabela `presenca`
 --
 DROP TABLE IF EXISTS `presenca`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`presenca` (
+CREATE  TABLE IF NOT EXISTS  `presenca` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `status` ENUM('Presente','Ausente','Abonado') NOT NULL ,
   `aula_id` INT(10) NOT NULL ,
@@ -292,7 +292,7 @@ ENGINE = InnoDB;
 -- Estrutura da tabela `local`
 --
 DROP TABLE IF EXISTS `local`;
-CREATE  TABLE IF NOT EXISTS `cjsmart`.`local` (
+CREATE  TABLE IF NOT EXISTS  `local` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `local` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )

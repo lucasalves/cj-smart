@@ -14,13 +14,23 @@
 </table>
 <br/>
 <table>
-    <tr>
-        <td><b>Matrícula:</b> 01</td>
-        <td><b>Aluno:</b> Bruno Leonardo Silva Oliveira</td>
-        <td><b>Turma:</b> ADS</td>
-        <td><b>Período:</b> Manhã</td>
-        <td><b>Data Emissão:</b> 10/10/2013</td>
-    </tr>
+    <?
+    foreach($notas as $nome):
+    
+        echo "
+<tr>
+        <td><b>Matrícula:</b> {$nome["Matricula"]["codigo"]}</td>
+        <td><b>Aluno:</b>  {$nome["Aluno"]["nome"]}</td>
+        <td><b>Turma:</b>  {$nome["Turma"]["nome"]}</td>
+        <td><b>Período:</b>  {$nome["Turma"]["periodo"]}</td>
+        <td><b>Data Emissão:</b> ".date('d/m/Y')."</td>
+    </tr>            
+";
+        
+        break;
+    endforeach;
+    ?>
+    
 </table>
 <br/>
 <table class="tabela-notas">
@@ -55,3 +65,8 @@
     ?>
 
 </table>
+
+<script>
+    window.print();
+</script>
+
