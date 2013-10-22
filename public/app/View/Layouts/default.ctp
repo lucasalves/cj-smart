@@ -106,8 +106,5 @@
 
     </body>
 </html>
-<<<<<<< HEAD
+
 <? echo $this->element('sql_dump'); ?>
-=======
-<? echo $this->element('sql_dump'); ?>
->>>>>>> 1d54b5317cf75c16e4d32f613de29754ba4c324f
