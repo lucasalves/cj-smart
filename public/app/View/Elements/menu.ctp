@@ -10,10 +10,7 @@
                 <?php echo $this->Permissions->itemMenu('aula',      'Aulas'); ?>
                 <?php echo $this->Permissions->itemMenu('atividade', 'Atividades'); ?>
 
-<<<<<<< HEAD
                 <!--<li><a href="<?php // echo Router::url("/materia"); ?>">Matérias</a></li>-->
-=======
->>>>>>> 025300e322f58c47093d11785b7d38659e0be4c5
                 <?php echo $this->Permissions->groupMenu('administrativo', 'Administrativo'); ?>
 
                 <?php echo $this->Permissions->itemMenu('matricula',  'Matrículas'); ?>
