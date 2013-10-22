@@ -71,6 +71,7 @@
                     'app/Chart.js',
                     'aula/calendario',
                     'aluno',
+                    'Turma',
                     'usuario',
                     'grupoUsuario',
                     'aula',
