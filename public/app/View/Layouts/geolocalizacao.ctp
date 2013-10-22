@@ -78,7 +78,8 @@
             <?= $this->element('topo', array('nome' => 'Curso')); ?>
         </div>
 
-        
+        <br/>
+        <br/>
             <?= $this->fetch('content'); ?>
     </body>
 </html>

@@ -41,8 +41,8 @@ class Curso extends AppModel {
                                     "Materia" => array(
                                         "className"  => "Materia",
                                         "joinTable"  => "curso_materia",
-                                        "foreignKey" => "materia_id",
-                                        "associationForeignKey" => "curso_id"
+                                        "foreignKey" => "curso_id",
+                                        "associationForeignKey" => "materia_id"
                                     )
                                 );
     public $validate = array(

@@ -75,6 +75,12 @@ class AlunoController extends AppController {
         $this->disableCache();
         $this->redirect( $this->Aluno->viewOrAdd( $this->request->query ), 301);
     }
+
+    public function stats($id){
+        $this->autoRender = false;
+        $this->disableCache();
+        echo json_encode( $this->Aluno->statisticsNotes($id) );
+    }
     
     
 }

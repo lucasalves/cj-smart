@@ -44,7 +44,7 @@ class Geolocalizacao extends AppModel {
     public $imagens;
     public $box_mapa = "map_canvas";
     public $id = 0;
-    public $icones = array('cursando' => 'aluno-cursando.png');
+    public $icones = array('cursando' => 'aluno-cursando.png', 'empresa' =>'empresa.png','formado' => 'aluno-formado.png');
     public $itens = array();
 
     function render() {

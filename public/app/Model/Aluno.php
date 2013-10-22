@@ -157,6 +157,26 @@ class Aluno extends AppModel {
         endforeach;
     }
 
+    public function statisticsNotes($user){
+        $user = $this->find('all', array('conditions' => array('Aluno.id' => $user)));
+        $user = $user[0];        
+        
+        return array('matriculas' => $this->averageRegistry($user['Matricula']), 'materias' => $this->getNotesBySubject($user['Matricula']));
+    }
+
+    public function averageRegistry($matriculas){
+        $averages = array();
+        foreach($matriculas as $matricula){
+            $averages[] = $this->Matricula->getNotesByRegistry($matricula['id']);
+        }
+
+        return $averages;
+    }
+
+    public function getNotesBySubject($matriculas){
+        return $this->Matricula->getNotesBySubject($matriculas);
+    }
+
     public function getMelhoresAlunos($curso_id, $criterios, $quantidade) {
         
         $sql = "
@@ -186,8 +206,7 @@ SELECT *
        RIGHT JOIN (-- Notas
                    SELECT   (  sum(valor)
                              / (SELECT count(1)
-                                  FROM curso_materia CursoMateria,
-                                       turma Turma
+                                  FROM curso_materia CursoMateria
                                  WHERE CursoMateria.curso_id = Curso.id))
                           / 6
                              media_geral,
@@ -234,7 +253,7 @@ order by ";
        }
        
 
-       if(in_array('ocorrencias ', $criterios)){
+       if(in_array('ocorrencias', $criterios)){
            if(!is_null($order_by)){
                $order_by .= ",";
            }
@@ -246,7 +265,6 @@ order by ";
     
         
         return $this->query($sql);
-        
     }
 
 }

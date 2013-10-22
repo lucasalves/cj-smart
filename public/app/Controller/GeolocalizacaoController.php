@@ -49,8 +49,7 @@ class GeolocalizacaoController extends AppController {
         $alunos = array();
         $cursos = array();
         $render = null;
-        $criterios = null;
-
+        $criterios = array();
         $this->loadModel('Curso');
 
         // Carrega a Lista de Cursos
@@ -65,17 +64,27 @@ class GeolocalizacaoController extends AppController {
 
             if (!empty($this->request->data["criterios"])) {
                 $criterios = $this->request->data["criterios"];
-            }
 
-            $this->loadModel("Aluno");
-            $alunos = $this->Aluno->getMelhoresAlunos($curso_id, $criterios, 10);
+                if (!empty($this->request->data["quantidade"])) {
+                    $quantidade = $this->request->data["quantidade"];
+                } else {
+                    $quantidade = 10;
+                }
+                
+                $this->loadModel("Aluno");
+                $alunos = $this->Aluno->getMelhoresAlunos($curso_id, $criterios, $quantidade);
+            } else {
+                $this->Session->setFlash("Selecione ao menos um critério");
+            }
+        } else {
+            $this->Session->setFlash("Selecione um curso");
         }
 
 
 
 
         if (!empty($this->request->data["endereco"])) {
-            
+
             $this->layout = "geolocalizacao";
 
             // Recebe o endereço principal digitado na tela
@@ -91,7 +100,7 @@ class GeolocalizacaoController extends AppController {
                 'latitude' => $coord_end['lat'],
                 'longitude' => $coord_end['long'],
                 'title' => 'nome do icone',
-                'icon' => 'cursando',
+                'icon' => 'empresa',
                 'conteudo_html' => 'Aluno tals'
             ));
 
@@ -112,7 +121,7 @@ class GeolocalizacaoController extends AppController {
                      * Monta o Html que será exibido em cada icone
                      */
                     $html = "<h3>{$aluno['notas']['nome']}</h3>";
-                    $html .= "Média Geral {$aluno['notas']['media_geral']} <br/>";
+                    $html .= "Média Geral ".number_format($aluno['notas']['media_geral'], 2)." <br/>";
                     $html .= "Faltas {$aluno['faltas']['total_faltas']} <br/>";
 
                     $this->Geolocalizacao->setItem(array(
@@ -131,7 +140,7 @@ class GeolocalizacaoController extends AppController {
         $this->set('cursos', $cursos);
         $this->set('alunos', $alunos);
         $this->set('renderJs', $render);
-//        $this->autoRender=false;
+        $this->set('criterios', $criterios);
     }
 
 }

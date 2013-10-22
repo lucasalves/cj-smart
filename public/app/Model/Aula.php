@@ -57,11 +57,7 @@ class Aula extends AppModel {
     );
     
     public $virtualFields = array(
-<<<<<<< HEAD
         'nome_aula' => "concat((select Materia.nome from materia Materia where Materia.id = Aula.materia_id), ' - ', date_format(Aula.data,'%d/%m/%Y'))"
-=======
-        'nome_aula' => "concat((select materia.nome from materia where materia.id = Aula.materia_id), ' - ', date_format(Aula.data,'%d/%m/%Y'))"
->>>>>>> 025300e322f58c47093d11785b7d38659e0be4c5
     );
 
     public $validate = array(

@@ -11,7 +11,6 @@
                 <?php echo $this->Permissions->itemMenu('atividade', 'Atividades'); ?>
 
                 <!--<li><a href="<?php // echo Router::url("/materia"); ?>">Matérias</a></li>-->
-
                 <?php echo $this->Permissions->groupMenu('administrativo', 'Administrativo'); ?>
 
                 <?php echo $this->Permissions->itemMenu('matricula',  'Matrículas'); ?>

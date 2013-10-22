@@ -142,4 +142,51 @@ class Matricula extends AppModel {
         return $aluno;
     }
 
+    public function getNotesByRegistry($id){
+        $matricula = $this->find('all', array('conditions' => array('Matricula.id' => $id)));
+        $matricula = $matricula[0]['Matricula'];
+
+        $notas     = $this->Nota->find('all', array('conditions' => array('Nota.matricula_id' => $id), 'order' => array('Nota.data ASC')));
+        $data      = array('name' => 'Cod: ' . $matricula['codigo'] . ' - ' . date('d/m/Y', strtotime($matricula['data'])), 'data' => array());
+        foreach ($notas as $nota) {
+            $data['data'][] = (int) $nota['Nota']['valor'];
+        }
+
+        return $data;
+    }
+
+    public function getNotesBySubject($matriculas){
+        $materias = array();
+        
+        //map
+        foreach ($matriculas as $matricula) {
+            $notas = $this->Nota->find('all', array('conditions' => array('Matricula.id' => $matricula['id'])));
+            foreach ($notas as $nota) {
+                if(empty($materias[$nota['Materia']['id']])){
+                    $materias[$nota['Materia']['id']] = array(
+                        'count' => 1,
+                        'nota'  => $nota['Nota']['valor'],
+                        'name'  => $nota['Materia']['nome']
+                    );
+                }else{
+                    $materias[$nota['Materia']['id']]['count'] += 1;
+                    $materias[$nota['Materia']['id']]['nota']  += $nota['Nota']['valor'];
+                }
+            }
+        }
+
+        //reduce
+        $map = $materias;
+        $materias = array();
+
+        foreach ($map as $materia) {
+            $materias[] = array(
+                'y'    =>round($materia['nota'] / $materia['count'], 2),
+                'name' => $materia['name']
+            );
+        }
+
+        return $materias;   
+    }
+
 }

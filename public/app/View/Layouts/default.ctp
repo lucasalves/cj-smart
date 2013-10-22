@@ -66,8 +66,12 @@
                     'app/request.js',
                     'app/ajaxLoad.js',
                     'app/notify.js',
+                    'vendor/highcharts/highcharts.js',
+                    'vendor/highcharts/exporting.js',
+                    'app/Chart.js',
                     'aula/calendario',
                     'aluno',
+                    'Turma',
                     'usuario',
                     'grupoUsuario',
                     'aula',
@@ -103,4 +107,5 @@
 
     </body>
 </html>
+
 <? echo $this->element('sql_dump'); ?>
