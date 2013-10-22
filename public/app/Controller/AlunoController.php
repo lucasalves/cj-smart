@@ -72,6 +72,7 @@ class AlunoController extends AppController {
     }
 
     public function view_or_add(){
+        $this->disableCache();
         $this->redirect( $this->Aluno->viewOrAdd( $this->request->query ), 301);
     }
     

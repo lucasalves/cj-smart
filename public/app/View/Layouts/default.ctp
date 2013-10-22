@@ -38,7 +38,8 @@
                     'app/modal.css',
                     'aula/calendario.css',
                     'matricula.css',
-                    'usuario'
+                    'usuario',
+                    'atividade',
                 )
         );
 
@@ -68,7 +69,10 @@
                     'aula/calendario',
                     'aluno',
                     'usuario',
-                    'grupoUsuario'
+                    'grupoUsuario',
+                    'aula',
+                    'atividade',
+                    'local'
                 )
         );
 

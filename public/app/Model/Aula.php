@@ -33,7 +33,9 @@ App::uses('AppModel', 'Model');
  */
 class Aula extends AppModel {
 
-    public $useTable = 'aula';
+    public $useTable  = 'aula';
+    public $name      = 'Aula';
+
     public $belongsTo = array(
         'Turma' => array(
             'className' => 'Turma',
@@ -55,8 +57,65 @@ class Aula extends AppModel {
     );
     
     public $virtualFields = array(
+<<<<<<< HEAD
         'nome_aula' => "concat((select Materia.nome from materia Materia where Materia.id = Aula.materia_id), ' - ', date_format(Aula.data,'%d/%m/%Y'))"
+=======
+        'nome_aula' => "concat((select materia.nome from materia where materia.id = Aula.materia_id), ' - ', date_format(Aula.data,'%d/%m/%Y'))"
+>>>>>>> 025300e322f58c47093d11785b7d38659e0be4c5
     );
+
+    public $validate = array(
+                'local_id' => array(
+                                'validateLocalConflictPeriod' => array(
+                                    'rule'    => array('validateLocalConflictPeriod'),
+                                    'message' => 'Já existe aula neste local no mesmo dia e período'
+                                )
+                )
+            );
+
+    public function validateLocalConflictPeriod(){ 
+
+        $aulas = $this->find('all', array(
+                                        'conditions' => array(
+                                                       $this->name . '.data'     => $this->data[$this->name]['data'],
+                                                       $this->name . '.local_id' => $this->data[$this->name]['local_id'],
+                                                       $this->name . '.id != '   => $this->id
+                                                    )
+                                    )
+                            );
+
+        if(!count($aulas)){
+            return true;
+        }
+
+        if(count($aulas) == 3){
+            return false;
+        }
+
+        $currentTurma = $this->Turma->find('all', array(
+                                                    'conditions' => array(
+                                                                    'Turma.id' => $this->data[$this->name]['turma_id']
+                                                                )
+                                                    )
+                                        );
+        $currentTurma = $currentTurma[0];
+
+        foreach ($aulas as $aula) {
+            $turma = $this->Turma->find('all', array(
+                                                    'conditions' => array(
+                                                                    'Turma.id' => $aula[$this->name]['turma_id']
+                                                                )
+                                                )
+                                        );
+            $turma = $turma[0];
+
+            if($turma['Turma']['periodo'] ==  $currentTurma['Turma']['periodo']){
+                return false;
+            }
+        }
+
+        return true;
+    }
             
     
     public function toEvents($data) {

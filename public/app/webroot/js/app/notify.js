@@ -1,15 +1,27 @@
 App.Notify = {
-	prepend: function(html, $in){
+	prepend: function(html, $in){		
 		$($in).prepend(html);
 	},
 
 	errors: function(mensagens, $in) {
+		var self = this;
+
+		var append = function(mensagens){
+				self.prepend(
+						self.toHtml(mensagens, 'error'),
+						$in
+					);
+		};
+
 		if ($.isArray(mensagens)){
 			for (var i = mensagens.length - 1; i >= 0; i--) {
-				this.prepend(
-					this.toHtml(mensagens[i], 'error'),
-					$in
-				);
+				if(typeof mensagens[i] === 'object'){
+					for(var index in mensagens[i]){
+						append(mensagens[i][index]);
+					}
+				}else{
+					append(mensagens[i]);
+				}
 			}
 		}else{
 			this.errors([mensagens], $in);

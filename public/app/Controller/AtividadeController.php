@@ -30,22 +30,22 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class AulaController extends AppController {
+class AtividadeController extends AppController {
 
     /**
      * Controller name
      *
      * @var string
      */
-    public $name = 'Aula';
+    public $name = 'Atividade';
     public $uses = array();
     public $scaffold;
 
     public function get() {
         $this->autoRender = false;
         echo json_encode(
-                $this->Aula->toEvents(
-                        $this->Aula->find('all', array(
+                $this->Atividade->toEvents(
+                        $this->Atividade->find('all', array(
                             'conditions' => array('UNIX_TIMESTAMP(data) >= ' => $this->request->query['start'], 'UNIX_TIMESTAMP(data) <= ' => $this->request->query['end'])
                                 )
                         )
@@ -58,15 +58,15 @@ class AulaController extends AppController {
         $this->autoRender = false;
 
         if($this->request->is('post') || $this->request->is('put')){
-            $this->Aula->set($this->request->data);
+            $this->Atividade->set($this->request->data);
             
-            if($this->Aula->validates()){
+            if($this->Atividade->validates()){
                 $resp =  array('status' => true);
             }else{              
                 $resp = array_merge(
                                 array('status' => false),
                                 array(
-                                    'errors' => $this->Aula->validationErrors
+                                    'errors' => $this->Atividade->validationErrors
                                 )
                             );
             }
@@ -78,12 +78,12 @@ class AulaController extends AppController {
     public function update_date() {
         $this->autoRender = false;
         extract($this->request->data);
-        $aula = $this->Aula->find('all', array(
-            'conditions' => array('Aula.id' => $id)
+        $aula = $this->Atividade->find('all', array(
+            'conditions' => array('Atividade.id' => $id)
                 )
         );
-        $this->Aula->id = $id;
-        $this->Aula->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Aula']['data'])))));
+        $this->Atividade->id = $id;
+        $this->Atividade->save(array('data' => date('Y-m-d', strtotime($delta . ' days', strtotime($aula[0]['Atividade']['data'])))));
     }
 
 }

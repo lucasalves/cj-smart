@@ -40,4 +40,29 @@ class LocalController extends AppController {
     public $uses = array('Local');
 
     public $scaffold;
+
+    public function add_ajax(){
+    	$this->autoRender = false;
+
+    	if($this->request->is('post') || $this->request->is('put')){
+            $this->Local->set($this->request->data);
+            
+            if($this->Local->validates()){
+                $resp = $this->Local->save($this->request->data);
+	   				$resp = array_merge(
+    							array('status' => true),
+    							$resp 					
+    						);
+    		}else{    			
+    			$resp = array_merge(
+    							array('status' => false),
+    							array(
+                                    'errors' => $this->Local->validationErrors
+                                )
+    						);
+    		}
+    	}
+
+    	echo json_encode($resp);
+    }
 }

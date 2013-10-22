@@ -57,7 +57,9 @@
 	};
 
 	$(document).ready(function() {
-		var calendar = new Aula;
-		calendar.initialize();
+		if($('#calendar-aula').length){
+			var calendar = new Aula;
+			calendar.initialize();
+		}
 	});
 })();

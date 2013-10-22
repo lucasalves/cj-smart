@@ -51,7 +51,7 @@ class PermissionsHelper extends Helper {
         
         $url = ($url ? $url : '/' . $item);
 
-        if(!empty($permissions[$item]) && $permissions[$item]['visualizar']):
+        if(!empty($permissions[$item]) && $permissions[$item]['visualizar'] or empty($permissions[$item])):
             return '<li><a href="' . Router::url($url) . '">' . $name . '</a></li>';
         endif;
     }

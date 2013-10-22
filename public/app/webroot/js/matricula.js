@@ -18,8 +18,11 @@ var Matricula = function(){
         }
     };
 
-    this.setHiddenData = function(aluno){
+    this.setHiddenData = function(aluno, addListersEvent){
         $("#MatriculaAlunoId").val(aluno.id);
+        if(addListersEvent){
+            addListersEvent();
+        }
     };
 
     this.Aluno = {
@@ -37,8 +40,10 @@ var Matricula = function(){
             var aluno = this;
             this.Aluno.add(data, function(response){
                 if(response.status){
-                    $(".matricula .find-aluno").trigger('click');
-                    self.setHiddenData(response.Aluno);
+                     self.setHiddenData(response.Aluno, function(){
+                        $(".matricula .find-aluno").trigger('click');    
+                     });
+                    
                     self.submitButton.display();
                 }else{
                     App.Notify.errors(response.errors, $('.aluno'));
