@@ -55,7 +55,6 @@ var Charts = {
                                 });
                         },
                         custom: function(selector, options){
-                        	console.log(options.series);
                                 return new Highcharts.Chart({
                                     credits: {
                                       enabled: false
@@ -89,6 +88,49 @@ var Charts = {
                               			enabled: true
                             		},
                             		series: options.series || []
+                                });
+                        },
+                        column: function(selector, options){
+                            return new Highcharts.Chart({
+                                    credits: {
+                                      enabled: false
+                                    },
+                                    chart: {
+                                        type: 'column',
+                                        renderTo: selector,
+                                        backgroundColor: options.backgroundColor || '#FFFFFF'
+                                    },
+                                    title: {
+                                        text: ''
+                                    },
+                                    xAxis: { 
+                                        categories: options.categories || []
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: options.yAxis || ''
+                                        },
+                                        plotLines: [{
+                                            value: 0,
+                                            width: 1,
+                                            color: '#808080'
+                                        }]
+                                    },
+                                    tooltip: options.tooltip || false,
+                               
+                                    legend: {
+                                        itemDistance: 20
+                                    },
+                                    exporting:{
+                                        enabled: true
+                                    },
+                                    plotOptions: {
+                                        column: {
+                                            pointPadding: 0.2,
+                                            borderWidth: 0
+                                        }
+                                    },                                    
+                                    series: options.series || []
                                 });
                         }
 
