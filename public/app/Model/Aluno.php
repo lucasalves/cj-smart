@@ -158,4 +158,24 @@ class Aluno extends AppModel {
         endforeach;
     }
 
+    public function statisticsNotes($user){
+        $user = $this->find('all', array('conditions' => array('Aluno.id' => $user)));
+        $user = $user[0];        
+        
+        return array('matriculas' => $this->averageRegistry($user['Matricula']), 'materias' => $this->getNotesBySubject($user['Matricula']));
+    }
+
+    public function averageRegistry($matriculas){
+        $averages = array();
+        foreach($matriculas as $matricula){
+            $averages[] = $this->Matricula->getNotesByRegistry($matricula['id']);
+        }
+
+        return $averages;
+    }
+
+    public function getNotesBySubject($matriculas){
+        return $this->Matricula->getNotesBySubject($matriculas);
+    }
+
 }
