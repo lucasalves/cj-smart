@@ -37,7 +37,6 @@ class Geolocalizacao extends AppModel {
     public $principal;
     public $mapOptions = array(
         'zoom' => 17,
-        'center' => 'new google.maps.LatLng( -23.572158606928717, -46.62534955000001)',
         'mapTypeId' => 'google.maps.MapTypeId.ROADMAP'
     );
     public $map;

@@ -101,8 +101,10 @@ class GeolocalizacaoController extends AppController {
                 'longitude' => $coord_end['long'],
                 'title' => 'nome do icone',
                 'icon' => 'empresa',
-                'conteudo_html' => 'Aluno tals'
+                'conteudo_html' => $this->request->data["endereco"]
             ));
+            
+            $this->Geolocalizacao->mapOptions['center'] = "new google.maps.LatLng( {$coord_end['lat']}, {$coord_end['long']})";
 
             if (count($alunos) > 0) {
 
