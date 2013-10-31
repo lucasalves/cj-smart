@@ -59,4 +59,9 @@ class MateriaController extends AppController {
         echo json_encode($resp);
     }
 
+    public function get_materia_by_turma($id){
+        $this->layout = false;
+        $this->set('turmas', $this->Materia->inTurma($id));
+    }
+
 }

@@ -50,4 +50,11 @@ class Materia extends AppModel {
                             'foreignKey' => 'materia_id'
                         ),        
                     ); 
+
+    public function inTurma($id){
+        return $this->query('SELECT materia.id as id, materia.nome as nome FROM `turma` INNER JOIN curso ON
+curso.id = turma.curso_id INNER JOIN curso_materia ON
+curso_materia.curso_id = curso.id RIGHT JOIN materia ON
+materia.id = curso_materia.materia_id WHERE turma.id =' . $id);
+    }
 }
