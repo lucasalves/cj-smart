@@ -74,6 +74,7 @@
                     'aula/calendario',
                     'aluno',
                     'Turma',
+                    'Materia',
                     'usuario',
                     'grupoUsuario',
                     'aula',
