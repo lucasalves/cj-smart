@@ -43,7 +43,7 @@ class Geolocalizacao extends AppModel {
     public $imagens;
     public $box_mapa = "map_canvas";
     public $id = 0;
-    public $icones = array('cursando' => 'aluno-cursando.png', 'empresa' =>'empresa.png','formado' => 'aluno-formado.png');
+    public $icones = array('cursando' => 'aluno-cursando.png', 'empresa' => 'empresa.png', 'formado' => 'aluno-formado.png');
     public $itens = array();
 
     function render() {
@@ -108,19 +108,37 @@ class Geolocalizacao extends AppModel {
 
     public function getCoordenadas($address) {
 
+        $address = $this->trataCaracteres($address);
+
         $geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address=' . $address . '&sensor=false');
 
         $output = json_decode($geocode);
 
-
+        $lat = null;
+        $long = null;
+        if (isset($output->results[0]->geometry->location->lat) and $output->results[0]->geometry->location->lng) {
+            $lat = $output->results[0]->geometry->location->lat;
+            $long = $output->results[0]->geometry->location->lng;
+        }
+        
         return array(
-            'lat' => $output->results[0]->geometry->location->lat
-            , 'long' => $output->results[0]->geometry->location->lng
+            'lat' => $lat
+            , 'long' => $long
         );
     }
-    
-    public function formatarEndereco($endereco){
-        return str_replace(" ","+", $endereco);
-    }            
+
+    public function formatarEndereco($endereco) {
+        return str_replace(" ", "+", $endereco);
+    }
+
+    function trataCaracteres($str) {
+        $str = str_replace(array('á', 'à', 'â', 'ã', 'ª'), 'a', $str);
+        $str = str_replace(array('é', 'è', 'ê'), 'e', $str);
+        $str = str_replace(array('í', 'í', 'î'), 'i', $str);
+        $str = str_replace(array('ó', 'ò', 'ô', 'õ', 'º'), 'o', $str);
+        $str = str_replace(array('ú', 'ù', 'û'), 'i', $str);
+        $str = str_replace('ç', 'c', $str);
+        return $str;
+    }
 
 }

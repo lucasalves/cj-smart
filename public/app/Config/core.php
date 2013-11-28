@@ -247,7 +247,7 @@ date_default_timezone_set('UTC');
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
-	//date_default_timezone_set('UTC');
+	date_default_timezone_set('America/Sao_Paulo');
 
 /**
  *
@@ -354,3 +354,5 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+Configure::write('Config.language', 'br');

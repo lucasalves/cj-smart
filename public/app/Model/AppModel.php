@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -20,7 +21,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('Model', 'Model');
 
 /**
@@ -32,4 +32,23 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+    function dateFormatBeforeSave($dateString) {
+
+        $data = explode("/", $dateString);
+
+        if (count($data) > 1) {
+            return $data[2] . "-" . $data[1] . "-" . $data[0];
+        }
+    }
+    
+    function dateFormatBeforeFind($dateString) {
+
+        $data = explode("-", $dateString);
+
+        if (count($data) > 1) {
+            return $data[2] . "-" . $data[1] . "-" . $data[0];
+        }
+    }
+
 }

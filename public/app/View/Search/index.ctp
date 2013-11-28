@@ -22,7 +22,7 @@ $valor = $this->params->query['per'];
             <table cellpadding="0" cellspacing="0" class='table table-striped' id='relatorio'>
                 <tr>
                     <th style="width:10px"></th>
-                    <?php foreach ($data['fields'] as $field): ?>
+                    <?php foreach ($this->Html->displayFiels($this, $data['fields']) as $field): ?>
                         <th><?php echo $this->Paginator->sort($field); ?></th>
                     <?php endforeach; ?>
                     <th></th>
@@ -32,7 +32,7 @@ $valor = $this->params->query['per'];
                     <tr>
                         <td><?php echo $this->Html->link('', array('action' => 'view', $row['id']), array('class' => 'link link-visualizar', 'title' => 'Visualizar Registro')); ?>
                         </td>
-                        <?php foreach ($data['fields'] as $field): ?>
+                        <?php foreach ($this->Html->displayFiels($this, $data['fields']) as $field): ?>
                             <td><?php echo $row[$field]; ?></td>
                         <?php endforeach; ?>
 
@@ -45,9 +45,6 @@ $valor = $this->params->query['per'];
         </div>
     </div>
 
-    <div class="paging">
-        <?php echo $this->Paginator->prev('< ' . __d('cake', 'próxima'), array(), null, array('class' => 'prev disabled')); ?>
-        <?php echo $this->Paginator->numbers(array('separator' => '')); ?>
-        <?php echo $this->Paginator->next(__d('cake', 'anterior') . ' >', array(), null, array('class' => 'next disabled')); ?>
-    </div>
+   <?= $this->element('paginacao'); ?>
+
 </div>

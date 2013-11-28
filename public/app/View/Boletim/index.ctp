@@ -5,7 +5,7 @@
     <div class="row-fluid">
         <div  class="navbar-form pull-left main_pesquisa well">
             <form action="<?php echo Router::url('/boletim/index '); ?>" method="GET">
-                Código Matricula: <input type="text" name="codigo_matricula" value="<?= $codigo_matricula ?>" style="width: 50px;" maxlength="2" />
+                Código Matricula: <input type="text" name="codigo_matricula" value="<?= $codigo_matricula ?>" style="width: 50px;"  />
                 Mes: <input type="text" name="mes" value="<?= $mes ?>" style="width: 50px;" maxlength="2" />
                 Ano: <input type="text" name="ano" value="<?= $ano ?>" style="width: 50px;" maxlength="4"/>
                 <button class="btn" id="search">Buscar Matrículas</button>

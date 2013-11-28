@@ -39,6 +39,6 @@
         }
         ?>
     </div>
-    <h3>Analise das notas de <?php echo Inflector::humanize($this->data['Aluno']['nome']) ?></h3>
+    <h3>Análise das notas de <?php echo Inflector::humanize($this->data['Aluno']['nome']) ?></h3>
     <div class="stats" id="stats-aluno"></div>
 </div>

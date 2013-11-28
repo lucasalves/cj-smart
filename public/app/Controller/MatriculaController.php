@@ -58,5 +58,32 @@ class MatriculaController extends AppController {
     }
     
 
+    function index() {
+        // Adiciona filtro
+        $this->Filter->addFilters(
+                array(
+                    'filter1' => array(
+                        'OR' => array(
+                            'Matricula.codigo' => array('operator' => 'LIKE'),
+                            'Aluno.nome' => array('operator' => 'LIKE'),
+                            'Turma.nome' => array('operator' => 'LIKE'),
+                        )
+                    )
+                )
+        );
+
+        $this->Filter->setPaginate('order', 'Matricula.id DESC'); // opcional
+
+        $this->Filter->setPaginate('limit', 10);              // opcional
+        //
+        // Define conditions
+        $this->Filter->setPaginate('conditions', $this->Filter->getConditions());
+
+        $this->Matricula->recursive = 0;
+        
+        $this->set('matriculas', $this->paginate());
+    }
+    
+
 
 }

@@ -70,7 +70,7 @@ class GeolocalizacaoController extends AppController {
                 } else {
                     $quantidade = 10;
                 }
-                
+
                 $this->loadModel("Aluno");
                 $alunos = $this->Aluno->getMelhoresAlunos($curso_id, $criterios, $quantidade);
             } else {
@@ -103,7 +103,7 @@ class GeolocalizacaoController extends AppController {
                 'icon' => 'empresa',
                 'conteudo_html' => $this->request->data["endereco"]
             ));
-            
+
             $this->Geolocalizacao->mapOptions['center'] = "new google.maps.LatLng( {$coord_end['lat']}, {$coord_end['long']})";
 
             if (count($alunos) > 0) {
@@ -119,20 +119,22 @@ class GeolocalizacaoController extends AppController {
 
                     $coord_end_aluno = $this->Geolocalizacao->getCoordenadas($endereco_aluno);
 
-                    /*
-                     * Monta o Html que será exibido em cada icone
-                     */
-                    $html = "<h3>{$aluno['notas']['nome']}</h3>";
-                    $html .= "Média Geral ".number_format($aluno['notas']['media_geral'], 2)." <br/>";
-                    $html .= "Faltas {$aluno['faltas']['total_faltas']} <br/>";
+                    if (!is_null($coord_end_aluno['lat'])) {
+                        /*
+                         * Monta o Html que será exibido em cada icone
+                         */
+                        $html = "<h3>{$aluno['notas']['nome']}</h3>";
+                        $html .= "Média Geral " . number_format($aluno['notas']['media_geral'], 2) . " <br/>";
+                        $html .= "Faltas {$aluno['faltas']['total_faltas']} <br/>";
 
-                    $this->Geolocalizacao->setItem(array(
-                        'latitude' => $coord_end_aluno['lat'],
-                        'longitude' => $coord_end_aluno['long'],
-                        'title' => 'nome do icone',
-                        'icon' => 'cursando',
-                        'conteudo_html' => $html
-                    ));
+                        $this->Geolocalizacao->setItem(array(
+                            'latitude' => $coord_end_aluno['lat'],
+                            'longitude' => $coord_end_aluno['long'],
+                            'title' => 'nome do icone',
+                            'icon' => 'cursando',
+                            'conteudo_html' => $html
+                        ));
+                    }
                 endforeach;
             }
 

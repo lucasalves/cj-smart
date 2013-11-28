@@ -23,6 +23,7 @@
                 <?php echo $this->Permissions->groupMenu('academico', 'Acadêmico'); ?>
                 <?php echo $this->Permissions->itemMenu('FinalizarSemestre',   'Finalizar Semestre', '/turma/FinalizarSemestre'); ?>
                 <?php echo $this->Permissions->itemMenu('localizarAluno',   'Localizar Aluno', '/geolocalizacao/localizarAluno'); ?>
+                
             </ul>
         </div><!--/.well -->
     </div><!--/span-->

@@ -39,8 +39,8 @@
         <?
         foreach($datas as $data):
             
-            
-                echo "<th>{$data}</th>";
+                $data_formatada = explode("-",$data);
+                echo "<th>".$data_formatada[1]."/".$data_formatada[0] ."</th>";
             
             
         endforeach;

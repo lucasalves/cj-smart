@@ -74,6 +74,15 @@ class Turma extends AppModel {
         ),
     );
 
+    function beforeValidate() {
+
+        if (!empty($this->data['Turma']['data_criacao'])) {
+            $this->data['Turma']['data_criacao'] = $this->dateFormatBeforeSave($this->data['Turma']['data_criacao']);
+        }
+        return true;
+    }
+
+
     public function getMeses($turma_id) {
 
         $turmas = $this->find('all', array('conditions' => array('Turma.id' => $turma_id)));
@@ -158,14 +167,14 @@ class Turma extends AppModel {
         return $this->save();
     }
 
-    public function statisticsNotesAverage(){
-        $SQL   = 'SELECT AVG(nota.valor) as media, turma.nome as turma FROM `turma` RIGHT JOIN matricula ON matricula.turma_id = turma.id LEFT JOIN nota ON nota.matricula_id = matricula.id  group by turma.id HAVING media IS NOT NULL;';
-        $averages  = $this->query($SQL);
+    public function statisticsNotesAverage() {
+        $SQL = 'SELECT AVG(nota.valor) as media, turma.nome as turma FROM `turma` RIGHT JOIN matricula ON matricula.turma_id = turma.id LEFT JOIN nota ON nota.matricula_id = matricula.id  group by turma.id HAVING media IS NOT NULL;';
+        $averages = $this->query($SQL);
 
         $data = array();
-        
+
         //format
-        foreach($averages as $avg){
+        foreach ($averages as $avg) {
             $data[] = array(
                 'name' => $avg['turma']['turma'],
                 'data' => array((float) $avg[0]['media'])
@@ -175,6 +184,5 @@ class Turma extends AppModel {
         return $data;
     }
 
-
 }
-    
+

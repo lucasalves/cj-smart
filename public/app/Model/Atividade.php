@@ -60,9 +60,9 @@ class Atividade extends AppModel {
         )
     );
     
-    public $virtualFields = array(
-        'nome_aula' => "concat((select materia.nome from materia where materia.id = Atividade.materia_id), ' - ', date_format(Atividade.data,'%d/%m/%Y'))"
-    );
+//    public $virtualFields = array(
+//        'nome_aula' => "concat((select materia.nome from materia where materia.id = Atividade.materia_id), ' - ', date_format(Atividade.data,'%d/%m/%Y'))"
+//    );
 
             
     

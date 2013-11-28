@@ -33,7 +33,7 @@
                            <input type ='checkbox' name='data[Presenca][status][]' value='{$aluno["matricula_id"]}' {$checked} /> 
                            <input type ='hidden' name='data[Presenca][matricula_id][]' value = '{$aluno["matricula_id"]}'  />
                      </td>";
-                echo "<td><span type='button' name='{$aluno["matricula_id"]}' class='btn btn-small btn-info NovaOcorrencia'>Add Ocorrência</span></td>";
+                echo "<td><span type='button' name='{$aluno["matricula_id"]}' class='btn btn-small btn-info NovaOcorrencia'><i class='icon-plus'></i> Ocorrência</span></td>";
                 echo "</tr>";
             endforeach;
             ?>

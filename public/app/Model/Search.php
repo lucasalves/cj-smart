@@ -64,7 +64,7 @@ class Search {
 
         $fields = $this->getFields();
         foreach ($fields as $field) {
-            $response['or'][$this->model_name . '.' .$field . ' LIKE'] = '%' . $per . '%';
+            $response['or'][$this->model_name . '.' .$field . ' LIKE'] = '%' . trim($per) . '%';
         }
 
         return $response;

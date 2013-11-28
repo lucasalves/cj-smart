@@ -30,7 +30,13 @@
                     <tr>
                         <td><?= $falta["Matricula"]["codigo"] ?></td>
                         <td><input type="hidden" name="nome" value="<?= $nome_pesquisa ?>" /><?= $nome ?></td>
-                        <td><?= $falta["Aula"]["data"] ?></td>
+                        <td>
+                            <?
+                            $data_formatada = explode("-",$falta["Aula"]["data"]);
+                            
+                            echo $data_formatada[2]."/".$data_formatada[1]."/".$data_formatada[0]
+                            ?>
+                        </td>
                         <td>
                             <? if ($falta["Presenca"]["status"] == 'Abonado') { ?>
                                 <span class='badge'>Falta Abonada</span>

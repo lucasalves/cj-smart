@@ -40,6 +40,7 @@
                     'matricula.css',
                     'usuario',
                     'atividade',
+                    'smoothness/jquery-ui-1.9.1.custom.css',
                 )
         );
 
@@ -60,6 +61,7 @@
                     'bootstrap-carousel',
                     'bootstrap-typeahead',
                     'jquery-ui-1.10.2.custom.min.js',
+                    'jquery-ui-1.9.1.custom',
                     'fullcalendar.min.js',
                     'app/app.js',
                     'app/modal.js',
@@ -106,6 +108,13 @@
 
 
     </body>
+    <?
+     echo $this->Html->script(
+                array(
+                    'sistema'));
+    ?>
 </html>
 
-<? echo $this->element('sql_dump'); ?>
+
+
+<?// echo $this->element('sql_dump'); ?>

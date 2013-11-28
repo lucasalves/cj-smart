@@ -18,7 +18,7 @@ truncate table local;
 --
 
 INSERT INTO `aluno` (`id`, `nome`, `telefone`, `data_nascimento`, `responsavel`, `telefone_responsavel`, `email_responsavel`, `rg`, `cep`, `logradouro`, `numero`, `bairro`, `cidade`, `email`) VALUES
-(1, 'AAIRON TELES DE CAMARGO', 98925781, '1991-05-28', 'TELES AAIRON', 98925781, 'brunoipjg@gmail.com', '49.733.448-1', '47229-000', 'Rua Dos AAIRON TELES DE CAMARGOs', '1277', 'AclimaÃ§Ã£o', 'SÃ£o Paulo', 'aairon.teles@gmail.com'),
+(1, 'AAIRON TELES DE CAMARGO', 98925781, '1991-05-28', 'TELES AAIRON', 98925781, 'brunoipjg@gmail.com', '49.733.448-1', '47229-000', 'Rua Antonio Tavares', '1277', 'AclimaÃ§Ã£o', 'SÃ£o Paulo', 'aairon.teles@gmail.com'),
 (2, 'AFONSO JOSE ROGERIO COSTA', 55633545, '1991-05-28', 'JOSE AFONSO', 55633545, 'brunoipjg@gmail.com', '21.213.762-3', '46487-000', 'Rua Dos AFONSO JOSE ROGERIO COSTAs', '1037', 'AclimaÃ§Ã£o', 'SÃ£o Paulo', 'afonso.jose@gmail.com'),
 (3, 'AGNALDO MOREIRA SAMPAIO', 92391967, '1991-05-28', 'MOREIRA AGNALDO', 92391967, 'brunoipjg@gmail.com', '13.960.367-8', '45880-000', 'Rua Dos AGNALDO MOREIRA SAMPAIOs', '1303', 'AclimaÃ§Ã£o', 'SÃ£o Paulo', 'agnaldo.moreira@gmail.com'),
 (4, 'AIDA MARIA MONI VENERE', 26293946, '1991-05-28', 'MARIA AIDA', 26293946, 'brunoipjg@gmail.com', '10.158.601-8', '53671-000', 'Rua Dos AIDA MARIA MONI VENEREs', '1699', 'AclimaÃ§Ã£o', 'SÃ£o Paulo', 'aida.maria@gmail.com'),

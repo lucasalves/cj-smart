@@ -38,7 +38,7 @@ class Educador extends AppModel {
     public $hasMany = array(
         'Atividade' => array(
             'className' => 'Atividade',
-            'foreignKey' => 'atividade_id'
+            //'foreignKey' => 'atividade_id'
         )
     );
 

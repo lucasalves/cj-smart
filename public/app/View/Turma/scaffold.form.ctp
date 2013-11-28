@@ -17,7 +17,9 @@
             'options' => array('M' => 'Manhã', 'T' => 'Tarde', 'N' => 'Noite'))
         );
 
-        echo $this->Form->input('Turma.data_criacao', $this->Aula->SolveDate($this->request, array('dateFormat' => 'DMY', 'label' => 'Data de Criação'))
+        echo $this->Form->input('Turma.data_criacao', array(
+            'type' => 'text',
+            'class'=>'data')
         );
         ?>
     </div>

@@ -41,7 +41,11 @@ class TurmaController extends AppController {
     public $uses = array('Turma');
     public $scaffold;
 
-    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->set('fields', array('id', 'nome', 'curso_id'));
+    }
+
     public function finalizarSemestre() {
 //        $this->autoRender=false;
 
@@ -66,14 +70,14 @@ class TurmaController extends AppController {
         }
     }
 
-    public function stats(){
+    public function stats() {
         
     }
 
-    public function stats_ajax(){
+    public function stats_ajax() {
         $this->autoRender = false;
         $this->disableCache();
-        echo json_encode( $this->Turma->statisticsNotesAverage() );
+        echo json_encode($this->Turma->statisticsNotesAverage());
     }
 
 }
