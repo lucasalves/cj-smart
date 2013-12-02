@@ -78,8 +78,8 @@
                     'usuario',
                     'grupoUsuario',
                     'aula',
-                    'atividade',
-                    'local'
+                    'Atividade',
+                    'Local'
                 )
         );
 
