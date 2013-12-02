@@ -10,10 +10,56 @@
         </div>
     </div>
 
-        
     <div class="well">
-        
         <h2><?php echo __d('cake', $singularHumanName); ?></h2>
+    
+        <table class="table">
+            <tr>
+                <td><b>RG</b></td>
+                <td><?=$this->data["Aluno"]["rg"]?></td>
+                <td><b>Nome</b></td>
+                <td><?=$this->data["Aluno"]["nome"]?></td>
+            </tr>
+            <tr>
+                <td><b>Data Nascimento</b></td>
+                <td><?=$this->data["Aluno"]["data_nascimento"]?></td>
+            </tr>
+            <tr>
+                <td><b>Telefone</b></td>
+                <td><?=$this->data["Aluno"]["telefone"]?></td>
+                <td><b>Email</b></td>
+                <td><?=$this->data["Aluno"]["email"]?></td>
+            </tr>
+            <tr>
+                <td><b>Responsável</b></td>
+                <td><?=$this->data["Aluno"]["responsavel"]?></td>
+            </tr>            
+            <tr>
+                <td><b>Telefone do Responsável</b></td>
+                <td><?=$this->data["Aluno"]["telefone_responsavel"]?></td>
+                <td><b>E-mail do Responsável</b></td>
+                <td><?=$this->data["Aluno"]["email_responsavel"]?></td>
+            </tr>   
+            <tr>
+                <td><b>Cep</b></td>
+                <td><?=$this->data["Aluno"]["cep"]?></td>
+                <td><b>Logradouro</b></td>
+                <td><?=$this->data["Aluno"]["logradouro"]?></td>
+                <td><b>Nº</b></td>
+                <td><?=$this->data["Aluno"]["numero"]?></td>
+            </tr> 
+            <tr>
+                <td><b>Bairro</b></td>
+                <td><?=$this->data["Aluno"]["bairro"]?></td>
+                <td><b>Cidade</b></td>
+                <td><?=$this->data["Aluno"]["cidade"]?></td>
+
+            </tr> 
+        </table>
+       </div> 
+    <div class="well" style="display: none">
+        
+        
         <?php
         $i = 0;
         foreach ($scaffoldFields as $_field) {
